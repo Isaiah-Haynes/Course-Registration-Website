@@ -1,0 +1,21 @@
+Cloning a repository
+https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+	git clone <ssh link under "Code" on github repo>
+
+Update Local Repo
+	git fetch
+	git pull
+
+Push All Files to Repo
+	git status //to check which files were changed
+	git add * //adds all files to be committed
+	git commit -m "info about commit" //prepares files to be pushed
+	git push
+
+Create a new Branch in Local Folder
+	git checkout -b <new branch name>
+	git push --set-upstream origin <new branch name> //pushes files to new
+	branch on github
+
+Switch to Different Branch
+	git checkout <branch name>
