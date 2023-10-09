@@ -1,5 +1,8 @@
+GitHub Cheat Sheet
+	https://education.github.com/git-cheat-sheet-education.pdf
+
 Cloning a repository
-https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+	https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 	git clone <ssh link under "Code" on github repo>
 
 Update Local Repo
