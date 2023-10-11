@@ -1,0 +1,15 @@
+{
+    "courseCatalog_arr":[{
+        "courseName": "Computers in Modern Society",
+        "courseID": "CSE1000",
+        "courseStartTime": "10:10AM",
+        "courseEndTime": "11:00AM",
+        "courseCategory": "CSE"
+        },{
+        "courseName": "Introduction to Computing for Engineers",
+        "courseID": "CSE1010",
+        "courseStartTime": "11:15AM",
+        "courseEndTime": "12:05AM",
+        "courseCategory": "CSE"
+    }]
+}
