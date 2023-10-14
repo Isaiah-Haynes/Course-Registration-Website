@@ -27,11 +27,9 @@
   #SignIn {
     min-height: 100vh;
     background-image: url("../images/StorrsAerial.jpeg");
-    /* margin-bottom: 250px; */
   }
   .form {
     padding: 1rem;
-    /* background-image: url("../images/homeIcon.png"); */
   }
   
   .form h2 {
