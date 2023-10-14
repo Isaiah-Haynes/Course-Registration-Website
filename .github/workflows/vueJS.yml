@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          npm install
+          pip install node
           npm ci
           npm run build
           npm run test:unit
