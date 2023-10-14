@@ -1,0 +1,14 @@
+name: VueJS package
+
+on: [push]
+
+jobs:
+  unit_test-lint:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          npm ci
+          npm run build
+          npm run test:unit
+          npm run lint

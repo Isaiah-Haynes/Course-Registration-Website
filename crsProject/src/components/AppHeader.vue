@@ -5,7 +5,10 @@
       <nav>
         <ul>
           <li>
-            <RouterLink to="/">Home</RouterLink>
+            <RouterLink to="/">Sign-in Page</RouterLink>
+        </li>
+          <li>
+            <RouterLink to="/home">Home</RouterLink>
           </li>
           <li>
             <RouterLink to="/fetch">Fetch Example</RouterLink>

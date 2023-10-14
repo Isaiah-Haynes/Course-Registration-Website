@@ -16,7 +16,7 @@ Install Nodejs from [their website](https://nodejs.org/en)
 
 ## Project Setup
 
-Whenever you clone this project, or change the contents of `package.json`, be sure to run this command in your terminal:
+Whenever you clone this project, or change the contents of `package.json`, be sure to run the following command in your terminal:
 
 ```sh
 npm install

@@ -1,6 +1,6 @@
 <template>
   <div id="app-wrapper">
-    <AppHeader title="My App" />
+    <AppHeader title="Course Registration Template" />
     <RouterView />
   </div>
 </template>

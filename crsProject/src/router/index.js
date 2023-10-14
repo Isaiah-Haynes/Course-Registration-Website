@@ -5,6 +5,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import FormView from "../views/FormView.vue";
 import FetchView from "../views/FetchView.vue";
+import SignInView from "../views/SignInView.vue"
 
 const router = createRouter({
   // the history mode determines how vue router interacts with the url.
@@ -20,8 +21,14 @@ const router = createRouter({
   // this page), a name (check out components/AppHeader.vue for how this is used)
   // and, most importantly, the component that should be rendered for the view
   routes: [
+        //might need to remove this. . .
     {
       path: "/",
+      name: "signIn",
+      component: SignInView,
+    },
+    {
+      path: "/home",
       name: "home",
       component: HomeView,
     },
