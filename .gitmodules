@@ -1,0 +1,3 @@
+[submodule "/Users/isaiahhaynes/documents/cse2102proj"]
+	path = /Users/isaiahhaynes/documents/cse2102proj
+	url = git:https://github.com/tkofh/vue-example-project.git
