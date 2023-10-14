@@ -16,12 +16,14 @@ Install Nodejs from [their website](https://nodejs.org/en)
 
 ## Project Setup
 
-Whenever you clone this project, or change the contents of `package.json`, be sure to run this command in your terminal:
+Whenever you clone this project, or change the contents of `package.json`, be sure to run the following commands in your terminal:
 
 ```sh
 npm install
 ```
-
+```sh
+npm install @userfront/core
+```
 ### Compile and Hot-Reload for Development
 
 Whenever you want to run the local development server, which will allow you to view the application in your browser, run this command in your terminal:
