@@ -1,0 +1,24 @@
+{
+    "courseCatalog_arr":[{
+        "course_name": "CSE1000",
+        "num_credits": "3",
+        "course_title": "Computers in Modern Society",
+        "course_start": "10:10AM",
+        "course_end": "11:00AM",
+        "subject": "CSE"
+        },{
+        "course_name": "CSE1010",
+        "num_credits": "3",
+        "course_title": "Introduction to Computing for Engineers",
+        "course_start": "11:15AM",
+        "course_end": "12:05AM",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE1102",
+        "num_credits": "3",
+        "course_title": "Object Oriented Design and Programming",
+        "course_start": "12:20PM",
+        "course_end": "1:10PM",
+        "subject": "CSE"
+    }]
+}
