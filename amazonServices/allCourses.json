@@ -1,15 +1,17 @@
 {
     "courseCatalog_arr":[{
-        "courseID": "CSE1000",
-        "courseName": "Computers in Modern Society",
-        "courseStartTime": "10:10AM",
-        "courseEndTime": "11:00AM",
-        "courseCategory": "CSE"
+        "course_name": "CSE1000",
+        "course_title": "Computers in Modern Society",
+        "num_credits": "3",
+        "course_start": "10:10AM",
+        "course_end": "11:00AM",
+        "course_category": "CSE"
         },{
-        "courseID": "CSE1010",
-        "courseName": "Introduction to Computing for Engineers",
-        "courseStartTime": "11:15AM",
-        "courseEndTime": "12:05AM",
-        "courseCategory": "CSE"
+        "course_name": "CSE1010",
+        "course_title": "Introduction to Computing for Engineers",
+        "num_credits": "3",
+        "course_start": "11:15AM",
+        "course_end": "12:05AM",
+        "course_category": "CSE"
     }]
 }
