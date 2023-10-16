@@ -2,8 +2,8 @@
     You must replace <FMI_1> with the table name
 '''
 
-import boto3
 import json
+import boto3
 
 
 def batch_put(courseCatalog):
@@ -11,22 +11,22 @@ def batch_put(courseCatalog):
     table = DDB.Table('<FMI>')
     with table.batch_writer() as batch:
         for course in courseCatalog:
-            courseID = course['courseID']
-            courseName = course['courseName']
-            courseStartTime = course['courseStartTime']
-            courseEndTime = course['courseEndTime']
+            course_name = course['course_name']
+            course_title = course['course_title']
+            num_credits = course['num_credits']
+            course_start = course['course_start']
+            course_end = course['course_end']
+            course_category = course['course_category']
             formatted_data  = {
-                'courseID': courseID,
-                'courseName': courseName,
-                'courseStartTime': courseStartTime,
-                'courseEndTime': courseEndTime,
+                'course_name': course_name,
+                'course_title': course_title,
+                'num_credits': num_credits,
+                'courseStartTime': course_start,
+                'courseEndTime': course_end,
+                'course_category': course_category
             }
-            if 'courseCategory' in course:
-                formatted_data['category'] = course['courseCategory']
-                print("Adding course category:", courseID, courseName)
-            else:
-                print("Adding course:", courseID, courseName)
-                pass
+
+            print("Adding course:", course_name, course_title)
            
             batch.put_item(Item=formatted_data)
 
