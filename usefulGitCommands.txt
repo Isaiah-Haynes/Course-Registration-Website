@@ -22,3 +22,6 @@ Create a new Branch in Local Folder
 
 Switch to Different Branch
 	git checkout <branch name>
+
+Delete a local Git branch using terminal
+	git branch -d <branch name>
