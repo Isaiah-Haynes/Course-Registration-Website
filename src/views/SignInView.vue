@@ -1,35 +1,58 @@
 <template>
-    <div id="SignIn">
+  <div id="SignIn">
     <main class="form">
-      <h2>Course Registration Sign in</h2>
+      <div class="pageTitle">
+        <h2>Welcome Back!</h2>
+        <h3>Sign In</h3>
+      </div>
 
       <!-- Sign-in form below -->
       <!-- <form @submit.prevent="loginWithPassword"> -->
-        <form>
-        <input type="text" placeholder="email or username" />
-        <p>
-            <input type="password" placeholder="password" />
-        </p>
-        <p>
-            <button type="submit">Student Login</button>
-        </p>  
-        <p> 
-            <button type="submit">Professor Login</button>
-        </p>
-        <button type="submit">Administrator Login</button>
+      <form class="signInBox">
+        <div class="email">
+          <input type="text" placeholder="email or username" />
+        </div>
+        <div class="password">
+          <input type="password" placeholder="password" />
+        </div>
+        <div class="loginButtons">
+          <p><button class="lButton" type="submit" >Student Login</button></p>  
+          <p><button class="lButton" type="submit" >Professor Login</button></p>
+          <p><button class="lButton" type="submit" >Administrator Login</button></p>
+        </div>
       </form>
 
     </main>
-    </div>
-  </template>
-  
-  <style>
+  </div>
+</template>
+
+<style>
   #SignIn {
     min-height: 100vh;
-    background-image: url("../images/StorrsAerial.jpeg");
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    display: flex;
+    justify-content: center;
   }
+
+  .pageTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8rem;
+  }
+
   .form {
     padding: 1rem;
+    height: 36rem;
+    width: 28rem;
+    display: flex;
+    flex-direction: column;
+    background: #fefeff;
+    border: none;
+    box-shadow: 0px 0px 12px 0.8px #8682ce;
+    margin: 75px;
+    border-radius: 1rem;
   }
   
   .form h2 {
@@ -57,15 +80,51 @@
   .form form {
     margin-bottom: 1rem;
   }
+
+  .email {
+    display: flex;
+    justify-content: center;
+    margin: 1.2rem 1.2rem 0.6rem 1.2rem;
+  }
+  
+  .password {
+    display: flex;
+    justify-content: center;
+    margin: 0.6rem 1.2rem 1.2rem 1.2rem;
+  }
+
+  .loginButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  .lButton{
+    margin: 0.4px;
+    width: 12rem;
+    background-color: #fefeff;
+    -webkit-text-fill-color: #8eb1fc;
+  }
+
+  .lButton:hover {
+    background-color: #8eb1fc;
+    -webkit-text-fill-color: #fefeff;
+  }
+
+  .signInBox {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
   
   /* set some default styling to buttons and inputs for borders, heights, and padding */
   .form :is(input, button) {
     line-height: 2rem;
     padding-inline: 0.5rem;
     border-radius: 0.375rem;
-    border: 1px solid #d9d9d9;
+    border: 1px solid #ececec;
     margin-left: 0.5rem;
     color: #202020;
   }
-  </style>
-  
+</style>
