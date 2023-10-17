@@ -8,7 +8,7 @@ import boto3
 
 def batch_put(courseCatalog):
     DDB = boto3.resource('dynamodb', region_name='us-east-1')
-    table = DDB.Table('CourseCatalogTest')
+    table = DDB.Table('courseCatalog')
     with table.batch_writer() as batch:
         for course in courseCatalog:
             course_name = course['course_name']
@@ -27,8 +27,9 @@ def batch_put(courseCatalog):
             }
 
             print("Adding course:", course_name, course_title)
-           
+
             batch.put_item(Item=formatted_data)
+    return ("Adding course: "+course_name)
 
    
 if __name__ == '__main__':
