@@ -29,7 +29,7 @@ def batch_put(courseCatalog):
             print("Adding course:", course_name, course_title)
 
             batch.put_item(Item=formatted_data)
-    return ("Adding course: "+course_name)
+    #return "Adding course: "+course_name
 
    
 if __name__ == '__main__':
