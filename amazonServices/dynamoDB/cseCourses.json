@@ -12,7 +12,7 @@
         "num_credits": "3",
         "course_title": "Introduction to Computing for Engineers",
         "course_start": "11:15AM",
-        "course_end": "12:05AM",
+        "course_end": "12:05PM",
         "course_days": "M W F",
         "subject": "CSE"
     },{
@@ -58,7 +58,7 @@
     },{
         "course_name": "CSE2102",
         "num_credits": "3",
-        "course_title": "Introduciton to Software Engineering",
+        "course_title": "Introduction to Software Engineering",
         "course_start": "12:30PM",
         "course_end": "1:45PM",
         "course_days": "T Th",
@@ -102,6 +102,86 @@
         "course_start": "6:30PM",
         "course_end": "7:45PM",
         "course_days": "T Th",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE3100",
+        "num_credits": "3",
+        "course_title": "Systems Programming",
+        "course_start": "9:05AM",
+        "course_end": "9:55AM",
+        "course_days": "M W F",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE3101",
+        "num_credits": "3",
+        "course_title": "Go Essentials",
+        "course_start": "10:10AM",
+        "course_end": "11:00AM",
+        "course_days": "M W F",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE3140",
+        "num_credits": "2",
+        "course_title": "Cybersecurity Lab",
+        "course_start": "9:00AM",
+        "course_end": "11:00AM",
+        "course_days": "Th",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE3150",
+        "num_credits": "3",
+        "course_title": "C++ Essentials",
+        "course_start": "11:15AM",
+        "course_end": "12:05PM",
+        "course_days": "M W F",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE3160",
+        "num_credits": "3",
+        "course_title": "Functional Programming Fundamentals",
+        "course_start": "12:20PM",
+        "course_end": "1:10PM",
+        "course_days": "M W F",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE3200",
+        "num_credits": "3",
+        "course_title": "Mobile Application Development",
+        "course_start": "1:25PM",
+        "course_end": "2:15PM",
+        "course_days": "M W F",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE3300",
+        "num_credits": "3",
+        "course_title": "Computer Networks and Data Communication",
+        "course_start": "2:30PM",
+        "course_end": "3:20PM",
+        "course_days": "M W F",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE3302",
+        "num_credits": "3",
+        "course_title": "Digital Systems Design",
+        "course_start": "3:35PM",
+        "course_end": "4:25PM",
+        "course_days": "M W F",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE3350",
+        "num_credits": "3",
+        "course_title": "Digital Design Laboratory",
+        "course_start": "4:40PM",
+        "course_end": "5:30PM",
+        "course_days": "M W F",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE3400",
+        "num_credits": "3",
+        "course_title": "Introduction to Computer and Network Security",
+        "course_start": "9:30AM",
+        "course_end": "10:45AM",
+        "course_days": "M W",
         "subject": "CSE"
     }]
 }
