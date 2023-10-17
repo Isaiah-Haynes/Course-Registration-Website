@@ -1,0 +1,107 @@
+{
+    "courseCatalog_arr":[{
+        "course_name": "CSE1000",
+        "num_credits": "3",
+        "course_title": "Computers in Modern Society",
+        "course_start": "10:10AM",
+        "course_end": "11:00AM",
+        "course_days": "M W F",
+        "subject": "CSE"
+        },{
+        "course_name": "CSE1010",
+        "num_credits": "3",
+        "course_title": "Introduction to Computing for Engineers",
+        "course_start": "11:15AM",
+        "course_end": "12:05AM",
+        "course_days": "M W F",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE1102",
+        "num_credits": "3",
+        "course_title": "Object Oriented Design and Programming",
+        "course_start": "12:20PM",
+        "course_end": "1:10PM",
+        "course_days": "M W F",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE1401",
+        "num_credits": "3",
+        "course_title": "Honors Core: Computational Molecular Biology",
+        "course_start": "1:25PM",
+        "course_end": "2:15PM",
+        "course_days": "M W F",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE1729",
+        "num_credits": "3",
+        "course_title": "Introduction to Principles of Programming",
+        "course_start": "2:30PM",
+        "course_end": "3:20PM",
+        "course_days": "M W F",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE2050",
+        "num_credits": "3",
+        "course_title": "Data Structures and Object-Oriented Design",
+        "course_start": "9:30AM",
+        "course_end": "10:45AM",
+        "course_days": "T Th",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE2100",
+        "num_credits": "3",
+        "course_title": "Data Structures and Introduction to Algorithms",
+        "course_start": "11:00AM",
+        "course_end": "12:15PM",
+        "course_days": "T Th",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE2102",
+        "num_credits": "3",
+        "course_title": "Introduciton to Software Engineering",
+        "course_start": "12:30PM",
+        "course_end": "1:45PM",
+        "course_days": "T Th",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE2301",
+        "num_credits": "4",
+        "course_title": "Principles and Practice of Digital Logic Design",
+        "course_start": "2:00PM",
+        "course_end": "3:15PM",
+        "course_days": "T Th",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE2500",
+        "num_credits": "3",
+        "course_title": "Introduction to Discrete Systems",
+        "course_start": "3:30PM",
+        "course_end": "4:45PM",
+        "course_days": "T Th",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE2550",
+        "num_credits": "3",
+        "course_title": "Blockchain Technology I",
+        "course_start": "5:00PM",
+        "course_end": "6:15PM",
+        "course_days": "T Th",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE3000",
+        "num_credits": "1",
+        "course_title": "Contemporary Issues in Computer Science and Engineering",
+        "course_start": "8:00AM",
+        "course_end": "8:50AM",
+        "course_days": "W",
+        "subject": "CSE"
+    },{
+        "course_name": "CSE3002",
+        "num_credits": "3",
+        "course_title": "Social, Ethical and Professional Issues in Computer Science and Engineering",
+        "course_start": "6:30PM",
+        "course_end": "7:45PM",
+        "course_days": "T Th",
+        "subject": "CSE"
+    }]
+}
