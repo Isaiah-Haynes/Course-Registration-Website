@@ -1,7 +1,7 @@
 {
     "courseCatalog_arr":[{
         "course_name": "CSE1000",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Computers in Modern Society",
         "course_start": "10:10AM",
         "course_end": "11:00AM",
@@ -9,7 +9,7 @@
         "subject": "CSE"
         },{
         "course_name": "CSE1010",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Introduction to Computing for Engineers",
         "course_start": "11:15AM",
         "course_end": "12:05PM",
@@ -17,7 +17,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE1102",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Object Oriented Design and Programming",
         "course_start": "12:20PM",
         "course_end": "1:10PM",
@@ -25,7 +25,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE1401",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Honors Core: Computational Molecular Biology",
         "course_start": "1:25PM",
         "course_end": "2:15PM",
@@ -33,7 +33,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE1729",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Introduction to Principles of Programming",
         "course_start": "2:30PM",
         "course_end": "3:20PM",
@@ -41,7 +41,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE2050",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Data Structures and Object-Oriented Design",
         "course_start": "9:30AM",
         "course_end": "10:45AM",
@@ -49,7 +49,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE2100",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Data Structures and Introduction to Algorithms",
         "course_start": "11:00AM",
         "course_end": "12:15PM",
@@ -57,7 +57,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE2102",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Introduction to Software Engineering",
         "course_start": "12:30PM",
         "course_end": "1:45PM",
@@ -65,7 +65,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE2301",
-        "num_credits": 4,
+        "num_credits": "4",
         "course_title": "Principles and Practice of Digital Logic Design",
         "course_start": "2:00PM",
         "course_end": "3:15PM",
@@ -73,7 +73,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE2500",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Introduction to Discrete Systems",
         "course_start": "3:30PM",
         "course_end": "4:45PM",
@@ -81,7 +81,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE2550",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Blockchain Technology I",
         "course_start": "5:00PM",
         "course_end": "6:15PM",
@@ -89,7 +89,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE3000",
-        "num_credits": 1,
+        "num_credits": "1",
         "course_title": "Contemporary Issues in Computer Science and Engineering",
         "course_start": "8:00AM",
         "course_end": "8:50AM",
@@ -97,7 +97,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE3002",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Social, Ethical and Professional Issues in Computer Science and Engineering",
         "course_start": "6:30PM",
         "course_end": "7:45PM",
@@ -105,7 +105,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE3100",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Systems Programming",
         "course_start": "9:05AM",
         "course_end": "9:55AM",
@@ -113,7 +113,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE3101",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Go Essentials",
         "course_start": "10:10AM",
         "course_end": "11:00AM",
@@ -121,7 +121,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE3140",
-        "num_credits": 2,
+        "num_credits": "2",
         "course_title": "Cybersecurity Lab",
         "course_start": "9:00AM",
         "course_end": "11:00AM",
@@ -129,7 +129,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE3150",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "C++ Essentials",
         "course_start": "11:15AM",
         "course_end": "12:05PM",
@@ -137,7 +137,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE3160",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Functional Programming Fundamentals",
         "course_start": "12:20PM",
         "course_end": "1:10PM",
@@ -145,7 +145,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE3200",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Mobile Application Development",
         "course_start": "1:25PM",
         "course_end": "2:15PM",
@@ -153,7 +153,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE3300",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Computer Networks and Data Communication",
         "course_start": "2:30PM",
         "course_end": "3:20PM",
@@ -161,7 +161,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE3302",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Digital Systems Design",
         "course_start": "3:35PM",
         "course_end": "4:25PM",
@@ -169,7 +169,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE3350",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Digital Design Laboratory",
         "course_start": "4:40PM",
         "course_end": "5:30PM",
@@ -177,7 +177,7 @@
         "subject": "CSE"
     },{
         "course_name": "CSE3400",
-        "num_credits": 3,
+        "num_credits": "3",
         "course_title": "Introduction to Computer and Network Security",
         "course_start": "9:30AM",
         "course_end": "10:45AM",
