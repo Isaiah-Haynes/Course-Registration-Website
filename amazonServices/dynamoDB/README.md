@@ -1,5 +1,18 @@
-This is the temporary README for AWS info.
+README for dynamoAddMultiple
 
-"allCourses.json" includes an array of all the courses used in our system.
+"dynamoAddMultiple.py" will be used to add all of the courses from an input json file to a DynamoDB table. dynamoAddMultiple.py takes a json input file and places its contents into a dynamoDB table. An example of its proper use with cseCourses.json is included below.
+```sh
+python3 dynamoAddMultiple.py cseCourses.json
+```
+When adding non-CSE courses, they can be added to a different json file which will then be used as input to "dynamoAddMultiple.py".
 
-"dynamoAddMultiple.py" (name subject to change) will be used to add all of the courses from "allCourses.json" to a DynamoDB table. The name of said DynamoDB table is currently "CourseCatalogTest" and will need to be changed when we make the actual final table. At a later date, this file may include separate functions to add multiple items or add a single item based on a single command. These functions may also be separate files to allow for multiple people working on them at a time. It is important to note that allCourses.json is not finished at this time.
+The format for each course in "cseCourses.json" should be replicated as follows:
+{
+    "course_name": "course_name e.g. CSE1000",
+    "num_credits": "number of credits",
+    "course_title": "title of course",
+    "course_start": "course start time in format 12:00PM",
+    "course_end": "course end time in format 12:00PM",
+    "course_days": "days of course e.g. 'M W F'",
+    "subject": "course subject e.g. CSE"
+}
