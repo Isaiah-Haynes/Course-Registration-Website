@@ -6,7 +6,10 @@
           <ul>
             <li>
               <RouterLink to="/">Sign-in Page</RouterLink>
-          </li>
+            </li>
+            <li>
+              <RouterLink to="/studentHome">Student Home View</RouterLink>
+            </li>
             <li>
               <RouterLink to="/home">Home</RouterLink>
             </li>
