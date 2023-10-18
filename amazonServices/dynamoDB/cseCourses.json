@@ -3,10 +3,9 @@
         "course_name": "CSE1000",
         "num_credits": "3",
         "course_title": "Computers in Modern Society",
-        "course_start": "10:10AM",
-        "course_end": "11:00AM",
-        "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "sections": {"001":["10:10AM", "11:00 AM", "M W F", "GANT 104", "John Smith"],
+                     "002":["11:00AM", "12:15 PM", "Tu Thu", "ITE 134", "Jane Doe"]}
         },{
         "course_name": "CSE1010",
         "num_credits": "3",
