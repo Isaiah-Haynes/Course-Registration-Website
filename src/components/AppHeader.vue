@@ -1,12 +1,12 @@
 <template>
     <header class="app-header">
-      <div>
+      <div class="course-bar">
         <h1>{{ title }}</h1>
         <nav>
-          <ul>
+          <ul class="nav-links">
             <li>
               <RouterLink to="/">Sign-in Page</RouterLink>
-          </li>
+            </li>
             <li>
               <RouterLink to="/home">Home</RouterLink>
             </li>
@@ -43,14 +43,35 @@
   /* give the header itself a background color, a border, and add some padding to the content */
   .app-header {
     background-color: #fcfcfc;
-    border-bottom: 1px solid #e0e0e0;
     padding: 1rem;
+    height: 4rem;
   }
   
   /* make the title within the header a larger and bolder font */
   .app-header h1 {
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-weight: bold;
   }
+
+  .course-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  ul li {
+    margin: 1rem;
+  }
+
+
   </style>
   

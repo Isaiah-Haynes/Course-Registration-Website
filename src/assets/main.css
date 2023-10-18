@@ -10,7 +10,6 @@ browser are identical
 /* give links a blue color, and underline them */
 a {
   color: #0d74ce;
-  text-decoration: underline;
 }
 
 /* when the links are hovered, change them to a lighter blue */
