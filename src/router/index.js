@@ -34,16 +34,6 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/form",
-      name: "form",
-      component: FormView,
-    },
-    {
-      path: "/fetch",
-      name: "fetch",
-      component: FetchView,
-    },
-    {
       path: "/studentHome",
       name: "studentHome",
       component: StudentHomeView,

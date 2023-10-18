@@ -1,14 +1,27 @@
 <template>
-    <div class="quick-search">
-      <h1>Quick Search</h1>
-        <input type="text" v-model="search_bar" placeholder="Search for a class" />
-        <div class="course name" v-for="course in filteredCatalog()" :key="course">
-        <p>{{ course }}</p>
-        </div>
-        <div class="item error" v-if="search_bar&&!filteredCatalog().length">
-        <p>No results found!</p>
-        </div>
+  <nav>
+    <ul class="nav-links">
+      <li>
+        <RouterLink to="/">Sign-in Page</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/studentHome">Student Home View</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/home">Home</RouterLink>
+      </li>
+    </ul>
+  </nav>
+  <div class="quick-search">
+    <h1>Quick Search</h1>
+    <input type="text" v-model="search_bar" placeholder="Search for a class" />
+      <div class="course name" v-for="course in filteredCatalog()" :key="course">
+      <p>{{ course }}</p>
       </div>
+      <div class="item error" v-if="search_bar&&!filteredCatalog().length">
+      <p>No results found!</p>
+      </div>
+    </div>
 </template>
 
 <script setup>
@@ -33,10 +46,19 @@ function filteredCatalog(){
 }
 
 body {
-  padding: 20px;
-  min-height: 100vh;
+  height: 92vh;
   background-color: rgb(234, 242, 255);
 }
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  ul li {
+    margin: 1rem;
+  }
 
 input {
   display: block;

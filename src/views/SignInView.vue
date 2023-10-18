@@ -5,9 +5,6 @@
         <h2>Welcome Back!</h2>
         <h3>Sign In</h3>
       </div>
-
-      <!-- Sign-in form below -->
-      <!-- <form @submit.prevent="loginWithPassword"> -->
       <form class="signInBox">
         <div class="email">
           <input type="text" placeholder="email or username" />
@@ -16,9 +13,11 @@
           <input type="password" placeholder="password" />
         </div>
         <div class="loginButtons">
-          <p><button class="lButton" type="submit" >Student Login</button></p>  
-          <p><button class="lButton" type="submit" >Professor Login</button></p>
-          <p><button class="lButton" type="submit" >Administrator Login</button></p>
+          <router-link to="/studentHome">
+            <button class="lButton" type="submit" >Student Login</button>
+          </router-link>
+          <button class="lButton" type="submit" >Professor Login</button>
+          <button class="lButton" type="submit" >Administrator Login</button>
         </div>
       </form>
 
@@ -26,9 +25,13 @@
   </div>
 </template>
 
+<script>
+</script>
+
 <style>
   #SignIn {
-    min-height: 100vh;
+    overflow: hidden;
+    height: 92vh;
     background-color: #8EC5FC;
     background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
     display: flex;
@@ -48,56 +51,35 @@
     width: 28rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
     background: #fefeff;
     border: none;
     box-shadow: 0px 0px 12px 0.8px #8682ce;
-    margin: 75px;
     border-radius: 1rem;
+    margin: 2rem;
   }
   
   .form h2 {
     font-size: 1.5rem;
     margin-bottom: 2rem;
   }
-  
-  .form p {
-    margin-bottom: .5rem;
-  }
-  
-  /* flex layouts allow us to position elements next to each other that would otherwise have been on top of each other */
-  .form ul {
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
-  }
-  .form li {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-  
-  /* create some space beneath the create todo form */
-  .form form {
-    margin-bottom: 1rem;
-  }
 
   .email {
     display: flex;
     justify-content: center;
-    margin: 1.2rem 1.2rem 0.6rem 1.2rem;
   }
   
   .password {
     display: flex;
     justify-content: center;
-    margin: 0.6rem 1.2rem 1.2rem 1.2rem;
   }
 
   .loginButtons {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
+    margin-top: 2rem;
   }
 
   .lButton{
@@ -105,6 +87,7 @@
     width: 12rem;
     background-color: #fefeff;
     -webkit-text-fill-color: #8eb1fc;
+    margin: 0.4rem 1rem 0.4rem 1rem;
   }
 
   .lButton:hover {
