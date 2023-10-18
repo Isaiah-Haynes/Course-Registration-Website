@@ -1,5 +1,6 @@
 <template>
     <main class="quickSearchForm">
+      <h3>Quick Search</h3>
         <input type="text" v-model="search_bar" placeholder="Search for a class" />
         <div class="course name" v-for="course in filteredCatalog()" :key="course">
         <p>{{ course }}</p>
