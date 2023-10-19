@@ -13,7 +13,7 @@
           <input type="password" placeholder="password" />
         </div>
         <div class="loginButtons">
-          <router-link to="/studentHome">
+          <router-link to="/student/home">
             <button class="lButton" type="submit" >Student Login</button>
           </router-link>
           <button class="lButton" type="submit" >Professor Login</button>
