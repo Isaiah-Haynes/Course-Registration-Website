@@ -7,6 +7,12 @@ import FormView from "../views/FormView.vue";
 import FetchView from "../views/FetchView.vue";
 import SignInView from "../views/SignInView.vue";
 import StudentHomeView from "../views/StudentHomeView.vue";
+import StudentScheduleView from "../views/StudentScheduleView.vue";
+import StudentEnrollView from "../views/StudentEnrollView.vue";
+import ProfessorHomeView from "../views/ProfessorHomeView.vue";
+import ProfessorScheduleView from "../views/ProfessorScheduleView.vue";
+import AdminHomeView from "../views/AdminHomeView.vue";
+
 
 const router = createRouter({
   // the history mode determines how vue router interacts with the url.
@@ -37,6 +43,31 @@ const router = createRouter({
       path: "/student/home",
       name: "studentHome",
       component: StudentHomeView,
+    },
+    {
+      path: "/student/enroll",
+      name: "studentEnroll",
+      component: StudentEnrollView,
+    },
+    {
+      path: "/student/schedule",
+      name: "studentSchedule",
+      component: StudentScheduleView,
+    },
+    {
+      path: "/professor/home",
+      name: "professorHome",
+      component: ProfessorHomeView,
+    },
+    {
+      path: "/professor/schedule",
+      name: "professorSchedule",
+      component: ProfessorScheduleView,
+    },
+    {
+      path: "/admin/home",
+      name: "adminHome",
+      component: AdminHomeView,
     }
   ],
 });
