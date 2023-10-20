@@ -1,19 +1,26 @@
 {
     "courseCatalog_arr":[{
         "course_name": "CSE1000",
-        "num_credits": "3",
+        "num_credits": 3,
         "course_title": "Computers in Modern Society",
+        "course_start": "10:10AM",
+        "course_end": "11:00AM",
+        "course_days": "M W F",
         "subject": "CSE",
-        "sections": {"001":["10:10AM", "11:00 AM", "M W F", "GANT 104", "John Smith"],
-                     "002":["11:00AM", "12:15 PM", "Tu Thu", "ITE 134", "Jane Doe"]}
+        "professor": "John Smith",
+        "max_enrollment": 25,
+        "current_enrollment": 12
         },{
         "course_name": "CSE1010",
-        "num_credits": "3",
+        "num_credits": 3,
         "course_title": "Introduction to Computing for Engineers",
         "course_start": "11:15AM",
         "course_end": "12:05PM",
         "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "Jane Doe",
+        "max_enrollment": 120,
+        "current_enrollment": 86
     },{
         "course_name": "CSE1102",
         "num_credits": "3",
