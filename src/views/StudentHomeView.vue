@@ -2,10 +2,10 @@
   <nav>
     <ul class="nav-links">
       <li>
-        <RouterLink to="/studentHome">Student Home View</RouterLink>
+        <RouterLink to="/student/schedule">View Schedule</RouterLink>
       </li>
       <li>
-        <RouterLink to="/home">Home</RouterLink>
+        <RouterLink to="/student/enroll">Enroll in Courses</RouterLink>
       </li>
       <li>
         <RouterLink to="/">Log out</RouterLink>

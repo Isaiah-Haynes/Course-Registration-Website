@@ -16,8 +16,12 @@
           <router-link to="/student/home">
             <button class="lButton" type="submit" >Student Login</button>
           </router-link>
-          <button class="lButton" type="submit" >Professor Login</button>
-          <button class="lButton" type="submit" >Administrator Login</button>
+          <router-link to="/professor/home">
+            <button class="lButton" type="submit" >Professor Login</button>
+          </router-link>
+          <router-link to="/admin/home">
+            <button class="lButton" type="submit" >Administrator Login</button>
+          </router-link>
         </div>
       </form>
 
