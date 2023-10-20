@@ -6,4 +6,16 @@ python3 dynamoAddMultiple.py cseCourses.json
 ```
 When adding non-CSE courses, they can be added to a different json file which will then be used as input to "dynamoAddMultiple.py".
 
-The format for each course in "cseCourses.json" should be replicated as follows: { "course_name": "course_name e.g. CSE1000", "num_credits": "number of credits", "course_title": "title of course", "course_start": "course start time in format 12:00PM", "course_end": "course end time in format 12:00PM", "course_days": "days of course e.g. 'M W F'", "subject": "course subject e.g. CSE" }
+The format for each course in "cseCourses.json" should be replicated as follows:
+{
+    "course_name": "course_name e.g. CSE1000",
+    "num_credits": "number of credits",
+    "course_title": "title of course",
+    "course_start": "course start time in format 12:00PM",
+    "course_end": "course end time in format 12:00PM",
+    "course_days": "days of course e.g. 'M W F'",
+    "subject": "course subject e.g. CSE",
+    "professor": "course professor e.g. John Smith",
+    "max_enrollment": "maximum number of students in course",
+    "current_enrollment": "numbe of students currently enrolled in course"
+}
