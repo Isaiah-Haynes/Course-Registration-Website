@@ -1,13 +1,27 @@
 <template>
-    <main class="quickSearchForm">
-        <input type="text" v-model="search_bar" placeholder="Search for a class" />
-        <div class="course name" v-for="course in filteredCatalog()" :key="course">
-        <p>{{ course }}</p>
-        </div>
-        <div class="item error" v-if="search_bar&&!filteredCatalog().length">
-        <p>No results found!</p>
-        </div>
-    </main>
+  <nav>
+    <ul class="nav-links">
+      <li>
+        <RouterLink to="/student/schedule">View Schedule</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/student/enroll">Enroll in Courses</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/">Log out</RouterLink>
+      </li>
+    </ul>
+  </nav>
+  <div class="quick-search">
+    <h1>Quick Search</h1>
+    <input type="text" v-model="search_bar" placeholder="Search for a class" />
+      <div class="course name" v-for="course in filteredCatalog()" :key="course">
+      <p>{{ course }}</p>
+      </div>
+      <div class="item error" v-if="search_bar&&!filteredCatalog().length">
+      <p>No results found!</p>
+      </div>
+    </div>
 </template>
 
 <script setup>
@@ -32,14 +46,23 @@ function filteredCatalog(){
 }
 
 body {
-  padding: 20px;
-  min-height: 100vh;
+  height: 92vh;
   background-color: rgb(234, 242, 255);
 }
 
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  ul li {
+    margin: 1rem;
+  }
+
 input {
   display: block;
-  width: 350px;
+  width: 300px;
   margin: 20px auto;
   padding: 10px 45px;
   /* background: white url("assets/searchIcon.svg") no-repeat 15px center; */
@@ -51,11 +74,11 @@ input {
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.item {
-  width: 350px;
+.course {
+  width: 300px;
   margin: 0 auto 10px auto;
-  padding: 10px 20px;
-  color: white;
+  padding: 8px 20px;
+  color: #8682ce;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
@@ -66,10 +89,11 @@ input {
   cursor: pointer;
 }
 
-.quickSearchForm {
+.quick-search {
+    float: right;
     padding: 1rem;
-    height: 36rem;
-    width: 28rem;
+    height: 30rem;
+    width: 22rem;
     display: flex;
     flex-direction: column;
     background: #fefeff;
@@ -78,6 +102,13 @@ input {
     margin: 75px;
     border-radius: 1rem;
   }
+
+  .quick-search h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 3px 14px;
+  }
+
 .error {
   background-color: tomato;
 }

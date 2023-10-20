@@ -2,11 +2,16 @@
 
 // we start by importing the createRouter and createWebHistory functions, as well as the components describing each of our views
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 import FormView from "../views/FormView.vue";
 import FetchView from "../views/FetchView.vue";
 import SignInView from "../views/SignInView.vue";
 import StudentHomeView from "../views/StudentHomeView.vue";
+import StudentScheduleView from "../views/StudentScheduleView.vue";
+import StudentEnrollView from "../views/StudentEnrollView.vue";
+import ProfessorHomeView from "../views/ProfessorHomeView.vue";
+import ProfessorScheduleView from "../views/ProfessorScheduleView.vue";
+import AdminHomeView from "../views/AdminHomeView.vue";
+
 
 const router = createRouter({
   // the history mode determines how vue router interacts with the url.
@@ -22,17 +27,6 @@ const router = createRouter({
   // this page), a name (check out components/AppHeader.vue for how this is used)
   // and, most importantly, the component that should be rendered for the view
   routes: [
-        //might need to remove this. . .
-    {
-      path: "/",
-      name: "signIn",
-      component: SignInView,
-    },
-    {
-      path: "/home",
-      name: "home",
-      component: HomeView,
-    },
     {
       path: "/form",
       name: "form",
@@ -44,9 +38,39 @@ const router = createRouter({
       component: FetchView,
     },
     {
-      path: "/studentHome",
+      path: "/",
+      name: "signIn",
+      component: SignInView,
+    },
+    {
+      path: "/student/home",
       name: "studentHome",
       component: StudentHomeView,
+    },
+    {
+      path: "/student/enroll",
+      name: "studentEnroll",
+      component: StudentEnrollView,
+    },
+    {
+      path: "/student/schedule",
+      name: "studentSchedule",
+      component: StudentScheduleView,
+    },
+    {
+      path: "/professor/home",
+      name: "professorHome",
+      component: ProfessorHomeView,
+    },
+    {
+      path: "/professor/schedule",
+      name: "professorSchedule",
+      component: ProfessorScheduleView,
+    },
+    {
+      path: "/admin/home",
+      name: "adminHome",
+      component: AdminHomeView,
     }
   ],
 });
