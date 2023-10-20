@@ -1,7 +1,3 @@
-'''
-    You must replace <courseCatalgo> with the table name (line 11)
-'''
-
 import json
 import boto3
 import sys
@@ -25,7 +21,10 @@ def batch_put(courseCatalog):
             course_start = course['course_start']
             course_end = course['course_end']
             course_days = course['course_days']
-            subject= course['subject']
+            subject = course['subject']
+            professor = course['professor']
+            max_enrollment = course['max_enrollment']
+            current_enrollment = course['current_enrollment']
             
             #formats the data read back to json to put in table
             formatted_data  = {
@@ -35,10 +34,13 @@ def batch_put(courseCatalog):
                 'course_start': course_start,
                 'course_end': course_end,
                 'course_days': course_days,
-                'subject': subject
+                'subject': subject,
+                'professor': professor,
+                'max_enrollment': max_enrollment,
+                'current_enrollment': current_enrollment
             }
 
-            print("Adding course:", course_name, course_title)
+            print("Adding course: "+course_name+" - "+course_title)
 
             #puts course in dynamoDB table
             batch.put_item(Item=formatted_data)

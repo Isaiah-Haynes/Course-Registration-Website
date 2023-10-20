@@ -28,7 +28,10 @@
         "course_start": "12:20PM",
         "course_end": "1:10PM",
         "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "John Smith",
+        "max_enrollment": 25,
+        "current_enrollment": 12
     },{
         "course_name": "CSE1401",
         "num_credits": "3",
@@ -36,7 +39,10 @@
         "course_start": "1:25PM",
         "course_end": "2:15PM",
         "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "Jane Doe",
+        "max_enrollment": 120,
+        "current_enrollment": 86
     },{
         "course_name": "CSE1729",
         "num_credits": "3",
@@ -44,7 +50,10 @@
         "course_start": "2:30PM",
         "course_end": "3:20PM",
         "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "John Smith",
+        "max_enrollment": 25,
+        "current_enrollment": 12
     },{
         "course_name": "CSE2050",
         "num_credits": "3",
@@ -52,7 +61,10 @@
         "course_start": "9:30AM",
         "course_end": "10:45AM",
         "course_days": "T Th",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "Jane Doe",
+        "max_enrollment": 120,
+        "current_enrollment": 86
     },{
         "course_name": "CSE2100",
         "num_credits": "3",
@@ -60,7 +72,10 @@
         "course_start": "11:00AM",
         "course_end": "12:15PM",
         "course_days": "T Th",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "John Smith",
+        "max_enrollment": 25,
+        "current_enrollment": 12
     },{
         "course_name": "CSE2102",
         "num_credits": "3",
@@ -68,7 +83,10 @@
         "course_start": "12:30PM",
         "course_end": "1:45PM",
         "course_days": "T Th",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "Jane Doe",
+        "max_enrollment": 120,
+        "current_enrollment": 86
     },{
         "course_name": "CSE2301",
         "num_credits": "4",
@@ -76,7 +94,10 @@
         "course_start": "2:00PM",
         "course_end": "3:15PM",
         "course_days": "T Th",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "John Smith",
+        "max_enrollment": 25,
+        "current_enrollment": 12
     },{
         "course_name": "CSE2500",
         "num_credits": "3",
@@ -84,7 +105,10 @@
         "course_start": "3:30PM",
         "course_end": "4:45PM",
         "course_days": "T Th",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "Jane Doe",
+        "max_enrollment": 120,
+        "current_enrollment": 86
     },{
         "course_name": "CSE2550",
         "num_credits": "3",
@@ -92,7 +116,10 @@
         "course_start": "5:00PM",
         "course_end": "6:15PM",
         "course_days": "T Th",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "John Smith",
+        "max_enrollment": 25,
+        "current_enrollment": 12
     },{
         "course_name": "CSE3000",
         "num_credits": "1",
@@ -100,7 +127,10 @@
         "course_start": "8:00AM",
         "course_end": "8:50AM",
         "course_days": "W",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "Jane Doe",
+        "max_enrollment": 120,
+        "current_enrollment": 86
     },{
         "course_name": "CSE3002",
         "num_credits": "3",
@@ -108,7 +138,10 @@
         "course_start": "6:30PM",
         "course_end": "7:45PM",
         "course_days": "T Th",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "John Smith",
+        "max_enrollment": 25,
+        "current_enrollment": 12
     },{
         "course_name": "CSE3100",
         "num_credits": "3",
@@ -116,7 +149,10 @@
         "course_start": "9:05AM",
         "course_end": "9:55AM",
         "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "Jane Doe",
+        "max_enrollment": 120,
+        "current_enrollment": 86
     },{
         "course_name": "CSE3101",
         "num_credits": "3",
@@ -124,7 +160,10 @@
         "course_start": "10:10AM",
         "course_end": "11:00AM",
         "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "John Smith",
+        "max_enrollment": 25,
+        "current_enrollment": 12
     },{
         "course_name": "CSE3140",
         "num_credits": "2",
@@ -132,7 +171,10 @@
         "course_start": "9:00AM",
         "course_end": "11:00AM",
         "course_days": "Th",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "Jane Doe",
+        "max_enrollment": 120,
+        "current_enrollment": 86
     },{
         "course_name": "CSE3150",
         "num_credits": "3",
@@ -140,7 +182,10 @@
         "course_start": "11:15AM",
         "course_end": "12:05PM",
         "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "John Smith",
+        "max_enrollment": 25,
+        "current_enrollment": 12
     },{
         "course_name": "CSE3160",
         "num_credits": "3",
@@ -148,7 +193,10 @@
         "course_start": "12:20PM",
         "course_end": "1:10PM",
         "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "Jane Doe",
+        "max_enrollment": 120,
+        "current_enrollment": 86
     },{
         "course_name": "CSE3200",
         "num_credits": "3",
@@ -156,7 +204,10 @@
         "course_start": "1:25PM",
         "course_end": "2:15PM",
         "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "John Smith",
+        "max_enrollment": 25,
+        "current_enrollment": 12
     },{
         "course_name": "CSE3300",
         "num_credits": "3",
@@ -164,7 +215,10 @@
         "course_start": "2:30PM",
         "course_end": "3:20PM",
         "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "Jane Doe",
+        "max_enrollment": 120,
+        "current_enrollment": 86
     },{
         "course_name": "CSE3302",
         "num_credits": "3",
@@ -172,7 +226,10 @@
         "course_start": "3:35PM",
         "course_end": "4:25PM",
         "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "John Smith",
+        "max_enrollment": 25,
+        "current_enrollment": 12
     },{
         "course_name": "CSE3350",
         "num_credits": "3",
@@ -180,7 +237,10 @@
         "course_start": "4:40PM",
         "course_end": "5:30PM",
         "course_days": "M W F",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "Jane Doe",
+        "max_enrollment": 120,
+        "current_enrollment": 86
     },{
         "course_name": "CSE3400",
         "num_credits": "3",
@@ -188,6 +248,9 @@
         "course_start": "9:30AM",
         "course_end": "10:45AM",
         "course_days": "M W",
-        "subject": "CSE"
+        "subject": "CSE",
+        "professor": "John Smith",
+        "max_enrollment": 25,
+        "current_enrollment": 12
     }]
 }
