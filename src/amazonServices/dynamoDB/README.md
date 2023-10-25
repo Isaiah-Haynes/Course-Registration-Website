@@ -41,3 +41,12 @@ When run from terminal, "filterTable.py" takes in 3 items as input: table name, 
 ```sh
 python3 courseCatalog course_days W
 ```
+
+
+addSingle.py
+
+"addSingle.py" adds a single course to a given table. It currently functions, but could work better so feel free to change how it works. Currently, the function itself takes a list of all attributes and the table name as input. If run from the command line, the file includes all attributes as arguments and can get very messy. The following line will add a course to the courseCatalog.
+
+```sh
+python3 addSingle.py "CSE1000" 3 "don't know the title lol" "11:00AM" "11:50AM" "M W F" "CSE" "John Adams" 45 5 "courseCatalog"
+```
