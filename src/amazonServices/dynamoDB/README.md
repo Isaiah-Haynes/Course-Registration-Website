@@ -32,3 +32,12 @@ createTable.py
 python3 createTable.py isaiah-courses
 ```
 The above command will create a new dynamoDB table with the name "isaiah-courses" as long as it does not already exist.
+
+
+filterTable.py
+
+When run from terminal, "filterTable.py" takes in 3 items as input: table name, table column, and a search filter. The function in the file will print all courses that satisfy the given filter, and return a list of the courses to be used if called from another file. For example, to return any course that meets on Wednesday from the course catalog, use the following line:
+
+```sh
+python3 courseCatalog course_days W
+```
