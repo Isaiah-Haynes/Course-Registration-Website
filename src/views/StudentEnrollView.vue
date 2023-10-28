@@ -12,12 +12,16 @@
       </li>
     </ul>
   </nav>
-    <main class="home">
-      <h2>Student Enroll View</h2>
-      <p>
-        This is the page for students to enroll in courses.
-      </p>
-    </main>
+  <main class="home">
+    <h2>Student Enroll View</h2>
+    <p>
+      This is the page for students to enroll in courses.
+    </p>
+  </main>
+  <div class="search-bar">
+    <input type="text" v-model="search_bar" placeholder="Search for a class (enter title or name)" />
+  </div>
+
 </template>
   
   <style>
