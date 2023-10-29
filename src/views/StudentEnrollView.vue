@@ -12,27 +12,65 @@
       </li>
     </ul>
   </nav>
-  <main class="home">
+  <main class="enroll-view">
     <h2>Student Enroll View</h2>
     <p>
       This is the page for students to enroll in courses.
     </p>
+    <div class="search">
+      <input type="text" v-model="search_bar" placeholder="Search for a class (enter title or name)" />
+      <button class ="sButton" type="button" @click="getCourses">Search</button>
+      <div class="course-list" v-for="course in courseCatalog" :key="course">
+        <p>{{ course }}</p>
+      </div>
+    </div>
   </main>
-  <div class="search">
-    <input type="text" v-model="search_bar" placeholder="Search for a class (enter title or name)" />
-    <button class ="sButton" type="button" @click="getCourses()">Search</button>
-  </div>
-
 </template>
 
-<script setup>
-import { ref } from "vue";
+<script>
+import { ref, computed } from "vue";
 let search_bar = ref("");
-const courseCatalog = [];
+//const courseCatalog = ["hello"];
 const data = ref();
-function getCourses(){
+const url = computed(
+  () => 
+  `https://rr0ix1pdq0.execute-api.us-east-1.amazonaws.com/finalStage/courseCatalog?tableFilter=${search_bar.value}`
+)
+// const url = 'https://rr0ix1pdq0.execute-api.us-east-1.amazonaws.com/testFilter/courseCatalog?tableFilter=10'
 
-}
+export default {
+  props: {
+    msg: String,
+  },
+  data() {
+    return {
+      courseCatalog: ref(""),
+    };
+  },
+  methods: {
+    getCourses() {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-amz-docs-region": "us-east-1",
+        },
+        data: {
+          "tableColumn": "course_name"
+        }
+      })
+      .then((response) => {
+        response.json().then((data) => {
+          this.courseCatalog = data[0];
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    },
+  },
+};
+
 </script>
 <style>
   .home {
@@ -48,7 +86,7 @@ function getCourses(){
     margin-bottom: 1rem;
   }
 
-  .sButton{
+  .sButton {
     margin: 0.4px;
     height: 2rem;
     width: 8rem;
@@ -58,7 +96,7 @@ function getCourses(){
     align-items: right;
   }
 
-  input {
+  .enroll-view input {
     display: block;
     width: 500px;
     margin: 20px auto;
