@@ -30,13 +30,13 @@
 <script>
 import { ref, computed } from "vue";
 let search_bar = ref("");
-//const courseCatalog = ["hello"];
-const data = ref();
+let courseCatalog = [];
+let data = ref();
 // const url = computed(
 //   () => 
 //   `https://rr0ix1pdq0.execute-api.us-east-1.amazonaws.com/finalStage/courseCatalog?tableFilter=${search_bar.value}`
 // )
-const url = 'https://rr0ix1pdq0.execute-api.us-east-1.amazonaws.com/testFilter/courseCatalog?tableFilter=10'
+const url = 'https://rr0ix1pdq0.execute-api.us-east-1.amazonaws.com/finalStage/courseCatalog?tableFilter=10'
 
 export default {
   props: {
@@ -44,17 +44,18 @@ export default {
   },
   data() {
     return {
-      courseCatalog: ref(),
+      data: courseCatalog
     };
   },
   methods: {
     getCourses() {
+      //let data2 = [];
       fetch(url, {
         method: "POST",
         headers: {
           "content-type": "application/json",
           // "x-amz-docs-region": "us-east-1",
-          // 'Access-Control-Allow-Origin': 'http://localhost:5173/student/enroll'
+          // 'Access-Control-Allow-Origin': 'http://localhost:5173'
         },
         body: {
           "tableColumn": "course_name"
@@ -64,11 +65,11 @@ export default {
       .then((response) => {
         response.json().then((data) => {
           console.log(response)
-          this.courseCatalog = data[2];
+          courseCatalog = this.data;
         });
       })
       .catch((err) => {
-        console.error(err);
+        console.log(err);
       });
     },
   },
