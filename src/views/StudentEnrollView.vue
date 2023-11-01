@@ -30,8 +30,8 @@
 <script>
 import { ref, computed } from "vue";
 let search_bar = ref("");
-let courseCatalog = [];
-let data = ref();
+var courseCatalog = [];
+const data = ref();
 // const url = computed(
 //   () => 
 //   `https://rr0ix1pdq0.execute-api.us-east-1.amazonaws.com/finalStage/courseCatalog?tableFilter=${search_bar.value}`
@@ -49,18 +49,13 @@ export default {
   },
   methods: {
     getCourses() {
-      //let data2 = [];
       fetch(url, {
         method: "POST",
         headers: {
           "content-type": "application/json",
           // "x-amz-docs-region": "us-east-1",
-          // 'Access-Control-Allow-Origin': 'http://localhost:5173'
         },
-        body: {
-          "tableColumn": "course_name"
-        }
-        
+        body: JSON.stringify({"tableColumn": "couurse_name"})
       })
       .then((response) => {
         response.json().then((data) => {
@@ -74,7 +69,6 @@ export default {
     },
   },
 };
-
 </script>
 <style>
   .home {
