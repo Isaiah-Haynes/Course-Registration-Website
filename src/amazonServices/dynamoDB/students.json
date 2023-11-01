@@ -1,0 +1,24 @@
+{
+    "students_arr":[{
+        "first_name": "George",
+        "middle_name": "None",
+        "last_name": "Smith",
+        "major": "Computer Science",
+        "minor": "Economics",
+        "standing": "Freshman",
+        "gpa": "None",
+        "total_credits": 0,
+        "current_courses": ["CSE 1010", "CHEM 1127", "ENGL 1007", "ENGR 1000", "MATH 1131"]
+        },{
+        "first_name": "Jennifer",
+        "middle_name": "Jane",
+        "last_name": "Johnson",
+        "major": "Computer Science",
+        "minor": "None",
+        "standing": "Sophomore",
+        "gpa": 3.7,
+        "total_credits": 32,
+        "current_courses": ["CSE 2050", "CSE 2500", "MATH 2110", "ANTH 1000", "PHYS 1201"]
+        }
+    ]
+}
