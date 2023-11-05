@@ -14,11 +14,11 @@
   </nav>
   <div class="quick-search">
     <h1>Quick Search</h1>
-    <input type="text" v-model="search_bar" placeholder="Search for a class" />
+    <input type="text" v-model="quick_search_bar" placeholder="Search for a class" />
       <div class="course name" v-for="course in filteredCatalog()" :key="course">
       <p>{{ course }}</p>
       </div>
-      <div class="item error" v-if="search_bar&&!filteredCatalog().length">
+      <div class="item error" v-if="quick_search_bar&&!filteredCatalog().length">
       <p>No results found!</p>
       </div>
     </div>
@@ -26,11 +26,11 @@
 
 <script setup>
 import { ref } from "vue";
-let search_bar = ref("");
+let quick_search_bar = ref("");
 const courseCatalog = ["CSE1000", "CSE1002", "CSE1010"];
 function filteredCatalog(){
     return courseCatalog.filter((course) =>
-    course.toLowerCase().includes(search_bar.value.toLowerCase())
+    course.toLowerCase().includes(quick_search_bar.value.toLowerCase())
     );
 }
 </script>
