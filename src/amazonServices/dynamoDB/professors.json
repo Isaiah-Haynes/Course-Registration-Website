@@ -1,0 +1,9 @@
+{
+    "professors_arr":[{
+        "first_name": "Thomas",
+        "last_name": "Smith",
+        "department": "Computer Science",
+        "current_courses": ["CSE 2050", "CSE 2500", "CSE 3100"]
+        }
+    ]
+}
