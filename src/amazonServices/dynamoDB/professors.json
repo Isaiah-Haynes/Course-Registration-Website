@@ -1,9 +1,52 @@
 {
     "professors_arr":[{
-        "first_name": "Thomas",
-        "last_name": "Smith",
+        "name": "Luce Swift",
         "department": "Computer Science",
-        "current_courses": ["CSE 2050", "CSE 2500", "CSE 3100"]
-        }
+        "current_courses": ["CSE1000", "CSE2000"]
+        },{
+        "name": "Leonard Liu",
+        "department": "Computer Science",
+        "current_courses": ["CSE3000"]
+        },{
+        "name": "Jane Doe",
+        "department": "Math",
+        "current_courses": ["MATH1300", "MATH2300"]
+        },{
+        "name": "John Smith",
+        "department": "Math",
+        "current_courses": ["MATH2800"]
+        },{
+        "name": "Emilie Pascal",
+        "department": "English",
+        "current_courses": ["ENGL1000"]
+        },{
+        "name": "Jackson Michaels",
+        "department": "English",
+        "current_courses": ["ENGL2060"]
+        },{
+        "name": "Barbara Smirnov",
+        "department": "English",
+        "current_courses": ["ENGL2030"]
+        },{
+        "name": "Carlo Guillot",
+        "department": "Art",
+        "current_courses": ["ART1100", "ART1300"]
+        },{
+        "name": "Natalie Okumura",
+        "department": "Art",
+        "current_courses": ["ART1200"]
+        },{
+        "name": "Rudi Chaves",
+        "department": "Science",
+        "current_courses": ["SCI1010"]
+        },{
+        "name": "Kori Jagger",
+        "department": "Science",
+        "current_courses": ["SCI1110"]
+        },{
+        "name": "Armida Knochenmus",
+        "department": "Science",
+        "current_courses": ["SCI1210"]
+        },
     ]
 }

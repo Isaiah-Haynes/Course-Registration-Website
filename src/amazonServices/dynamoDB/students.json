@@ -1,24 +1,44 @@
 {
     "students_arr":[{
-        "first_name": "George",
-        "middle_name": "None",
-        "last_name": "Smith",
+        "name": "Pierson Faulk",
         "major": "Computer Science",
-        "minor": "Economics",
+        "minor": "N/A",
         "standing": "Freshman",
-        "gpa": "None",
+        "gpa": 0.0,
         "total_credits": 0,
-        "current_courses": ["CSE 1010", "CHEM 1127", "ENGL 1007", "ENGR 1000", "MATH 1131"]
+		"enrolled_credits": 14,
+        "enrolled_courses": ["CSE1000", "MATH1300", "ENGL1000", "SCI1210"],
+		"past_courses": []
         },{
-        "first_name": "Jennifer",
-        "middle_name": "Jane",
-        "last_name": "Johnson",
+        "name": "Isaiah Haynes",
+        "major": "English",
+        "minor": "Math",
+        "standing": "Senior",
+        "gpa": 3.843,
+        "total_credits": 118,
+		"enrolled_credits": 10,
+        "enrolled_courses": ["ENGL2030", "ENGL2060", "MATH2300"],
+		"past_courses": ["MATH1300", "ENGL1000", "CSE1000", "SCI1010"]
+        },{
+        "name": "Kaitlyn Ha",
+        "major": "Math",
+        "minor": "N/A",
+        "standing": "Junior",
+        "gpa": 3.832,
+        "total_credits": 63,
+		"enrolled_credits": 10,
+        "enrolled_courses": ["CSE2000", "MATH2300", "MATH2800"],
+		"past_courses": ["MATH1300", "ENGL1000", "SCI1110", "CSE1000"]
+        },{
+        "name": "Gus Gee",
         "major": "Computer Science",
-        "minor": "None",
+        "minor": "Art",
         "standing": "Sophomore",
-        "gpa": 3.7,
+        "gpa": 3.689,
         "total_credits": 32,
-        "current_courses": ["CSE 2050", "CSE 2500", "MATH 2110", "ANTH 1000", "PHYS 1201"]
-        }
+		"enrolled_credits": 10,
+        "enrolled_courses": ["CSE2000", "MATH2300", "ART1200"],
+		"past_courses": ["CSE1000", "ENGL1000", "ART1100", "ART1300"]
+        },
     ]
 }
