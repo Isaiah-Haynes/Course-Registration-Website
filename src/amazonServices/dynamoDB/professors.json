@@ -1,49 +1,61 @@
 {
     "professors_arr":[{
+		"id" : "ljs23001",
         "name": "Luce Swift",
         "department": "Computer Science",
         "current_courses": ["CSE1000", "CSE2000"]
         },{
+		"id" : "lxl23001",
         "name": "Leonard Liu",
         "department": "Computer Science",
         "current_courses": ["CSE3000"]
         },{
+		"id" : "jed23001",
         "name": "Jane Doe",
         "department": "Math",
         "current_courses": ["MATH1300", "MATH2300"]
         },{
+		"id" : "jss23001",
         "name": "John Smith",
         "department": "Math",
         "current_courses": ["MATH2800"]
         },{
+		"id" : "ejp23001",
         "name": "Emilie Pascal",
         "department": "English",
         "current_courses": ["ENGL1000"]
         },{
+		"id" : "jdm23001",
         "name": "Jackson Michaels",
         "department": "English",
         "current_courses": ["ENGL2060"]
         },{
+		"id" : "bos23001",
         "name": "Barbara Smirnov",
         "department": "English",
         "current_courses": ["ENGL2030"]
         },{
+		"id" : "cpg23001",
         "name": "Carlo Guillot",
         "department": "Art",
         "current_courses": ["ART1100", "ART1300"]
         },{
+		"id" : "nyo23001",
         "name": "Natalie Okumura",
         "department": "Art",
         "current_courses": ["ART1200"]
         },{
+		"id" : "rnc23001",
         "name": "Rudi Chaves",
         "department": "Science",
         "current_courses": ["SCI1010"]
         },{
+		"id" : "kmj23001",
         "name": "Kori Jagger",
         "department": "Science",
         "current_courses": ["SCI1110"]
         },{
+		"id" : "ajk23001",
         "name": "Armida Knochenmus",
         "department": "Science",
         "current_courses": ["SCI1210"]
