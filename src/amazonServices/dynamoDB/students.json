@@ -1,6 +1,7 @@
 {
     "students_arr":[{
-        "name": "Pierson Faulk",
+        "id": "pmf21001",
+		"name": "Pierson Faulk",
         "major": "Computer Science",
         "minor": "N/A",
         "standing": "Freshman",
@@ -10,6 +11,7 @@
         "enrolled_courses": ["CSE1000", "MATH1300", "ENGL1000", "SCI1210"],
 		"past_courses": []
         },{
+		"id": "",
         "name": "Isaiah Haynes",
         "major": "English",
         "minor": "Math",
@@ -20,6 +22,7 @@
         "enrolled_courses": ["ENGL2030", "ENGL2060", "MATH2300"],
 		"past_courses": ["MATH1300", "ENGL1000", "CSE1000", "SCI1010"]
         },{
+		"id": "",
         "name": "Kaitlyn Ha",
         "major": "Math",
         "minor": "N/A",
@@ -30,6 +33,7 @@
         "enrolled_courses": ["CSE2000", "MATH2300", "MATH2800"],
 		"past_courses": ["MATH1300", "ENGL1000", "SCI1110", "CSE1000"]
         },{
+		"id": "",
         "name": "Gus Gee",
         "major": "Computer Science",
         "minor": "Art",
