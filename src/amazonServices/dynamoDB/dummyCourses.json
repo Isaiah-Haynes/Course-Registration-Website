@@ -143,7 +143,7 @@
         "max_enrollment": 90,
         "current_enrollment": 86,
 		"pre_reqs": []
-    },,{
+    },{
         "course_name": "SCI1010",
         "num_credits": 4,
         "course_title": "General Chemistry Lab",
@@ -155,7 +155,7 @@
         "max_enrollment": 150,
         "current_enrollment": 126,
 		"pre_reqs": []
-    },,{
+    },{
         "course_name": "SCI1110",
         "num_credits": 4,
         "course_title": "General Biology Lab",
@@ -167,7 +167,7 @@
         "max_enrollment": 120,
         "current_enrollment": 83,
 		"pre_reqs": []
-    },,{
+    },{
         "course_name": "SCI1210",
         "num_credits": 4,
         "course_title": "General Physics Lab",
