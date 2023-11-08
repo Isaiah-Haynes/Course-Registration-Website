@@ -1,0 +1,51 @@
+<script setup>
+import { ref, computed, watch } from "vue";
+
+//search bar input
+const course_search_bar = ref("");
+
+//update url with searchbar input
+
+//variable array to store returned courses
+var courseCatalog = []
+
+//api url, updates whenever searchbar input is changed
+const url = computed(
+  () =>
+  `https://rr0ix1pdq0.execute-api.us-east-1.amazonaws.com/finalStage/courseCatalog?tableFilter=${course_search_bar.value}`
+);
+
+
+watch(
+  url,
+  async (url, _, onCleanup) => {
+
+    const controller = new AbortController();
+    onCleanup(() => {
+      controller.abort();
+    });
+    
+    fetch(url, {
+      signal: controller.signal,
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({"tableColumn": "course_name"})
+    })
+
+    // .then((res) => res.json())
+    .then ((res) => {
+      //following line logs the response of API call
+      //console.log(res);
+      const temp = res.json();
+      temp.then((data) => {
+        //the below line logs the returned array to console for testing.
+        console.log(data.courses);
+        courseCatalog = data.courses;
+      });
+    })
+  },
+  { immediate: true}
+);
+</script>
