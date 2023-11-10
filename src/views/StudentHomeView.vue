@@ -5,7 +5,7 @@
         <RouterLink to="/student/schedule">View Schedule</RouterLink>
       </li>
       <li>
-        <RouterLink to="/student/enroll">Enroll in Courses</RouterLink>
+        <RouterLink to="/student/enroll">Search All Courses</RouterLink>
       </li>
       <li>
         <RouterLink to="/">Log out</RouterLink>
@@ -13,7 +13,7 @@
     </ul>
   </nav>
   <div class="quick-search">
-    <h1>Quick Search</h1>
+    <h1>Filtered Search</h1>
     <input type="text" v-model="quick_search_bar" placeholder="Search for a class" />
       <div class="course name" v-for="course in filteredCatalog()" :key="course">
       <p>{{ course }}</p>
