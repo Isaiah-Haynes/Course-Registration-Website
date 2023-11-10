@@ -5,44 +5,43 @@
         "major": "Computer Science",
         "minor": "N/A",
         "standing": "Freshman",
-        "gpa": 0.0,
+        "gpa": "0.0",
         "total_credits": 0,
 		"enrolled_credits": 14,
-        "enrolled_courses": ["CSE1000", "MATH1300", "ENGL1000", "SCI1210"],
-		"past_courses": []
+        "enrolled_courses": "CSE1000,MATH1300,ENGL1000,SCI1210",
+		"past_courses": ""
         },{
 		"id": "ikh19001",
         "name": "Isaiah Haynes",
         "major": "English",
         "minor": "Math",
         "standing": "Senior",
-        "gpa": 3.843,
+        "gpa": "3.843",
         "total_credits": 118,
 		"enrolled_credits": 10,
-        "enrolled_courses": ["ENGL2030", "ENGL2060", "MATH2300"],
-		"past_courses": ["MATH1300", "ENGL1000", "CSE1000", "SCI1010"]
+        "enrolled_courses": "ENGL2030,ENGL2060,MATH2300",
+		"past_courses": "MATH1300,ENGL1000,CSE1000,SCI1010"
         },{
 		"id": "kmh21007",
         "name": "Kaitlyn Ha",
         "major": "Math",
         "minor": "N/A",
         "standing": "Junior",
-        "gpa": 3.832,
+        "gpa": "3.832",
         "total_credits": 63,
 		"enrolled_credits": 10,
-        "enrolled_courses": ["CSE2000", "MATH2300", "MATH2800"],
-		"past_courses": ["MATH1300", "ENGL1000", "SCI1110", "CSE1000"]
+        "enrolled_courses": "CSE2000,MATH2300,MATH2800",
+		"past_courses": "MATH1300,ENGL1000,SCI1110,CSE1000"
         },{
 		"id": "ghg22001",
         "name": "Gus Gee",
         "major": "Computer Science",
         "minor": "Art",
         "standing": "Sophomore",
-        "gpa": 3.689,
+        "gpa": "3.689",
         "total_credits": 32,
 		"enrolled_credits": 10,
-        "enrolled_courses": ["CSE2000", "MATH2300", "ART1200"],
-		"past_courses": ["CSE1000", "ENGL1000", "ART1100", "ART1300"]
-        },
-    ]
+        "enrolled_courses": "CSE2000,MATH2300,ART1200",
+		"past_courses": "CSE1000,ENGL1000,ART1100,ART1300"
+        }]
 }

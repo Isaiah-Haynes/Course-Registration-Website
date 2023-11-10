@@ -13,7 +13,7 @@
     </ul>
   </nav>
   <main class="enroll-view">
-    <h2>Student Enroll View</h2>
+    <h2>Search all courses</h2>
     <p>
       This is the page for students to enroll in courses.
     </p>
