@@ -29,23 +29,25 @@
 
 <script setup>
 import { ref } from "vue";
-import { getCourseFromCourseCatalog } from "../util/api-setup";
+import { searchMultipleCourseCatalog } from "../util/api-setup";
 
 const course_search_bar = ref("");
 var courseCatalog = []
 
+//get courses from dynamoDB courseCatalog
 const getCourses = async () => {
-  const { data, error } = await getCourseFromCourseCatalog(course_search_bar.value);
+  const { data, error } = await searchMultipleCourseCatalog(course_search_bar.value);
 
   if (data) {
     courseCatalog = data.courses;
-    console.log(data.courses[0]);
+    console.log(data.courses);
   }
 
   if (error) {
-    courseCatalog = ["error"];
+    courseCatalog = ["There was an error, please search again."];
   }
 };
+
 </script>
 <style>
   .home {
