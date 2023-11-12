@@ -1,6 +1,6 @@
 import { callExternalApi } from "./call-external-api";
 
-const apiFilterTableUrl = import.meta.env.VITE_FILTER_TABLE_API_URL;
+const apiCourseCatalogUrl = import.meta.env.VITE_COURSE_CATALOG_API_URL;
 
 
 //searches courseCatalog for filter in course_name
@@ -8,14 +8,13 @@ export const searchMultipleCourseCatalog = async(filter) => {
     console.log("getCourseFromCourseCatalog()");
     
     //gets api url from .env and uses filter from StudentEnrollView.vue
-    const url = `${apiFilterTableUrl}tableFilter=${filter}`;
+    const url = `${apiCourseCatalogUrl}filterCourseCatalog?tableFilter=${filter}`;
     //adds required options for fetch to config
     const config = {
-        method: "POST",
+        method: "GET",
         headers: {
             "content-type": "application/json"
-        },
-        body: JSON.stringify({"tableColumn": "course_name"})
+        }
     };
 
     // console.log(url);
