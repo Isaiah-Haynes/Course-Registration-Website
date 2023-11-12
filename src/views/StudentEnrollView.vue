@@ -28,56 +28,26 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
+import { ref } from "vue";
+import { searchMultipleCourseCatalog } from "../util/api-setup";
 
-//search bar input
 const course_search_bar = ref("");
-
-//const url = 'https://rr0ix1pdq0.execute-api.us-east-1.amazonaws.com/finalStage/courseCatalog?tableFilter=10'
-
-//update url with searchbar input
-
 var courseCatalog = []
-const url = computed(
-  () =>
-  `https://rr0ix1pdq0.execute-api.us-east-1.amazonaws.com/finalStage/courseCatalog?tableFilter=${course_search_bar.value}`
-);
-const data = ref();
-watch(
-  url,
-  async (url, _, onCleanup) => {
 
-    const controller = new AbortController();
-    onCleanup(() => {
-      controller.abort();
-    });
-    
-    fetch(url, {
-      signal: controller.signal,
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify({"tableColumn": "course_name"})
-    })
+//get courses from dynamoDB courseCatalog
+const getCourses = async () => {
+  const { data, error } = await searchMultipleCourseCatalog(course_search_bar.value);
 
-    // .then((res) => res.json())
-    .then ((res) => {
-      //console.log(res);
-      const temp = res.json();
-      temp.then((data2) => {
-        console.log(data2.courses);
-        courseCatalog = data2.courses;
-      });
-    })
-    
-    .then((apiData) => {
-      // console.log(response)
-      data.value = apiData;
-    });
-  },
-  { immediate: true}
-);
+  if (data) {
+    courseCatalog = data.courses;
+    console.log(data.courses);
+  }
+
+  if (error) {
+    courseCatalog = ["There was an error, please search again."];
+  }
+};
+
 </script>
 <style>
   .home {
