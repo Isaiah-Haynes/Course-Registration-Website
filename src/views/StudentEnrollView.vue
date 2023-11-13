@@ -18,7 +18,7 @@
       This is the page for students to enroll in courses.
     </p>
     <div class="search">
-      <input type="text" v-model="course_search_bar" placeholder="Search for a class (enter title or name)" />
+      <input type="text" v-model="course_search_bar" placeholder="Search for class name or title (case sensitive)" />
       <button class ="sButton" type="button" @click="getCourses">Search</button>
       <div class="course-list" v-for="course in courseCatalog" :key="course">
         <p>{{ course }}</p>
