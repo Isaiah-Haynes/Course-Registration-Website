@@ -36,8 +36,8 @@ def batch_put(students):
                 'gpa': gpa,
                 'total_credits': total_credits,
                 'enrolled_credits': enrolled_credits,
-                'enrolled_courses': enrolled_courses,
-                'past_courses': past_courses
+                'enrolled_courses': json.dumps(enrolled_courses),
+                'past_courses': json.dumps(past_courses)
             }
 
             # print("Adding student: "+id+" - "+name)
