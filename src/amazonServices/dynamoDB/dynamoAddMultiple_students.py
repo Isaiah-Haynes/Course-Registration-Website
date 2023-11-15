@@ -40,7 +40,7 @@ def batch_put(students):
                 'past_courses': past_courses
             }
 
-            print("Adding student: "+id+" - "+name)
+            # print("Adding student: "+id+" - "+name)
 
             #puts student in dynamoDB table
             batch.put_item(Item=formatted_data)
