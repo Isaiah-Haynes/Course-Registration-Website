@@ -2,9 +2,13 @@ import { callExternalApi } from "./call-external-api";
 
 //urls for calling api in final production stage
 const apiCourseCatalogUrl = import.meta.env.VITE_COURSE_CATALOG_API_URL;
+const apiStudentsUrl = import.meta.env.VITE_STUDENTS_API_URL;
 
 //urls for testing beta stage api deployment stages 
 const apiCourseCatalogUrlBeta = import.meta.env.VITE_COURSE_CATALOG_API_URL_BETA;
+const apiStudentsUrlBeta = import.meta.env.VITE_STUDENTS_API_URL_BETA;
+
+// ------------------------COURSE APIs------------------------------------
 
 
 //searches courseCatalog for filter in course_name
@@ -41,7 +45,6 @@ export const deleteCourseFromCourseCatalog = async(courseName) => {
     
     //beta url for testing
     // const url = `${apiCourseCatalogUrlBeta}deleteCourseFromCourseCatalog?courseName=${courseName}`;
-    
     //api invoke url
     const url = `${apiCourseCatalogUrl}deleteCourseFromCourseCatalog?courseName=${courseName}`;
 
@@ -84,6 +87,31 @@ export const addCourseToCourseCatalog = async(courseParams) => {
             "max_enrollment": courseParams.maxEnrollment,
             "current_enrollment": courseParams.currentEnrollment
         })
+    };
+
+    const { data, error } = await callExternalApi({ url, config });
+
+    return {
+        data: data || null,
+        error,
+    };
+};
+
+
+// ------------------------STUDENT APIs------------------------------------
+
+//function that calls api to delete a student given student id
+export const deleteStudent = async(studentID) => {
+    console.log("deleteStudent()");
+
+    //api invoke url
+    const url = `${apiStudentsUrl}deleteStudent?id=${studentID}`;
+
+    const config = {
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
     };
 
     const { data, error } = await callExternalApi({ url, config });
