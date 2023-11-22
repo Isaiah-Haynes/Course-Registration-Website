@@ -9,7 +9,7 @@
         "total_credits": 0,
 		"enrolled_credits": 14,
         "enrolled_courses": ["CSE1000", "MATH1300", "ENGL1000", "SCI1210"],
-		"past_courses": []
+		"past_courses": ["N/A"]
         },{
 		"id": "ikh19001",
         "name": "Isaiah Haynes",
