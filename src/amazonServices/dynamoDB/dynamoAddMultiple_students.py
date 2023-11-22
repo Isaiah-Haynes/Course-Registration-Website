@@ -23,8 +23,8 @@ def batch_put(students):
             gpa = student['gpa']
             total_credits = student['total_credits']
             enrolled_credits = student['enrolled_credits']
-            enrolled_courses = student['enrolled_courses']
-            past_courses = student['past_courses']
+            enrolled_courses = set(student['enrolled_courses'])
+            past_courses = set(student['past_courses'])
             
             #formats the data read back to json to put in table
             formatted_data  = {
@@ -36,8 +36,8 @@ def batch_put(students):
                 'gpa': gpa,
                 'total_credits': total_credits,
                 'enrolled_credits': enrolled_credits,
-                'enrolled_courses': json.dumps(enrolled_courses),
-                'past_courses': json.dumps(past_courses)
+                'enrolled_courses': enrolled_courses,
+                'past_courses': past_courses
             }
 
             # print("Adding student: "+id+" - "+name)
