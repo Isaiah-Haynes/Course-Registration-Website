@@ -18,7 +18,7 @@ def batch_put(professors):
             id = professor['id']
             name = professor['name']
             department = professor['department']
-            current_courses = professor['current_courses']
+            current_courses = set(professor['current_courses'])
             
             #formats the data read back to json to put in table
             formatted_data  = {
