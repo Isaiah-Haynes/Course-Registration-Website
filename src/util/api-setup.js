@@ -156,3 +156,23 @@ export const deleteStudent = async(studentID) => {
     };
 };
 
+//function that enrolls student in a course
+export const enrollStudent = async(params) => {
+    console.log("enrollStudent()");
+
+    const url = `${apiStudentsUrl}enrollStudent?id=${params.id}&course=${params.course}`;
+
+    const config = {
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+    
+    const { data, error } = await callExternalApi({ url, config });
+
+    return {
+        data: data || null,
+        error,
+    };
+};
