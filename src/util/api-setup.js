@@ -68,7 +68,7 @@ export const addCourseToCourseCatalog = async(courseParams) => {
     console.log("addCourseToCourseCatalog()");
 
     //api invoke url
-    const url = `${apiCourseCatalogUrl}addCourseToCourseCatalog?`;
+    const url = `${apiCourseCatalogUrl}addCourseToCourseCatalog`;
 
     const config = {
         method: "POST",
@@ -100,6 +100,40 @@ export const addCourseToCourseCatalog = async(courseParams) => {
 
 // ------------------------STUDENT APIs------------------------------------
 
+//function that calls api to add a student given parameters
+export const addStudent = async(studentParams) => {
+    console.log("addStudent()");
+
+    //api invoke url
+    const url = `${apiStudentsUrl}addStudent`;
+
+    const config = {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            "id": studentParams.id,
+            "name": studentParams.name,
+            "major": studentParams.major || "N/A",
+            "minor": studentParams.minor || "N/A",
+            "standing": studentParams.standing,
+            "gpa": studentParams.gpa,
+            "total_credits": studentParams.total_credits,
+            "enrolled_credits": studentParams.enrolled_credits,
+            "enrolled_courses": studentParams.enrolled_courses,
+            "past_courses": studentParams.past_courses
+        })
+    };
+
+    const { data, error } = await callExternalApi({ url, config });
+
+    return {
+        data: data || null,
+        error,
+    };
+};
+
 //function that calls api to delete a student given student id
 export const deleteStudent = async(studentID) => {
     console.log("deleteStudent()");
@@ -121,3 +155,4 @@ export const deleteStudent = async(studentID) => {
         error,
     };
 };
+
