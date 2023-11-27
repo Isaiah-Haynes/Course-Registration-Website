@@ -26,7 +26,8 @@
 		<h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
 		<h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
         <h5>{{ }}</h5>
-		<a>{{ (course[9] != course[8] && student_credits + course[1] <= MAX_CREDITS) ? 'Enroll in course (TODO make this a buttton!!)' : 'Enrollment restricted (Seats full or maximum # credits enrolled)' }}</a>
+		<!-- <a>{{ (course[9] != course[8] && student_credits + course[1] <= MAX_CREDITS) ? 'Enroll in course (TODO make this a buttton!!)' : 'Enrollment restricted (Seats full or maximum # credits enrolled)' }}</a> -->
+    <button type="button" @click="enrollStudentInCourse">Enroll</button>
       </div>
     </div>
   </main>
@@ -34,7 +35,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { searchMultipleCourseCatalog } from "../util/api-setup";
+import { searchMultipleCourseCatalog, enrollStudent} from "../util/api-setup";
 
 const course_search_bar = ref("");
 var courseCatalog = []
@@ -49,13 +50,40 @@ const getCourses = async () => {
 
   if (data) {
     courseCatalog = data.courses;
-    console.log(data.courses);
+    //console.log(data.courses);
   }
 
   if (error) {
     courseCatalog = ["There was an error, please search again."];
   }
 };
+
+//enroll student in a course
+const enrollStudentInCourse = async () => {
+
+  const studentID = "abc54321"
+  const course = "SCI1010"
+  const {data, error } = await enrollStudent({studentID, course});
+
+  if (data) {
+    //the following series of if statements sends values to the console,
+    //these should be shown to the user as an alert or some other message
+    
+  if (data.body.includes("have been enrolled")) {
+      console.log("You have been enrolled!!");
+    } else if (data.body.includes("max capacity")){
+      console.log("Course is at max capacity");
+    } else if (data.body.includes("too many credits")) {
+      console.log("You are enrolled in too many credits");
+    } else {
+      console.log("There was an error, please try again.");
+    }
+  } else {
+    console.log(error)
+  }
+
+};
+
 
 </script>
 <style>
@@ -98,6 +126,7 @@ const getCourses = async () => {
     margin-bottom: 1.5rem;
 	/* add any params to on-screen text here*/
   }
+
 
   .sButton {
 	/* failed attempts to get this stupid button to center. i give up - pierson */
