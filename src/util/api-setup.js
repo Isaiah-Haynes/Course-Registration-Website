@@ -160,7 +160,7 @@ export const deleteStudent = async(studentID) => {
 export const enrollStudent = async(params) => {
     console.log("enrollStudent()");
 
-    const url = `${apiStudentsUrl}enrollStudent?id=${params.id}&course=${params.course}`;
+    const url = `${apiStudentsUrl}enrollStudent?id=${params.studentID}&course=${params.course}`;
 
     const config = {
         method: "GET",
