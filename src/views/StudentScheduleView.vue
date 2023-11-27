@@ -2,10 +2,10 @@
   <nav>
     <ul class="nav-links">
       <li>
-        <RouterLink to="/student/home">Home</RouterLink>
+        <RouterLink to="/student/schedule">View Schedule</RouterLink>
       </li>
       <li>
-        <RouterLink to="/student/enroll">Enroll in Course</RouterLink>
+        <RouterLink to="/student/enroll">Search and Enroll</RouterLink>
       </li>
       <li>
         <RouterLink to="/">Log out</RouterLink>
@@ -26,12 +26,21 @@
   }
   
   .home h2 {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+    font-size: 1.75rem;
+    margin-bottom: .75rem;
+	text-align: center;
+	font-weight: bold;
+  }
+  
+  .home h3 {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+	text-align: center;
   }
   
   .home p {
     margin-bottom: 1rem;
+	text-align: center;
   }
   </style>
   
