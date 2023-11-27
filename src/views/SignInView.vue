@@ -7,13 +7,13 @@
       </div>
       <form class="signInBox">
         <div class="email">
-          <input type="text" placeholder="email or username" />
+          <input type="text" placeholder="User ID" />
         </div>
         <div class="password">
-          <input type="password" placeholder="password" />
+          <input type="password" placeholder="Password" />
         </div>
         <div class="loginButtons">
-          <router-link to="/student/home">
+          <router-link to="/student/schedule">
             <button class="lButton" type="submit" >Student Login</button>
           </router-link>
           <router-link to="/professor/home">
