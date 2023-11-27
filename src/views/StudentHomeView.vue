@@ -5,7 +5,7 @@
         <RouterLink to="/student/schedule">View Schedule</RouterLink>
       </li>
       <li>
-        <RouterLink to="/student/enroll">Search All Courses</RouterLink>
+        <RouterLink to="/student/enroll">Search and Enroll</RouterLink>
       </li>
       <li>
         <RouterLink to="/">Log out</RouterLink>
