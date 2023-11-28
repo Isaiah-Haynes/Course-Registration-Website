@@ -127,22 +127,33 @@ const enrollStudentInCourse = async () => {
 	/* add any params to on-screen text here*/
   }
 
+  .search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 	/* search button */
   .sButton {
     height: 2rem;
     width: 8rem;
     background-color: #1212c2;
     -webkit-text-fill-color: #fef1fc;
-    margin: -60rem 1rem 1.5rem 38.5rem;
+    margin: 0rem 0rem 1rem 0rem;
+  }
+
+  .course-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   /* enrollment button */
   .eButton {
-	display: flex;
-	justify-content: center;
+	  display: flex;
+	  justify-content: center;
     align-items: center;
-	text-align: center;
-	margin: 0.5rem 37rem 1.2rem;
+	  text-align: center;
     background-color: #00CC00;
     -webkit-text-fill-color: #FFFFFF;
     height: 2rem;
