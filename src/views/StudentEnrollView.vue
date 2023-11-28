@@ -27,7 +27,7 @@
 		<h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
         <h5>{{ }}</h5>
 		<!-- <a>{{ (course[9] != course[8] && student_credits + course[1] <= MAX_CREDITS) ? 'Enroll in course (TODO make this a buttton!!)' : 'Enrollment restricted (Seats full or maximum # credits enrolled)' }}</a> -->
-    <button type="button" @click="enrollStudentInCourse">Enroll</button>
+		<button class ="eButton" type="button" @click="enrollStudentInCourse">Enroll in {{course[0]}}</button>
       </div>
     </div>
   </main>
@@ -127,18 +127,54 @@ const enrollStudentInCourse = async () => {
 	/* add any params to on-screen text here*/
   }
 
-
+	/* search button */
   .sButton {
-	/* failed attempts to get this stupid button to center. i give up - pierson */
-	/* display: flex;
-	justify-content: center;
-    align-items: center;
-	text-align: center; */
     height: 2rem;
     width: 8rem;
     background-color: #1212c2;
-    -webkit-text-fill-color: #8eb1fc;
-    margin: -60rem 1rem 1.5rem 52rem;
+    -webkit-text-fill-color: #fef1fc;
+    margin: -60rem 1rem 1.5rem 38.5rem;
+  }
+  
+  /* enrollment button */
+  .eButton {
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	text-align: center;
+	margin: 0.5rem 37rem 1.2rem;
+    background-color: #00CC00;
+    -webkit-text-fill-color: #FFFFFF;
+    height: 2rem;
+    width: 11rem;
+  }
+  
+  /* enrollment failed button */
+  .efButton {
+	/* failed attempts to get this stupid button to center. i give up - pierson */
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	text-align: center;
+	margin: 0.5rem 37rem 1.2rem;
+    background-color: #CCCCCC;
+    -webkit-text-fill-color: #000000;
+    height: 2rem;
+    width: 11rem;
+  }
+  
+  /* unenroll button */
+  .ueButton {
+	/* failed attempts to get this stupid button to center. i give up - pierson */
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	text-align: center;
+	margin: 0.5rem 37rem 1.2rem;
+    background-color: #CC0000;
+    -webkit-text-fill-color: #FFFFFF;
+    height: 2rem;
+    width: 11rem;
   }
 
   .enroll-view input {
