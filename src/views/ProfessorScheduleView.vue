@@ -2,7 +2,7 @@
   <nav>
     <ul class="nav-links">
       <li>
-        <RouterLink to="/professor/home">Home</RouterLink>
+        <RouterLink to="/professor/schedule">View Schedule</RouterLink>
       </li>
       <li>
         <RouterLink to="/">Log out</RouterLink>

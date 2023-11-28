@@ -16,7 +16,7 @@
           <router-link to="/student/schedule">
             <button class="lButton" type="submit" >Student Login</button>
           </router-link>
-          <router-link to="/professor/home">
+          <router-link to="/professor/schedule">
             <button class="lButton" type="submit" >Professor Login</button>
           </router-link>
           <router-link to="/admin/home">

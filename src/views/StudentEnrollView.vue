@@ -27,7 +27,7 @@
 		<h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
         <h5>{{ }}</h5>
 		<!-- <a>{{ (course[9] != course[8] && student_credits + course[1] <= MAX_CREDITS) ? 'Enroll in course (TODO make this a buttton!!)' : 'Enrollment restricted (Seats full or maximum # credits enrolled)' }}</a> -->
-    <button type="button" @click="enrollStudentInCourse">Enroll</button>
+		<button class ="eButton" type="button" @click="enrollStudentInCourse">Enroll in {{course[0]}}</button>
       </div>
     </div>
   </main>
@@ -110,37 +110,80 @@ const enrollStudentInCourse = async () => {
   .enroll-view h4 {
 	font-weight: bold;
 	text-align: center;
-	/* add any params to on-screen text here*/
+	/* add any extra params to on-screen text here*/
   }
   
   /* course descriptors */
   .enroll-view h5 {
 	text-align: center;
-	/* add any params to on-screen text here*/
+	/* add any extra params to on-screen text here*/
   }
   
-  /* hyperlinks (i.e. enroll button) */
+	/* hyperlinks (i.e. enroll button) */
   .enroll-view a {
 	display: flex;
 	justify-content: center;
     margin-bottom: 1.5rem;
-	/* add any params to on-screen text here*/
+	/* add any extra params to on-screen text here*/
   }
 
+	/* centers the search button */
+  .search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
+	/* search button */
   .sButton {
-	/* failed attempts to get this stupid button to center. i give up - pierson */
+    height: 2rem;
+    width: 8rem;
+    background-color: #1212c2;
+    -webkit-text-fill-color: #fef1fc;
+    margin: 0rem 0rem 1rem 0rem;
+  }
+
+	/* centers the enrollment buttons */
+  .course-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+	/* enrollment button */
+	/* can probably delete the following code: */
 	/* display: flex;
 	justify-content: center;
     align-items: center;
 	text-align: center; */
+	
+  .eButton {
+    background-color: #00CC00;		/* green */
+    -webkit-text-fill-color: #FFFFFF;	/* white */
     height: 2rem;
-    width: 8rem;
-    background-color: #1212c2;
-    -webkit-text-fill-color: #8eb1fc;
-    margin: -60rem 1rem 1.5rem 52rem;
+    width: 11rem;
+    margin: .5rem 0rem 1rem 0rem;
+  }
+  
+	/* enrollment failed button */
+  .efButton {
+    background-color: #CCCCCC;	/* light grey */
+    -webkit-text-fill-color: #000000;	/* black */
+    height: 2rem;
+    width: 11rem;
+    margin: .5rem 0rem 1rem 0rem;
+  }
+  
+	/* unenroll button */
+  .ueButton {
+    background-color: #CC0000;	/* red */
+    -webkit-text-fill-color: #FFFFFF;	/* white */
+    height: 2rem;
+    width: 11rem;
+    margin: .5rem 0rem 1rem 0rem;
   }
 
+	/* search bar */
   .enroll-view input {
     display: block;
     width: 500px;
