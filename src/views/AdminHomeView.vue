@@ -10,27 +10,27 @@
         <div class="card-title">
           <p>Manage Courses</p>
           <div class="course-actions">
-            <button type="submit">Add Course</button>
+            <button type="button" @click="addCourse">Add Course</button>
             <p class="action-desc">To add a course, fill in all required boxes and click 'Add Course'.</p>
-            <button type="submit">Edit Course</button>
+            <button type="button">Edit Course</button>
             <p class="action-desc">To edit a course, fill in the course's name and additional changes. Then, click 'Edit Course'.</p>
-            <button type="submit">Remove Course</button>
+            <button type="button" @click="removeCourse">Remove Course</button>
             <p class="action-desc">To remove a course, fill in the course's name and click 'Remove Course'.</p>
           </div>
         </div>
         <div class="actions">
           <form id="course-form" class="course-form">
-            <input type="text" id="inputField" name="inputField" placeholder="Course Name">
-            <input type="text" id="inputField" name="inputField" placeholder="Credits">
-            <input type="text" id="inputField" name="inputField" placeholder="Course Title">
-            <input type="text" id="inputField" name="inputField" placeholder="Start Time">
-            <input type="text" id="inputField" name="inputField" placeholder="End Time">
-            <input type="text" id="inputField" name="inputField" placeholder="Days">
-            <input type="text" id="inputField" name="inputField" placeholder="Department">
-            <input type="text" id="inputField" name="inputField" placeholder="Professor">
-            <input type="text" id="inputField" name="inputField" placeholder="Max Enrollment">
-            <input type="text" id="inputField" name="inputField" placeholder="Current Enrollment">
-            <input type="text" id="inputField" name="inputField" placeholder="Prerequisites">
+            <input type="text" id="inputField" name="inputField" v-model="courseName" placeholder="Course Name">
+            <input type="text" id="inputField" name="inputField" v-model="numCredits" placeholder="Credits">
+            <input type="text" id="inputField" name="inputField" v-model="courseTitle" placeholder="Course Title">
+            <input type="text" id="inputField" name="inputField" v-model="courseStart" placeholder="Start Time">
+            <input type="text" id="inputField" name="inputField" v-model="courseEnd" placeholder="End Time">
+            <input type="text" id="inputField" name="inputField" v-model="courseDays" placeholder="Days">
+            <input type="text" id="inputField" name="inputField" v-model="subject" placeholder="Department">
+            <input type="text" id="inputField" name="inputField" v-model="professor" placeholder="Professor">
+            <input type="text" id="inputField" name="inputField" v-model="maxEnrollment" placeholder="Max Enrollment">
+            <input type="text" id="inputField" name="inputField" v-model="currentEnrollment" placeholder="Current Enrollment">
+            <input type="text" id="inputField" name="inputField" v-model="prerequisistes" placeholder="Prerequisites">
           </form>
         </div>
       </div>
@@ -39,11 +39,11 @@
         <div class="card-title">
           <p>Manage Students</p>
           <div class="course-actions">
-            <button type="submit">Add Student</button>
+            <button type="button">Add Student</button>
             <p class="action-desc">To add a student, fill in all required boxes and click 'Add Student'.</p>
-            <button type="submit">Edit Student</button>
+            <button type="button">Edit Student</button>
             <p class="action-desc">To edit a course, fill in the student's id and additional changes. Then, click 'Edit Student'.</p>
-            <button type="submit">Remove Student</button>
+            <button type="button">Remove Student</button>
             <p class="action-desc">To remove a student, fill in the student's id and click 'Remove Student'.</p>
           </div>
         </div>
@@ -67,11 +67,11 @@
         <div class="card-title">
           <p>Manage Professors</p>
           <div class="course-actions">
-            <button type="submit">Add Professor</button>
+            <button type="button">Add Professor</button>
             <p class="action-desc">To add a professor, fill in all required boxes and click 'Add Professor'.</p>
-            <button type="submit">Edit Professor</button>
+            <button type="button">Edit Professor</button>
             <p class="action-desc">To edit a professor, fill in the professor's id and additional changes. Then, click 'Edit Professor'.</p>
-            <button type="submit">Remove Professor</button>
+            <button type="button">Remove Professor</button>
             <p class="action-desc">To remove a professor, fill in the professor's id and click 'Remove Professor'.</p>
           </div>
         </div>
@@ -89,7 +89,60 @@
   </main>
  </template>
 
+<script setup>
+import { ref } from "vue";
+import { deleteCourseFromCourseCatalog, addCourseToCourseCatalog, addStudent, deleteStudent } from "../util/api-setup";
+const courseName = ref("");
+const numCredits = ref("");
+const courseTitle = ref("");
+const courseStart = ref("");
+const courseEnd = ref("");
+const courseDays = ref("");
+const subject = ref("");
+const professor = ref("");
+const maxEnrollment = ref("");
+const currentEnrollment = ref("");
+const prerequisistes = ref("");
 
+
+const addCourse = async () => {
+  const { data, error } = await addCourseToCourseCatalog({
+    courseName: courseName.value,
+    numCredits: numCredits.value,
+    courseTitle: courseTitle.value,
+    courseStart: courseStart.value,
+    courseEnd: courseEnd.value,
+    courseDays: courseDays.value,
+    subject: subject.value,
+    professor: professor.value,
+    maxEnrollment: maxEnrollment.value,
+    currentEnrollment: currentEnrollment.value,
+    prerequisiste: prerequisistes.value
+  });
+
+  if (data) {
+    //choose what happens with the data returned from the api
+    console.log(data.body);
+    
+  } else {
+    //choose what happens with the error returned from the api
+    console.log(error);
+  }
+};
+
+const removeCourse = async () => {
+  const { data, error } = await deleteCourseFromCourseCatalog(courseName.value);
+
+  if (data) {
+    //choose what happens with the data returned from the api
+    console.log(data.body);
+    
+  } else {
+    //choose what happens with the error returned from the api
+    console.log(error);
+  }
+}
+</script>
 <style>
   .home {
     padding: 1rem;
@@ -175,7 +228,7 @@
     -webkit-text-fill-color: #b3caf4;
   }
 
-  button[type="submit"] {
+  button[type="button"] {
     background: #f4f8ff;
     width: 12rem;
     height: 2rem;
