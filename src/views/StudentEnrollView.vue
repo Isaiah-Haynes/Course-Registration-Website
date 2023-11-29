@@ -110,23 +110,24 @@ const enrollStudentInCourse = async () => {
   .enroll-view h4 {
 	font-weight: bold;
 	text-align: center;
-	/* add any params to on-screen text here*/
+	/* add any extra params to on-screen text here*/
   }
   
   /* course descriptors */
   .enroll-view h5 {
 	text-align: center;
-	/* add any params to on-screen text here*/
+	/* add any extra params to on-screen text here*/
   }
   
-  /* hyperlinks (i.e. enroll button) */
+	/* hyperlinks (i.e. enroll button) */
   .enroll-view a {
 	display: flex;
 	justify-content: center;
     margin-bottom: 1.5rem;
-	/* add any params to on-screen text here*/
+	/* add any extra params to on-screen text here*/
   }
 
+	/* centers the search button */
   .search {
     display: flex;
     flex-direction: column;
@@ -142,52 +143,47 @@ const enrollStudentInCourse = async () => {
     margin: 0rem 0rem 1rem 0rem;
   }
 
+	/* centers the enrollment buttons */
   .course-list {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  /* enrollment button */
+	/* enrollment button */
+	/* can probably delete the following code: */
+	/* display: flex;
+	justify-content: center;
+    align-items: center;
+	text-align: center; */
+	
   .eButton {
-	  display: flex;
-	  justify-content: center;
-    align-items: center;
-	  text-align: center;
-    background-color: #00CC00;
-    -webkit-text-fill-color: #FFFFFF;
+    background-color: #00CC00;		/* green */
+    -webkit-text-fill-color: #FFFFFF;	/* white */
     height: 2rem;
     width: 11rem;
+    margin: .5rem 0rem 1rem 0rem;
   }
   
-  /* enrollment failed button */
+	/* enrollment failed button */
   .efButton {
-	/* failed attempts to get this stupid button to center. i give up - pierson */
-	display: flex;
-	justify-content: center;
-    align-items: center;
-	text-align: center;
-	margin: 0.5rem 37rem 1.2rem;
-    background-color: #CCCCCC;
-    -webkit-text-fill-color: #000000;
+    background-color: #CCCCCC;	/* light grey */
+    -webkit-text-fill-color: #000000;	/* black */
     height: 2rem;
     width: 11rem;
+    margin: .5rem 0rem 1rem 0rem;
   }
   
-  /* unenroll button */
+	/* unenroll button */
   .ueButton {
-	/* failed attempts to get this stupid button to center. i give up - pierson */
-	display: flex;
-	justify-content: center;
-    align-items: center;
-	text-align: center;
-	margin: 0.5rem 37rem 1.2rem;
-    background-color: #CC0000;
-    -webkit-text-fill-color: #FFFFFF;
+    background-color: #CC0000;	/* red */
+    -webkit-text-fill-color: #FFFFFF;	/* white */
     height: 2rem;
     width: 11rem;
+    margin: .5rem 0rem 1rem 0rem;
   }
 
+	/* search bar */
   .enroll-view input {
     display: block;
     width: 500px;
