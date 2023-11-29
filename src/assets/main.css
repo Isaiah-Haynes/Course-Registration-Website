@@ -9,17 +9,17 @@ browser are identical
 
 /* give links a blue color, and underline them */
 a {
-  color: #0d74ce;
+  color: #1e3973;
 }
 
 /* when the links are hovered, change them to a lighter blue */
 a:hover {
-  color: #0588f0;
+  color: #3260c3;
 }
 
 /* give headings and form labels a default color that is dark and has strong contrast against the background */
 :is(h1, h2, h3, h4, h5, h6, label) {
-  color: #202020;
+  color: #1e3973;
 }
 
 /* give text a default color that is ligher than headings. it still has enough contrast to be legible, but looks visually less important */

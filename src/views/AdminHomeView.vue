@@ -12,15 +12,13 @@
           <div class="course-actions">
             <button type="button" @click="addCourse">Add Course</button>
             <p class="action-desc">To add a course, fill in all required boxes and click 'Add Course'.</p>
-            <button type="button">Edit Course</button>
-            <p class="action-desc">To edit a course, fill in the course's name and additional changes. Then, click 'Edit Course'.</p>
             <button type="button" @click="removeCourse">Remove Course</button>
             <p class="action-desc">To remove a course, fill in the course's name and click 'Remove Course'.</p>
           </div>
         </div>
         <div class="actions">
-          <form id="course-form" class="course-form">
-            <input type="text" id="inputField" name="inputField" v-model="courseName" placeholder="Course Name">
+          <form id="manage-form" class="manage-form">
+            <input type="text" id="inputField" name="inputField" v-model="courseName" placeholder="Course Name *" required>
             <input type="text" id="inputField" name="inputField" v-model="numCredits" placeholder="Credits">
             <input type="text" id="inputField" name="inputField" v-model="courseTitle" placeholder="Course Title">
             <input type="text" id="inputField" name="inputField" v-model="courseStart" placeholder="Start Time">
@@ -39,26 +37,26 @@
         <div class="card-title">
           <p>Manage Students</p>
           <div class="course-actions">
-            <button type="button">Add Student</button>
+            <button type="button" @click="addStudentToDB">Add Student</button>
             <p class="action-desc">To add a student, fill in all required boxes and click 'Add Student'.</p>
             <button type="button">Edit Student</button>
             <p class="action-desc">To edit a course, fill in the student's id and additional changes. Then, click 'Edit Student'.</p>
-            <button type="button">Remove Student</button>
+            <button type="button" @click="removeStudentFromDB">Remove Student</button>
             <p class="action-desc">To remove a student, fill in the student's id and click 'Remove Student'.</p>
           </div>
         </div>
         <div class="actions">
-          <form id="course-form" class="course-form">
-            <input type="text" id="inputField" name="inputField" placeholder="ID">
-            <input type="text" id="inputField" name="inputField" placeholder="Name">
-            <input type="text" id="inputField" name="inputField" placeholder="Major">
-            <input type="text" id="inputField" name="inputField" placeholder="Minor">
-            <input type="text" id="inputField" name="inputField" placeholder="Standing">
-            <input type="text" id="inputField" name="inputField" placeholder="GPA">
-            <input type="text" id="inputField" name="inputField" placeholder="Total Credits">
-            <input type="text" id="inputField" name="inputField" placeholder="Enrolled Credits">
-            <input type="text" id="inputField" name="inputField" placeholder="Enrolled Courses">
-            <input type="text" id="inputField" name="inputField" placeholder="Past Courses">
+          <form id="manage-form" class="manage-form">
+            <input type="text" id="inputField" name="inputField" v-model="studentID" placeholder="ID *" required>
+            <input type="text" id="inputField" name="inputField" v-model="studentName" placeholder="Name">
+            <input type="text" id="inputField" name="inputField" v-model="major" placeholder="Major">
+            <input type="text" id="inputField" name="inputField" v-model="minor" placeholder="Minor">
+            <input type="text" id="inputField" name="inputField" v-model="standing" placeholder="Standing">
+            <input type="text" id="inputField" name="inputField" v-model="gpa" placeholder="GPA">
+            <input type="text" id="inputField" name="inputField" v-model="totalCredits" placeholder="Total Credits">
+            <input type="text" id="inputField" name="inputField" v-model="enrolledCredits" placeholder="Enrolled Credits">
+            <input type="text" id="inputField" name="inputField" v-model="enrolledCourses" placeholder="Enrolled Courses">
+            <input type="text" id="inputField" name="inputField" v-model="pastCourses" placeholder="Past Courses">
           </form>
         </div>
       </div>
@@ -76,11 +74,11 @@
           </div>
         </div>
         <div class="actions">
-          <form id="course-form" class="course-form">
-            <input type="text" id="inputField" name="inputField" placeholder="ID">
-            <input type="text" id="inputField" name="inputField" placeholder="Name">
-            <input type="text" id="inputField" name="inputField" placeholder="Department">
-            <input type="text" id="inputField" name="inputField" placeholder="Current Courses">
+          <form id="manage-form" class="manage-form">
+            <input type="text" id="inputField" name="inputField" v-model="professorID" placeholder="ID *" required>
+            <input type="text" id="inputField" name="inputField" v-model="professorName" placeholder="Name">
+            <input type="text" id="inputField" name="inputField" v-model="professorDept" placeholder="Department">
+            <input type="text" id="inputField" name="inputField" v-model="currentCourses" placeholder="Current Courses">
           </form>
         </div>
       </div>
@@ -92,6 +90,8 @@
 <script setup>
 import { ref } from "vue";
 import { deleteCourseFromCourseCatalog, addCourseToCourseCatalog, addStudent, deleteStudent } from "../util/api-setup";
+
+/* functionality for course buttons */
 const courseName = ref("");
 const numCredits = ref("");
 const courseTitle = ref("");
@@ -117,12 +117,25 @@ const addCourse = async () => {
     professor: professor.value,
     maxEnrollment: maxEnrollment.value,
     currentEnrollment: currentEnrollment.value,
-    prerequisiste: prerequisistes.value
+    prerequisistes: prerequisistes.value
   });
 
   if (data) {
     //choose what happens with the data returned from the api
     console.log(data.body);
+
+    //clear input boxes
+    courseName.value = '';
+    numCredits.value = '';
+    courseTitle.value = '';
+    courseStart.value = '';
+    courseEnd.value = '';
+    courseDays.value = '';
+    subject.value = '';
+    professor.value = '';
+    maxEnrollment.value = '';
+    currentEnrollment.value = '';
+    prerequisistes.value = '';
     
   } else {
     //choose what happens with the error returned from the api
@@ -136,12 +149,73 @@ const removeCourse = async () => {
   if (data) {
     //choose what happens with the data returned from the api
     console.log(data.body);
+
+    //clear input boxes
+    courseName.value = '';
     
   } else {
     //choose what happens with the error returned from the api
     console.log(error);
   }
-}
+};
+
+/* functionality for student buttons */
+
+const studentID = ref("");
+const studentName = ref("");
+const major = ref("");
+const minor = ref("");
+const standing = ref("");
+const gpa = ref("");
+const totalCredits = ref("");
+const enrolledCredits = ref("");
+const enrolledCourses = ref("");
+const pastCourses = ref("");
+
+const addStudentToDB = async () => {
+  const { data, error } = await addStudent({
+    id: studentID.value,
+    name: studentName.value,
+    major: major.value,
+    minor: minor.value,
+    standing: standing.value,
+    gpa: gpa.value,
+    total_credits: totalCredits.value,
+    enrolled_credits: enrolledCredits.value,
+    enrolled_courses: enrolledCourses.value,
+    past_courses: pastCourses.value
+  });
+
+  if (data) {
+    //choose what happens with the data returned from the api
+    console.log(data.body);
+    
+  } else {
+    //choose what happens with the error returned from the api
+    console.log(error);
+  }
+};
+
+const removeStudentFromDB = async () => {
+  const { data, error } = await deleteStudent(studentID.value);
+
+  if (data) {
+    //choose what happens with the data returned from the api
+    console.log(data.body);
+    
+  } else {
+    //choose what happens with the error returned from the api
+    console.log(error);
+  }
+};
+
+/* functionality for professor buttons */
+
+const professorID = ref("");
+const professorName = ref("");
+const professorDept = ref("");
+const currentCourses = ref("");
+
 </script>
 <style>
   .home {
@@ -201,16 +275,16 @@ const removeCourse = async () => {
     align-items: center;
   }
 
-  .course-form {
+  .manage-form {
     width: 95%;
     height: 80%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     row-gap: 4px;
-    -webkit-text-fill-color: #8caff0;
+    -webkit-text-fill-color: #1e3973;
   }
 
-  .course-form input {
+  .manage-form input {
     height: 3rem;
   }
 
