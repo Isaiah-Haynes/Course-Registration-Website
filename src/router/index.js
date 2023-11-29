@@ -11,6 +11,7 @@ import StudentEnrollView from "../views/StudentEnrollView.vue";
 import ProfessorHomeView from "../views/ProfessorHomeView.vue";
 import ProfessorScheduleView from "../views/ProfessorScheduleView.vue";
 import AdminHomeView from "../views/AdminHomeView.vue";
+import LoginView from "../views/LogInView.vue";
 
 
 const router = createRouter({
@@ -36,6 +37,11 @@ const router = createRouter({
       path: "/fetch",
       name: "fetch",
       component: FetchView,
+    },
+    {
+      path: "/test",
+      name: "test",
+      component: LoginView,
     },
     {
       path: "/",

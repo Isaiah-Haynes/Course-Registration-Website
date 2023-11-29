@@ -23,15 +23,15 @@
             <button class="lButton" type="submit" >Administrator Login</button>
           </router-link>
         </div>
+        <!-- <LogIn /> -->
       </form>
 
     </main>
   </div>
 </template>
-
-<script>
+<script setup>
+import LogIn from "../components/signIn/sign-in-buttons.vue";
 </script>
-
 <style>
   #SignIn {
     overflow: hidden;
