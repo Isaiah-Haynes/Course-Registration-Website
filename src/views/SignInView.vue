@@ -90,12 +90,12 @@
     margin: 0.4px;
     width: 12rem;
     background-color: #fefeff;
-    -webkit-text-fill-color: #8eb1fc;
+    -webkit-text-fill-color: #3e71dc;
     margin: 0.4rem 1rem 0.4rem 1rem;
   }
 
   .lButton:hover {
-    background-color: #8eb1fc;
+    background-color: #3e71dc;
     -webkit-text-fill-color: #fefeff;
   }
 

@@ -172,7 +172,7 @@ const removeCourse = async () => {
   }
  
   .card-title {
-    background-color: #b3caf4;
+    background-color: #739ad4;
     width: 25%;
     height: 28rem;
     border-radius: 0.4rem;
@@ -182,7 +182,7 @@ const removeCourse = async () => {
     flex-direction: column;
     align-items: center;
     font-size: 1.2rem;
-    -webkit-text-fill-color: #f4f8ff;
+    -webkit-text-fill-color: #fafcff;
   }
 
   .action-desc {
@@ -207,7 +207,7 @@ const removeCourse = async () => {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     row-gap: 4px;
-    -webkit-text-fill-color: #8caff0;
+    -webkit-text-fill-color: #3e71dc;
   }
 
   .course-form input {
@@ -215,7 +215,7 @@ const removeCourse = async () => {
   }
 
   .actions {
-    background-color: #f4f8ff;
+    background-color: #fafcff;
     width: 70%;
     height: 28rem;
     border-radius: 0.4rem;
@@ -225,16 +225,16 @@ const removeCourse = async () => {
     justify-content: space-around;
     align-items: center;
     font-size: 1.2rem;
-    -webkit-text-fill-color: #b3caf4;
+    -webkit-text-fill-color: #3e71dc;
   }
 
   button[type="button"] {
-    background: #f4f8ff;
+    background: #fafcff;
     width: 12rem;
     height: 2rem;
     padding: 0.8rem;
     border-radius: 0.4rem;
-    -webkit-text-fill-color: #b3caf4;
+    -webkit-text-fill-color: #3e71dc;
     font-size: 0.8rem;
     display: flex;
     align-items: center;
