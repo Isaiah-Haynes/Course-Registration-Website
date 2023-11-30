@@ -12,35 +12,128 @@
       </li>
     </ul>
   </nav>
-    <main class="home">
-      <h2>Student Schedule View</h2>
-      <p>
-        This is the student schedule view.
-      </p>
+    <main class="schedule-view">
+      <h2>Welcome back!</h2>
+      <h3>
+        You can use this page to view your schedule or your student information.
+      </h3>
+	  <div class="schedule">
+		<button class ="sButton" type="button" @click="studentInfo" @keydown.enter="getCourses">View Schedule</button>
+		<div class="course-list" v-for="course in schedule" :key="course">
+			<h4>{{ course[0]+' - '+course[2]}}</h4>
+			<h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
+			<h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
+			<h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
+			<h5>{{ }}</h5>
+			<!-- <a>{{ (course[9] != course[8] && student_credits + course[1] <= MAX_CREDITS) ? 'Enroll in course (TODO make this a buttton!!)' : 'Enrollment restricted (Seats full or maximum # credits enrolled)' }}</a> -->
+			<button class ="eButton" type="button" @click="enrollStudentInCourse(course[0], studentID)">Enroll in {{course[0]}}</button>
+      </div>
+    </div>
     </main>
   </template>
-  
+
+<script setup>
+import { ref } from "vue";
+import { getStudentInfo, unenrollStudent, searchMultipleCourseCatalog} from "../util/api-setup";
+
+// testing student id -- CHANGE LATER
+const studentID = "abc54321"
+var student_info = []
+var schedule = []
+
+// get student info from dynamoDB "students" table
+const studentInfo = async () => {
+  const { data, error } = await getStudentInfo(studentID);
+
+  if (data) {
+    student_info = data.student;
+	console.log(data)
+	console.log("studentInfo() completed p1")
+	console.log(student_info[8])
+	if (schedule.length == 0){
+		for(let course in student_info[8]){
+			getCourses(course)
+		}
+	}
+	console.log("studentInfo() completed p2")
+	console.log(schedule)
+  }
+
+  if (error) {
+    student_info = ["There was an error getting student info, please try again."];
+  }
+};
+
+// get info for a course
+const getCourses = async (course_name) => {
+  const { data, error } = await searchMultipleCourseCatalog(course_name);
+
+  if (data) {
+    schedule.push(data.courses[0]);
+	console.log("getCourses() completed")
+	console.log(schedule)
+  }
+
+  if (error) {
+    schedule = ["There was an error, please search again."];
+  }
+};
+
+// unenroll student from course
+const unenrollStudentFromCourse = async (course, studentID) => {
+  console.log("Attempting to unenroll from " + course)
+  const {data, error} = await unenrollStudent({studentID, course});
+
+  if (data) {
+    // Possible Outputs:
+	// "Unenroll SUCCESSFUL - You have been unenrolled!"
+	// "Unenroll FAILED - You are not enrolled in this course!" (course not in student[enrolled_courses])
+	console.log(data.body);
+  } else {
+    console.log(error);
+  }
+
+};
+
+</script>
+
   <style>
   .home {
     padding: 1rem;
   }
   
-  .home h2 {
+  .schedule-view h2 {
     font-size: 1.75rem;
     margin-bottom: .75rem;
 	text-align: center;
 	font-weight: bold;
   }
   
-  .home h3 {
+  .schedule-view h3 {
     font-size: 1rem;
     margin-bottom: 1.5rem;
 	text-align: center;
   }
   
-  .home p {
+  .schedule-view p {
     margin-bottom: 1rem;
 	text-align: center;
+  }
+
+	/* centers the schedule button */
+  .schedule {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+	/* search button */
+  .sButton {
+    height: 2rem;
+    width: 8rem;
+    background-color: #1212c2;
+    -webkit-text-fill-color: #fef1fc;
+    margin: 0rem 0rem 1rem 0rem;
   }
   </style>
   
