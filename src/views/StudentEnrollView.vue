@@ -15,7 +15,7 @@
   <main class="enroll-view">
     <h2>Search and Enroll in Courses</h2>
 	<h3>
-		(If you do not see any courses populate, please type another character after pressing 'Search'.)
+		(If you do not see any courses populate after pressing 'Search', please wait a few seconds then type another character in the search bar.)
 	</h3>
     <div class="search">
       <input type="text" v-model="course_search_bar" placeholder="Search for class name or title (case sensitive)" />
@@ -56,7 +56,7 @@ const getCourses = async () => {
 
   if (data) {
     courseCatalog = data.courses;
-    //console.log(data.courses);
+    console.log(data.courses);
   }
 
   if (error) {
@@ -180,15 +180,6 @@ const enrollStudentInCourse = async (course, studentID) => {
   .efButton {
     background-color: #CCCCCC;	/* light grey */
     -webkit-text-fill-color: #000000;	/* black */
-    height: 2rem;
-    width: 11rem;
-    margin: .5rem 0rem 1rem 0rem;
-  }
-  
-	/* unenroll button */
-  .ueButton {
-    background-color: #CC0000;	/* red */
-    -webkit-text-fill-color: #FFFFFF;	/* white */
     height: 2rem;
     width: 11rem;
     margin: .5rem 0rem 1rem 0rem;

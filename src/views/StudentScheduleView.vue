@@ -25,8 +25,7 @@
 			<h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
 			<h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
 			<h5>{{ }}</h5>
-			<!-- <a>{{ (course[9] != course[8] && student_credits + course[1] <= MAX_CREDITS) ? 'Enroll in course (TODO make this a buttton!!)' : 'Enrollment restricted (Seats full or maximum # credits enrolled)' }}</a> -->
-			<button class ="eButton" type="button" @click="enrollStudentInCourse(course[0], studentID)">Enroll in {{course[0]}}</button>
+			<button class ="ueButton" type="button" @click="unenrollStudentFromCourse(course[0], studentID)">Unenroll from {{course[0]}}</button>
       </div>
     </div>
     </main>
@@ -47,15 +46,16 @@ const studentInfo = async () => {
 
   if (data) {
     student_info = data.student;
-	console.log(data)
-	console.log("studentInfo() completed p1")
-	console.log(student_info[8])
 	if (schedule.length == 0){
+		//console.log("student_info[8]")
+		//console.log(student_info[8])
 		for(let course in student_info[8]){
-			getCourses(course)
+			//console.log(student_info[8][course])
+			getCourses(student_info[8][course])
 		}
 	}
-	console.log("studentInfo() completed p2")
+	//console.log("studentInfo() completed p2")
+	console.log("got student schedule")
 	console.log(schedule)
   }
 
@@ -66,12 +66,15 @@ const studentInfo = async () => {
 
 // get info for a course
 const getCourses = async (course_name) => {
+	//console.log("calling getCourses on:")
+	//console.log(course_name)
   const { data, error } = await searchMultipleCourseCatalog(course_name);
 
   if (data) {
     schedule.push(data.courses[0]);
-	console.log("getCourses() completed")
-	console.log(schedule)
+	//console.log("Got course:")
+	//console.log(data.courses[0])
+	//console.log("getCourses() completed")
   }
 
   if (error) {
@@ -115,6 +118,19 @@ const unenrollStudentFromCourse = async (course, studentID) => {
 	text-align: center;
   }
   
+  /* course title */
+  .schedule-view h4 {
+	font-weight: bold;
+	text-align: center;
+	/* add any extra params to on-screen text here*/
+  }
+  
+  /* course descriptors */
+  .schedule-view h5 {
+	text-align: center;
+	/* add any extra params to on-screen text here*/
+  }
+  
   .schedule-view p {
     margin-bottom: 1rem;
 	text-align: center;
@@ -134,6 +150,22 @@ const unenrollStudentFromCourse = async (course, studentID) => {
     background-color: #1212c2;
     -webkit-text-fill-color: #fef1fc;
     margin: 0rem 0rem 1rem 0rem;
+  }
+
+	/* centers the unenrollment buttons */
+  .course-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+	/* unenroll button */
+  .ueButton {
+    background-color: #CC0000;	/* red */
+    -webkit-text-fill-color: #FFFFFF;	/* white */
+    height: 2rem;
+    width: 11rem;
+    margin: .5rem 0rem 1rem 0rem;
   }
   </style>
   
