@@ -10,7 +10,7 @@ const apiStudentsUrlBeta = import.meta.env.VITE_STUDENTS_API_URL_BETA;
 
 // ------------------------COURSE APIs------------------------------------
 
-
+// READ
 //searches courseCatalog for filter in course_name
 export const searchMultipleCourseCatalog = async(filter) => {
     console.log("getCourseFromCourseCatalog()");
@@ -39,6 +39,7 @@ export const searchMultipleCourseCatalog = async(filter) => {
     };
 };
 
+// DELETE
 //function to call the api to delete a course from courseCatalog dynamoDB table
 export const deleteCourseFromCourseCatalog = async(courseName) => {
     console.log("deleteCourseFromCourseCatalog()");
@@ -63,6 +64,7 @@ export const deleteCourseFromCourseCatalog = async(courseName) => {
     };
 };
 
+// CREATE
 //function to call the api to add a course to courseCatalog dynamoDB table
 export const addCourseToCourseCatalog = async(courseParams) => {
     console.log("addCourseToCourseCatalog()");
@@ -97,9 +99,11 @@ export const addCourseToCourseCatalog = async(courseParams) => {
     };
 };
 
+// TODO add edit/update method
 
 // ------------------------STUDENT APIs------------------------------------
 
+// CREATE
 //function that calls api to add a student given parameters
 export const addStudent = async(studentParams) => {
     console.log("addStudent()");
@@ -134,6 +138,7 @@ export const addStudent = async(studentParams) => {
     };
 };
 
+// DELETE
 //function that calls api to delete a student given student id
 export const deleteStudent = async(studentID) => {
     console.log("deleteStudent()");
@@ -156,11 +161,62 @@ export const deleteStudent = async(studentID) => {
     };
 };
 
+// READ
+//function that calls api to get student info given student id
+export const getStudentInfo = async(studentID) => {
+    console.log("getStudentInfo()");
+    
+    //api invoke url
+    const url = `${apiStudentsUrl}getStudentInfo?id=${studentID}`;
+
+    const config = {
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+
+    // console.log(url);
+
+    //assigns data, error to the returned variables from callExternalApi
+    const { data, error } = await callExternalApi({ url, config });
+    // console.log(data);
+
+    //returns data, error to wherever function was called
+    return {
+        data: data || null,
+        error,
+    };
+};
+
+// misc.
 //function that enrolls student in a course
 export const enrollStudent = async(params) => {
     console.log("enrollStudent()");
 
     const url = `${apiStudentsUrl}enrollStudent?id=${params.studentID}&course=${params.course}`;
+
+    const config = {
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+    
+    const { data, error } = await callExternalApi({ url, config });
+
+    return {
+        data: data || null,
+        error,
+    };
+};
+
+// misc.
+//function that unenrolls student from a course
+export const unenrollStudent = async(params) => {
+    console.log("unenrollStudent()");
+
+    const url = `${apiStudentsUrl}unenrollStudentFromCourse?id=${params.studentID}&course=${params.course}`;
 
     const config = {
         method: "GET",
