@@ -5,7 +5,8 @@
         <RouterLink to="/professor/schedule">View Schedule</RouterLink>
       </li>
       <li>
-        <RouterLink to="/">Log out</RouterLink>
+        <!-- <RouterLink to="/">Log out</RouterLink> -->
+        <LogOut />
       </li>
     </ul>
   </nav>
@@ -29,6 +30,7 @@
 
 <script setup>
 import {searchMultipleCourseCatalog, getProfessorInfo} from "../util/api-setup";
+import LogOut from "@/components/buttons/logout-button.vue";
 
 // testing professor id -- CHANGE LATER
 const profID = "ljs23001"

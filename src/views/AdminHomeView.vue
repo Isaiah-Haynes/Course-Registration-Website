@@ -1,7 +1,8 @@
 <template>
   <div class="title-bar">
     <h2>Admin Home Page</h2>
-    <RouterLink to="/">Log out</RouterLink>
+    <!-- <RouterLink to="/">Log out</RouterLink> -->
+    <LogOut />
   </div>
   <main class="home">
     <div class="cards">
@@ -92,6 +93,7 @@
 <script setup>
 import { ref } from "vue";
 import { deleteCourseFromCourseCatalog, addCourseToCourseCatalog, addStudent, deleteStudent } from "../util/api-setup";
+import LogOut from "@/components/buttons/logout-button.vue";
 const courseName = ref("");
 const numCredits = ref("");
 const courseTitle = ref("");

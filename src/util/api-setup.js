@@ -4,11 +4,38 @@ import { callExternalApi } from "./call-external-api";
 const apiCourseCatalogUrl = import.meta.env.VITE_COURSE_CATALOG_API_URL;
 const apiStudentsUrl = import.meta.env.VITE_STUDENTS_API_URL;
 const apiProfessorsUrl = import.meta.env.VITE_PROFESSORS_API_URL;
+const apiServerUrl = import.meta.env.VITE_API_SERVER_URL;
 
 //urls for testing beta stage api deployment stages 
 const apiCourseCatalogUrlBeta = import.meta.env.VITE_COURSE_CATALOG_API_URL_BETA;
 const apiStudentsUrlBeta = import.meta.env.VITE_STUDENTS_API_URL_BETA;
 const apiProfessorsUrlBeta = import.meta.env.VITE_PROFESSORS_API_URL_BETA;
+
+
+//export const getProtectedResource = async () => {
+    export const getProtectedResource = async (accessToken) => {  //STEP2
+
+        console.log("getProtectedResource()");
+        const config = {
+          //url: `${apiServerUrl}/api/messages/protected`,
+          url: `${apiServerUrl}/auth1`, //STEP2
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+            "Authorization": `Bearer ${accessToken}`,  //STEP2
+          },
+        };
+      
+        const { data, error } = await callExternalApi({ config });
+        console.log(data);
+        console.log(error);
+      
+        return {
+          data: data || null,
+          error,
+        };
+      };
+
 
 // ------------------------COURSE APIs------------------------------------
 

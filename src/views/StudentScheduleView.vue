@@ -8,7 +8,8 @@
         <RouterLink to="/student/enroll">Search and Enroll</RouterLink>
       </li>
       <li>
-        <RouterLink to="/">Log out</RouterLink>
+        <!-- <RouterLink to="/">Log out</RouterLink> -->
+        <LogOut />
       </li>
     </ul>
   </nav>
@@ -33,6 +34,7 @@
 
 <script setup>
 import { getStudentInfo, unenrollStudent, searchMultipleCourseCatalog} from "../util/api-setup";
+import LogOut from "@/components/buttons/logout-button.vue";
 
 // testing student id -- CHANGE LATER
 const studentID = "abc54321"
