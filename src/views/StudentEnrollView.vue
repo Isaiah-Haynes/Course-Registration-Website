@@ -8,7 +8,8 @@
         <RouterLink to="/student/enroll">Search and Enroll</RouterLink>
       </li>
       <li>
-        <RouterLink to="/">Log out</RouterLink>
+        <!-- <RouterLink to="/">Log out</RouterLink> -->
+        <LogOut />
       </li>
     </ul>
   </nav>
@@ -36,6 +37,7 @@
 <script setup>
 import { ref } from "vue";
 import { searchMultipleCourseCatalog, enrollStudent} from "../util/api-setup";
+import LogOut from "@/components/buttons/logout-button.vue";
 
 const course_search_bar = ref("");
 var courseCatalog = []

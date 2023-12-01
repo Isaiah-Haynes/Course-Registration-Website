@@ -5,15 +5,18 @@
     "scripts": {
       "dev": "vite",
       "build": "vite build",
-      "preview": "vite preview"
+      "preview": "vite preview",
+      "api": "json-server --host 0.0.0.0 --port 6060 --watch json-server/db.json --routes json-server/routes.json"
     },
     "dependencies": {
       "@unocss/reset": "^0.56.5",
       "vue": "^3.3.4",
-      "vue-router": "^4.2.4"
+      "vue-router": "^4.2.4",
+      "@auth0/auth0-vue": "^2.3.2"
     },
     "devDependencies": {
       "@vitejs/plugin-vue": "^4.3.4",
-      "vite": "^4.4.9"
+      "vite": "^4.4.9",
+      "json-server": "^0.17.0"
     }
   }
