@@ -3,10 +3,12 @@ import { callExternalApi } from "./call-external-api";
 //urls for calling api in final production stage
 const apiCourseCatalogUrl = import.meta.env.VITE_COURSE_CATALOG_API_URL;
 const apiStudentsUrl = import.meta.env.VITE_STUDENTS_API_URL;
+const apiProfessorsUrl = import.meta.env.VITE_PROFESSORS_API_URL;
 
 //urls for testing beta stage api deployment stages 
 const apiCourseCatalogUrlBeta = import.meta.env.VITE_COURSE_CATALOG_API_URL_BETA;
 const apiStudentsUrlBeta = import.meta.env.VITE_STUDENTS_API_URL_BETA;
+const apiProfessorsUrlBeta = import.meta.env.VITE_PROFESSORS_API_URL_BETA;
 
 // ------------------------COURSE APIs------------------------------------
 
@@ -232,3 +234,86 @@ export const unenrollStudent = async(params) => {
         error,
     };
 };
+
+// TODO add update student function
+
+// ------------------------PROFESSOR APIs------------------------------------
+export const addProfessor = async(profParams) => {
+    console.log("addProfessor()");
+
+    //api invoke url
+    const url = `${apiProfessorsUrl}addProfessor`;
+
+    const config = {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            "id": profParams.id,
+            "name": profParams.name,
+            "department": profParams.department || "N/A",
+            "current_courses": studentParams.current_courses
+        })
+    };
+
+    const { data, error } = await callExternalApi({ url, config });
+
+    return {
+        data: data || null,
+        error,
+    };
+};
+
+// DELETE
+//function that calls api to delete a student given student id
+export const deleteProfessor = async(id) => {
+    console.log("deleteProfessor()");
+
+    //api invoke url
+    const url = `${apiProfessorsUrl}deleteProfessor?id=${id}`;
+
+    const config = {
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+
+    const { data, error } = await callExternalApi({ url, config });
+
+    return {
+        data: data || null,
+        error,
+    };
+};
+
+// READ
+//function that calls api to get professor info given id
+export const getProfessorInfo = async(id) => {
+    console.log("getProfessorInfo()");
+    
+    //api invoke url
+    const url = `${apiProfessorsUrl}getProfessorInfo?id=${id}`;
+
+    const config = {
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+
+    // console.log(url);
+
+    //assigns data, error to the returned variables from callExternalApi
+    const { data, error } = await callExternalApi({ url, config });
+    // console.log(data);
+
+    //returns data, error to wherever function was called
+    return {
+        data: data || null,
+        error,
+    };
+};
+
+// TODO add update professor method

@@ -22,11 +22,10 @@
       <button class ="sButton" type="button" @click="getCourses" @keydown.enter="getCourses">Search</button>
       <div class="course-list" v-for="course in courseCatalog" :key="course">
         <h4>{{ course[0]+' - '+course[2]}}</h4>
-		<h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
-		<h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
-		<h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
+		    <h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
+		    <h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
+		    <h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
         <h5>{{ }}</h5>
-		<!-- <a>{{ (course[9] != course[8] && student_credits + course[1] <= MAX_CREDITS) ? 'Enroll in course (TODO make this a buttton!!)' : 'Enrollment restricted (Seats full or maximum # credits enrolled)' }}</a> -->
 		<button class ="eButton" type="button" @click="enrollStudentInCourse(course[0], studentID)">Enroll in {{course[0]}}</button>
       </div>
     </div>
@@ -45,7 +44,6 @@ const studentID = "abc54321"
 
 /* this should get the number of credits a student has from dynamo
 (if we configure the enrollment button to display conditionally rather than how we have it now) */
-var student_credits = 16
 const MAX_CREDITS = 19
 
 

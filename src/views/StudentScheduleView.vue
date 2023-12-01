@@ -18,14 +18,14 @@
         You can use this page to view your schedule or your student information.
       </h3>
 	  <div class="schedule">
-		<button class ="sButton" type="button" @click="studentInfo" @keydown.enter="getCourses">View Schedule</button>
-		<div class="course-list" v-for="course in schedule" :key="course">
-			<h4>{{ course[0]+' - '+course[2]}}</h4>
-			<h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
-			<h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
-			<h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
-			<h5>{{ }}</h5>
-			<button class ="ueButton" type="button" @click="unenrollStudentFromCourse(course[0], studentID)">Unenroll from {{course[0]}}</button>
+      <button class ="sButton" type="button" @click="studentInfo" @keydown.enter="studentInfo">View Schedule</button>
+      <div class="course-list" v-for="course in schedule" :key="course">
+        <h4>{{ course[0]+' - '+course[2]}}</h4>
+        <h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
+        <h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
+        <h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
+        <h5>{{ }}</h5>
+        <button class ="ueButton" type="button" @click="unenrollStudentFromCourse(course[0], studentID)">Unenroll from {{course[0]}}</button>
       </div>
     </div>
     </main>
@@ -49,8 +49,10 @@ const studentInfo = async () => {
 	if (schedule.length == 0){
 		//console.log("student_info[8]")
 		//console.log(student_info[8])
+    // "course" var here appears as a number for some reason
 		for(let course in student_info[8]){
 			//console.log(student_info[8][course])
+      // iterate through list of enrolled courses and get info from DB
 			getCourses(student_info[8][course])
 		}
 	}
@@ -71,7 +73,14 @@ const getCourses = async (course_name) => {
   const { data, error } = await searchMultipleCourseCatalog(course_name);
 
   if (data) {
+    console.log(data.courses[0])
+    console.log(schedule)
+    console.log(schedule.includes(data.courses[0]))
+    // in theory this should fix duplicate course adds that come from spamming the button
+    // however, this does not work at the moment
+    if (schedule.includes(data.courses[0]) == false) {
     schedule.push(data.courses[0]);
+    }
 	//console.log("Got course:")
 	//console.log(data.courses[0])
 	//console.log("getCourses() completed")
