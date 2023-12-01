@@ -27,6 +27,16 @@ a:hover {
   color: #646464;
 }
 
+/* logout button styling */
+.button__logout{
+  margin: 0.4px;
+  width: 6rem;
+  background-color: #1515eb;
+  -webkit-text-fill-color: #fefeff;
+  
+}
+
+/* login buttons, choose which site to login to styling */
 .button__login{
   margin: 0.4px;
   width: 12rem;
@@ -40,6 +50,7 @@ a:hover {
   -webkit-text-fill-color: #fefeff;
 }
 
+/* styling for login page contains ".sign-in" */
 .sign-in__login-buttons {
   width: 100%;
   display: flex;

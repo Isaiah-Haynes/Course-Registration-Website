@@ -39,12 +39,12 @@ const router = createRouter({
       component: FetchView,
     },
     {
-      path: "/test",
-      name: "test",
+      path: "/",
+      name: "logIn",
       component: LoginView,
     },
     {
-      path: "/",
+      path: "/signIn",
       name: "signIn",
       component: SignInView,
     },

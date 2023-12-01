@@ -5,7 +5,8 @@
         <RouterLink to="/professor/schedule">View Schedule</RouterLink>
       </li>
       <li>
-        <RouterLink to="/">Log out</RouterLink>
+        <!-- <RouterLink to="/">Log out</RouterLink> -->
+        <LogOut />
       </li>
     </ul>
   </nav>
@@ -16,7 +17,9 @@
       </p>
     </main>
   </template>
-  
+<script setup>
+import LogOut from "@/components/buttons/logout-button.vue";
+</script>
   <style>
   .home {
     padding: 1rem;
