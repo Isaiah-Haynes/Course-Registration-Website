@@ -18,6 +18,7 @@
       <button class ="sButton" type="button" @click="professorInfo" @keydown.enter="professorInfo">View Schedule</button>
       <div class="course-list" v-for="course in schedule" :key="course">
         <h4>{{ course[0]+' - '+course[2]}}</h4>
+        <h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
         <h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
         <h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
         <h5>{{ }}</h5>

@@ -32,7 +32,6 @@
   </template>
 
 <script setup>
-import { ref } from "vue";
 import { getStudentInfo, unenrollStudent, searchMultipleCourseCatalog} from "../util/api-setup";
 
 // testing student id -- CHANGE LATER
@@ -73,13 +72,13 @@ const getCourses = async (course_name) => {
   const { data, error } = await searchMultipleCourseCatalog(course_name);
 
   if (data) {
-    console.log(data.courses[0])
-    console.log(schedule)
-    console.log(schedule.includes(data.courses[0]))
+    //console.log(data.courses[0])
+    //console.log(schedule)
+    //console.log(schedule.includes(data.courses[0]))
     // in theory this should fix duplicate course adds that come from spamming the button
     // however, this does not work at the moment
     if (schedule.includes(data.courses[0]) == false) {
-    schedule.push(data.courses[0]);
+    schedule.push(data.courses[0])
     }
 	//console.log("Got course:")
 	//console.log(data.courses[0])
@@ -107,6 +106,13 @@ const unenrollStudentFromCourse = async (course, studentID) => {
 
 };
 
+const mounted = async () => {
+    this.$watch('schedule', function() {
+      console.log('schedule updated')
+    }, {
+      deep: true
+    })
+  }
 </script>
 
   <style>
