@@ -1,22 +1,13 @@
 import { callExternalApi } from "./call-external-api";
 
 //urls for calling api in final production stage
-const apiCourseCatalogUrl = import.meta.env.VITE_COURSE_CATALOG_API_URL;
-const apiStudentsUrl = import.meta.env.VITE_STUDENTS_API_URL;
-const apiProfessorsUrl = import.meta.env.VITE_PROFESSORS_API_URL;
-const apiServerUrl = import.meta.env.VITE_API_SERVER_URL;
-
-//urls for testing beta stage api deployment stages 
-const apiCourseCatalogUrlBeta = import.meta.env.VITE_COURSE_CATALOG_API_URL_BETA;
-const apiStudentsUrlBeta = import.meta.env.VITE_STUDENTS_API_URL_BETA;
-const apiProfessorsUrlBeta = import.meta.env.VITE_PROFESSORS_API_URL_BETA;
-
+const apiUrl = import.meta.env.VITE_API_URL;
 
 //export const getProtectedResource = async () => {
     export const getProtectedResource = async (accessToken) => {  //STEP2
 
         console.log("getProtectedResource()");
-        const url = `${apiServerUrl}/auth1`
+        const url = `${apiUrl}Authentication`
         const config = {
           method: "GET",
           headers: {
@@ -45,7 +36,7 @@ export const searchMultipleCourseCatalog = async(filter) => {
     
     //gets api url from .env and uses filter from StudentEnrollView.vue
     // const url = `${apiCourseCatalogUrlBeta}filterCourseCatalog?tableFilter=${filter}`;
-    const url = `${apiCourseCatalogUrl}filterCourseCatalog?tableFilter=${filter}`;
+    const url = `${apiUrl}courses/filterCourseCatalog?tableFilter=${filter}`;
     //adds required options for fetch to config
     const config = {
         method: "GET",
@@ -75,7 +66,7 @@ export const deleteCourseFromCourseCatalog = async(courseName) => {
     //beta url for testing
     // const url = `${apiCourseCatalogUrlBeta}deleteCourseFromCourseCatalog?courseName=${courseName}`;
     //api invoke url
-    const url = `${apiCourseCatalogUrl}deleteCourseFromCourseCatalog?courseName=${courseName}`;
+    const url = `${apiUrl}courses/deleteCourse?courseName=${courseName}`;
 
     const config = {
         method: "GET",
@@ -98,7 +89,7 @@ export const addCourseToCourseCatalog = async(courseParams) => {
     console.log("addCourseToCourseCatalog()");
 
     //api invoke url
-    const url = `${apiCourseCatalogUrl}addCourseToCourseCatalog`;
+    const url = `${apiUrl}courses/addCourse`;
 
     const config = {
         method: "POST",
@@ -137,7 +128,7 @@ export const addStudent = async(studentParams) => {
     console.log("addStudent()");
 
     //api invoke url
-    const url = `${apiStudentsUrl}addStudent`;
+    const url = `${apiUrl}students/addStudent`;
 
     const config = {
         method: "POST",
@@ -172,7 +163,7 @@ export const deleteStudent = async(studentID) => {
     console.log("deleteStudent()");
 
     //api invoke url
-    const url = `${apiStudentsUrl}deleteStudent?id=${studentID}`;
+    const url = `${apiUrl}students/deleteStudent?id=${studentID}`;
 
     const config = {
         method: "GET",
@@ -195,7 +186,7 @@ export const getStudentInfo = async(studentID) => {
     console.log("getStudentInfo()");
     
     //api invoke url
-    const url = `${apiStudentsUrl}getStudentInfo?id=${studentID}`;
+    const url = `${apiUrl}students/getStudentInfo?id=${studentID}`;
 
     const config = {
         method: "GET",
@@ -222,7 +213,7 @@ export const getStudentInfo = async(studentID) => {
 export const enrollStudent = async(params) => {
     console.log("enrollStudent()");
 
-    const url = `${apiStudentsUrl}enrollStudent?id=${params.studentID}&course=${params.course}`;
+    const url = `${apiUrl}students/enrollStudent?id=${params.studentID}&course=${params.course}`;
 
     const config = {
         method: "GET",
@@ -244,7 +235,7 @@ export const enrollStudent = async(params) => {
 export const unenrollStudent = async(params) => {
     console.log("unenrollStudent()");
 
-    const url = `${apiStudentsUrl}unenrollStudentFromCourse?id=${params.studentID}&course=${params.course}`;
+    const url = `${apiUrl}students/unenrollStudentFromCourse?id=${params.studentID}&course=${params.course}`;
 
     const config = {
         method: "GET",
@@ -265,7 +256,7 @@ export const unenrollStudent = async(params) => {
 export const editStudent = async(studentParams) => {
     console.log("editStudent()");
 
-    const url = `${apiStudentsUrl}editStudent?id=${studentParams.id}`;
+    const url = `${apiUrl}students/editStudent?id=${studentParams.id}`;
 
     const config = {
         method: "POST",
@@ -297,7 +288,7 @@ export const addProfessor = async(profParams) => {
     console.log("addProfessor()");
 
     //api invoke url
-    const url = `${apiProfessorsUrl}addProfessor`;
+    const url = `${apiUrl}professors/addProfessor`;
 
     const config = {
         method: "POST",
@@ -326,7 +317,7 @@ export const deleteProfessor = async(id) => {
     console.log("deleteProfessor()");
 
     //api invoke url
-    const url = `${apiProfessorsUrl}deleteProfessor?id=${id}`;
+    const url = `${apiUrl}professors/deleteProfessor?id=${id}`;
 
     const config = {
         method: "GET",
@@ -349,7 +340,7 @@ export const getProfessorInfo = async(id) => {
     console.log("getProfessorInfo()");
     
     //api invoke url
-    const url = `${apiProfessorsUrl}getProfessorInfo?id=${id}`;
+    const url = `${apiUrl}professors/getProfessorInfo?id=${id}`;
 
     const config = {
         method: "GET",
