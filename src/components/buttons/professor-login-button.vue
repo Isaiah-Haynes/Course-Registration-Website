@@ -11,7 +11,7 @@
   const handleLogin = () => {
     loginWithRedirect({
       appState: {
-        target: "/professor/home",
+        target: "/professor/schedule",
       },
     });
   };
