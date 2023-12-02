@@ -18,7 +18,29 @@
   </main>
 </template>
 <script setup>
-  import LogOut from "@/components/buttons/logout-button.vue";
+import LogOut from "@/components/buttons/logout-button.vue";
+import { getProtectedResource } from "@/util/api-setup";
+import { ref } from "vue";
+import { useAuth0 } from "@auth0/auth0-vue"; //STEP2
+
+const message = ref("");
+  const getMessage = async () => {
+  //const { data, error } = await getProtectedResource();
+  const { getAccessTokenSilently } = useAuth0();  //STEP2
+  const accessToken = await getAccessTokenSilently(); //STEP2
+  const { data, error } = await getProtectedResource(accessToken); //STEP2
+
+  if (data) {
+    message.value = JSON.stringify(data, null, 2);
+    console.log(message.value);
+  }
+
+  if (error) {
+    message.value = JSON.stringify(error, null, 2);
+  }
+};
+
+getMessage();
 </script>
 <style>
   .home {
