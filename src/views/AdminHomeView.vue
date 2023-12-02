@@ -1,7 +1,8 @@
 <template>
   <div class="title-bar">
     <h2>Admin Home Page</h2>
-    <RouterLink to="/">Log out</RouterLink>
+    <!-- <RouterLink to="/">Log out</RouterLink> -->
+    <LogOut />
   </div>
   <main class="home">
     <div class="cards">
@@ -90,8 +91,9 @@
 <script setup>
 import { ref } from "vue";
 import { deleteCourseFromCourseCatalog, addCourseToCourseCatalog, addStudent, deleteStudent } from "../util/api-setup";
+import LogOut from "@/components/buttons/logout-button.vue";
 
-/* functionality for course buttons */
+// functionality for course buttons
 const courseName = ref("");
 const numCredits = ref("");
 const courseTitle = ref("");
@@ -246,7 +248,7 @@ const currentCourses = ref("");
   }
  
   .card-title {
-    background-color: #b3caf4;
+    background-color: #739ad4;
     width: 25%;
     height: 28rem;
     border-radius: 0.4rem;
@@ -256,7 +258,7 @@ const currentCourses = ref("");
     flex-direction: column;
     align-items: center;
     font-size: 1.2rem;
-    -webkit-text-fill-color: #f4f8ff;
+    -webkit-text-fill-color: #fafcff;
   }
 
   .action-desc {
@@ -281,7 +283,7 @@ const currentCourses = ref("");
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     row-gap: 4px;
-    -webkit-text-fill-color: #1e3973;
+    -webkit-text-fill-color: #3e71dc;
   }
 
   .manage-form input {
@@ -289,7 +291,7 @@ const currentCourses = ref("");
   }
 
   .actions {
-    background-color: #f4f8ff;
+    background-color: #fafcff;
     width: 70%;
     height: 28rem;
     border-radius: 0.4rem;
@@ -299,16 +301,16 @@ const currentCourses = ref("");
     justify-content: space-around;
     align-items: center;
     font-size: 1.2rem;
-    -webkit-text-fill-color: #b3caf4;
+    -webkit-text-fill-color: #3e71dc;
   }
 
   button[type="button"] {
-    background: #f4f8ff;
+    background: #fafcff;
     width: 12rem;
     height: 2rem;
     padding: 0.8rem;
     border-radius: 0.4rem;
-    -webkit-text-fill-color: #b3caf4;
+    -webkit-text-fill-color: #3e71dc;
     font-size: 0.8rem;
     display: flex;
     align-items: center;

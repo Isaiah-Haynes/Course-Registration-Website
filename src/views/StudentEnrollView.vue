@@ -8,26 +8,26 @@
         <RouterLink to="/student/enroll">Search and Enroll</RouterLink>
       </li>
       <li>
-        <RouterLink to="/">Log out</RouterLink>
+        <!-- <RouterLink to="/">Log out</RouterLink> -->
+        <LogOut />
       </li>
     </ul>
   </nav>
   <main class="enroll-view">
     <h2>Search and Enroll in Courses</h2>
 	<h3>
-		(If you do not see any courses populate, please type another character after pressing 'Search'.)
+		(If you do not see any courses populate after pressing 'Search', please wait a few seconds then type another character in the search bar.)
 	</h3>
     <div class="search">
       <input type="text" v-model="course_search_bar" placeholder="Search for class name or title (case sensitive)" />
       <button class ="sButton" type="button" @click="getCourses" @keydown.enter="getCourses">Search</button>
       <div class="course-list" v-for="course in courseCatalog" :key="course">
         <h4>{{ course[0]+' - '+course[2]}}</h4>
-		<h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
-		<h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
-		<h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
+		    <h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
+		    <h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
+		    <h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
         <h5>{{ }}</h5>
-		<!-- <a>{{ (course[9] != course[8] && student_credits + course[1] <= MAX_CREDITS) ? 'Enroll in course (TODO make this a buttton!!)' : 'Enrollment restricted (Seats full or maximum # credits enrolled)' }}</a> -->
-		<button class ="eButton" type="button" @click="enrollStudentInCourse">Enroll in {{course[0]}}</button>
+		<button class ="eButton" type="button" @click="enrollStudentInCourse(course[0], studentID)">Enroll in {{course[0]}}</button>
       </div>
     </div>
   </main>
@@ -36,13 +36,19 @@
 <script setup>
 import { ref } from "vue";
 import { searchMultipleCourseCatalog, enrollStudent} from "../util/api-setup";
+import LogOut from "@/components/buttons/logout-button.vue";
 
 const course_search_bar = ref("");
 var courseCatalog = []
 
+// testing student id -- CHANGE LATER
+const studentID = "abc54321"
+
+/* this should get the number of credits a student has from dynamo
+(if we configure the enrollment button to display conditionally rather than how we have it now) */
 const MAX_CREDITS = 19
-/* this should get the number of credits a student has from dynamo */
-var student_credits = 16
+
+
 
 //get courses from dynamoDB courseCatalog
 const getCourses = async () => {
@@ -50,7 +56,7 @@ const getCourses = async () => {
 
   if (data) {
     courseCatalog = data.courses;
-    //console.log(data.courses);
+    console.log(data.courses);
   }
 
   if (error) {
@@ -59,27 +65,32 @@ const getCourses = async () => {
 };
 
 //enroll student in a course
-const enrollStudentInCourse = async () => {
-
-  const studentID = "abc54321"
-  const course = "SCI1010"
-  const {data, error } = await enrollStudent({studentID, course});
+const enrollStudentInCourse = async (course, studentID) => {
+  console.log("Attempting to enroll in " + course)
+  const {data, error} = await enrollStudent({studentID, course});
 
   if (data) {
-    //the following series of if statements sends values to the console,
-    //these should be shown to the user as an alert or some other message
-    
-  if (data.body.includes("have been enrolled")) {
+    // Possible Outputs:
+	// "Enrollment SUCCESSFUL - You have been enrolled!!"
+	// "You are already enrolled in this course." (course in student[enrolled_courses])
+	// "Enrollment FAILED - You are enrolled in too many credits to take this course." (enrolled_credits + course_credits >= max_credits)
+	// "Enrollment FAILED - This course is at maximum capacity, you cannot enroll at this time." (current_enrollment == max_enrollment)
+	console.log(data.body);
+	
+	// alternate way of logging
+  /* if (data.body.includes("have been enrolled")) {
       console.log("You have been enrolled!!");
     } else if (data.body.includes("max capacity")){
       console.log("Course is at max capacity");
     } else if (data.body.includes("too many credits")) {
       console.log("You are enrolled in too many credits");
+    } else if (data.body.includes("already enrolled")) {
+      console.log(data.body);
     } else {
       console.log("There was an error, please try again.");
-    }
+    } */
   } else {
-    console.log(error)
+    console.log(error);
   }
 
 };
@@ -169,15 +180,6 @@ const enrollStudentInCourse = async () => {
   .efButton {
     background-color: #CCCCCC;	/* light grey */
     -webkit-text-fill-color: #000000;	/* black */
-    height: 2rem;
-    width: 11rem;
-    margin: .5rem 0rem 1rem 0rem;
-  }
-  
-	/* unenroll button */
-  .ueButton {
-    background-color: #CC0000;	/* red */
-    -webkit-text-fill-color: #FFFFFF;	/* white */
     height: 2rem;
     width: 11rem;
     margin: .5rem 0rem 1rem 0rem;

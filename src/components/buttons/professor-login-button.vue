@@ -1,11 +1,12 @@
 <template>
-    <button class="button__login" @click="handleLogin">Log In</button>
+    <button class="button__login" @click="handleLogin">Professors</button>
   </template>
   
   <script setup>
   import { useAuth0 } from "@auth0/auth0-vue";
   
   const { loginWithRedirect } = useAuth0();
+  // const loginWithRedirect = useAuth0();
   
   const handleLogin = () => {
     loginWithRedirect({

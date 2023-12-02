@@ -8,7 +8,8 @@
         <RouterLink to="/student/enroll">Search and Enroll</RouterLink>
       </li>
       <li>
-        <RouterLink to="/">Log out</RouterLink>
+        <!-- <RouterLink to="/">Log out</RouterLink> -->
+        <LogOut />
       </li>
     </ul>
   </nav>
@@ -26,6 +27,7 @@
 
 <script setup>
 import { ref } from "vue";
+import LogOut from "@/components/buttons/logout-button.vue";
 let quick_search_bar = ref("");
 const courseCatalog = ["CSE1000", "CSE1002", "CSE1010"];
 function filteredCatalog(){
