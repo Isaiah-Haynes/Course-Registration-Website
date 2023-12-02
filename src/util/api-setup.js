@@ -283,8 +283,15 @@ export const editStudent = async(studentParams) => {
             "enrolled_courses": studentParams.enrolled_courses,
             "past_courses": studentParams.past_courses
         })
-    }
-}
+    };
+
+    const { data, error } = await callExternalApi({ url, config });
+    // console.log(config);
+    return {
+        data: data || null,
+        error,
+    };
+};
 
 // ------------------------PROFESSOR APIs------------------------------------
 export const addProfessor = async(profParams) => {

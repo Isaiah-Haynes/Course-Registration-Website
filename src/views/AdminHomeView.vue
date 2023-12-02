@@ -40,7 +40,7 @@
           <div class="course-actions">
             <button type="button" @click="addStudentToDB">Add Student</button>
             <p class="action-desc">To add a student, fill in all required boxes and click 'Add Student'.</p>
-            <button type="button">Edit Student</button>
+            <button type="button" @click="updateStudent">Edit Student</button>
             <p class="action-desc">To edit a course, fill in the student's id and additional changes. Then, click 'Edit Student'.</p>
             <button type="button" @click="removeStudentFromDB">Remove Student</button>
             <p class="action-desc">To remove a student, fill in the student's id and click 'Remove Student'.</p>
@@ -90,7 +90,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { deleteCourseFromCourseCatalog, addCourseToCourseCatalog, addStudent, deleteStudent } from "../util/api-setup";
+import { deleteCourseFromCourseCatalog, addCourseToCourseCatalog, addStudent, deleteStudent, editStudent } from "../util/api-setup";
 import LogOut from "@/components/buttons/logout-button.vue";
 
 // functionality for course buttons
@@ -198,12 +198,45 @@ const addStudentToDB = async () => {
   }
 };
 
+const updateStudent = async () => {
+  const { data, error } = await editStudent({
+    id: studentID.value,
+    major: major.value || "",
+    minor: minor.value || "",
+    standing: standing.value || "",
+    gpa: gpa.value || "",
+    total_credits: totalCredits.value || "",
+    enrolled_credits: enrolledCredits.value || "",
+    enrolled_courses: enrolledCourses.value || [],
+    past_courses: pastCourses.value || []
+  });
+
+  if (data) {
+    //choose what happens with data, should be shown to user
+    console.log(data);
+
+    //clear input boxes
+    studentID.value = '';
+    studentName.value = '';
+    major.value = '';
+    minor.value = '';
+    standing.value = '';
+    gpa.value = '';
+    totalCredits.value = '';
+    enrolledCredits.value = '';
+    enrolledCourses.value = '';
+    pastCourses.value = '';
+  } else {
+    //choose what happens with data, should be shown to user
+    console.log(error)
+  }
+}
 const removeStudentFromDB = async () => {
   const { data, error } = await deleteStudent(studentID.value);
 
   if (data) {
     //choose what happens with the data returned from the api
-    console.log(data.body);
+    console.log(data);
     
   } else {
     //choose what happens with the error returned from the api
