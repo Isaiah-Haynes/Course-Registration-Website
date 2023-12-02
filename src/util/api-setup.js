@@ -16,9 +16,8 @@ const apiProfessorsUrlBeta = import.meta.env.VITE_PROFESSORS_API_URL_BETA;
     export const getProtectedResource = async (accessToken) => {  //STEP2
 
         console.log("getProtectedResource()");
+        const url = `${apiServerUrl}/auth1`
         const config = {
-          //url: `${apiServerUrl}/api/messages/protected`,
-          url: `${apiServerUrl}/auth1`, //STEP2
           method: "GET",
           headers: {
             "content-type": "application/json",
@@ -26,9 +25,9 @@ const apiProfessorsUrlBeta = import.meta.env.VITE_PROFESSORS_API_URL_BETA;
           },
         };
       
-        const { data, error } = await callExternalApi({ config });
-        console.log(data);
-        console.log(error);
+        const { data, error } = await callExternalApi({ url, config });
+        // console.log(data);
+        // console.log(error);
       
         return {
           data: data || null,
