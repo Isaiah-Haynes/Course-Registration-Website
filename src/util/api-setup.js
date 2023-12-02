@@ -262,7 +262,36 @@ export const unenrollStudent = async(params) => {
     };
 };
 
-// TODO add update student function
+// function that updates a student, cannot update student name
+export const editStudent = async(studentParams) => {
+    console.log("editStudent()");
+
+    const url = `${apiStudentsUrl}editStudent?id=${studentParams.id}`;
+
+    const config = {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            "major": studentParams.major,
+            "minor": studentParams.minor,
+            "standing": studentParams.standing,
+            "gpa": studentParams.gpa,
+            "total_credits": studentParams.total_credits,
+            "enrolled_credits": studentParams.enrolled_credits,
+            "enrolled_courses": studentParams.enrolled_courses,
+            "past_courses": studentParams.past_courses
+        })
+    };
+
+    const { data, error } = await callExternalApi({ url, config });
+    // console.log(config);
+    return {
+        data: data || null,
+        error,
+    };
+};
 
 // ------------------------PROFESSOR APIs------------------------------------
 export const addProfessor = async(profParams) => {
