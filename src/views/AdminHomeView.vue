@@ -13,6 +13,8 @@
           <div class="course-actions">
             <button type="button" @click="addCourse">Add Course</button>
             <p class="action-desc">To add a course, fill in all required boxes and click 'Add Course'.</p>
+            <button type="button" @click="updateCourse">Edit Course</button>
+            <p class="action-desc">To edit a course, fill in the Course Name and additional changes. Then, click 'Edit Course'.</p>
             <button type="button" @click="removeCourse">Remove Course</button>
             <p class="action-desc">To remove a course, fill in the course's name and click 'Remove Course'.</p>
           </div>
@@ -41,7 +43,7 @@
             <button type="button" @click="addStudentToDB">Add Student</button>
             <p class="action-desc">To add a student, fill in all required boxes and click 'Add Student'.</p>
             <button type="button" @click="updateStudent">Edit Student</button>
-            <p class="action-desc">To edit a course, fill in the student's id and additional changes. Then, click 'Edit Student'.</p>
+            <p class="action-desc">To edit a student, fill in the student's id and additional changes. Then, click 'Edit Student'.</p>
             <button type="button" @click="removeStudentFromDB">Remove Student</button>
             <p class="action-desc">To remove a student, fill in the student's id and click 'Remove Student'.</p>
           </div>
@@ -90,7 +92,9 @@
 
 <script setup>
 import { ref } from "vue";
-import { deleteCourseFromCourseCatalog, addCourseToCourseCatalog, addStudent, deleteStudent, editStudent } from "../util/api-setup";
+import { deleteCourseFromCourseCatalog, addCourseToCourseCatalog, editCourse } from "../util/api-setup";
+import { addStudent, deleteStudent, editStudent } from "../util/api-setup";
+import { addProfessor, deleteProfessor, editProfessor } from "../util/api-setup";
 import LogOut from "@/components/buttons/logout-button.vue";
 
 // functionality for course buttons
@@ -144,6 +148,22 @@ const addCourse = async () => {
     console.log(error);
   }
 };
+
+const updateCourse = async () => {
+  const { data, error } = await editCourse({
+    courseName: courseName.value,
+    numCredits: numCredits.value || "",
+    courseTitle: courseTitle.value || "",
+    courseStart: courseStart.value || "",
+    courseEnd: courseEnd.value || "",
+    courseDays: courseDays.value || "",
+    subject: subject.value || "",
+    professor: professor.value || "",
+    maxEnrollment: maxEnrollment.value || "",
+    currentEnrollment: currentEnrollment.value || "",
+    prerequisistes: prerequisistes.value || ""
+  })
+}
 
 const removeCourse = async () => {
   const { data, error } = await deleteCourseFromCourseCatalog(courseName.value);
