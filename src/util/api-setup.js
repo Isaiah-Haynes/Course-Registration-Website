@@ -118,7 +118,39 @@ export const addCourseToCourseCatalog = async(courseParams) => {
     };
 };
 
-// TODO add edit/update method
+// UPDATE
+// function that edits a course
+export const editCourse = async(courseParams) => {
+    console.log("editCourse");
+
+    const url = `${apiUrl}courses/editCourse`;
+
+    const config = {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            "course_name": courseParams.courseName,
+            "num_credits": courseParams.numCredits,
+            "course_title": courseParams.courseTitle,
+            "course_start": courseParams.courseStart,
+            "course_end": courseParams.courseEnd,
+            "course_days": courseParams.courseDays,
+            "subject": courseParams.subject,
+            "professor": courseParams.professor,
+            "max_enrollment": courseParams.maxEnrollment,
+            "current_enrollment": courseParams.currentEnrollment  
+        })
+    };
+    
+    const { data, erro } = await callExternalApi({ url, config });
+
+    return {
+        data: data || null,
+        error,
+    };
+};
 
 // ------------------------STUDENT APIs------------------------------------
 
@@ -252,6 +284,7 @@ export const unenrollStudent = async(params) => {
     };
 };
 
+// UPDATE
 // function that updates a student, cannot update student name
 export const editStudent = async(studentParams) => {
     console.log("editStudent()");
@@ -284,6 +317,9 @@ export const editStudent = async(studentParams) => {
 };
 
 // ------------------------PROFESSOR APIs------------------------------------
+
+// CREATE
+// adds a professor to professor database
 export const addProfessor = async(profParams) => {
     console.log("addProfessor()");
 
@@ -362,4 +398,30 @@ export const getProfessorInfo = async(id) => {
     };
 };
 
-// TODO add update professor method
+// UPDATE
+// function that calls api to update professor info
+export const editProfessor = async (profParams) => {
+    console.log("editProfessor()");
+
+    //api invoke url
+    const url = `${apiUrl}professors/editProfessor`
+
+    const config = {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            "id": profParams.id,
+            "department": profParams.department,
+            "current_courses": profParams.currentCourses
+        })
+    };
+
+    const { data, error } = await callExternalApi({ url, config });
+
+    return {
+        data: data || null,
+        error,
+    };
+};
