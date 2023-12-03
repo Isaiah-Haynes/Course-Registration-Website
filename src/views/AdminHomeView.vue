@@ -5,7 +5,6 @@
     <LogOut />
   </div>
   <main class="home">
-    <button @click="() => TogglePopup('buttonTrigger')">Open Popup</button>
     <coursePopup v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
       <h2>{{ alertMsg }}</h2>
     </coursePopup>
@@ -184,7 +183,7 @@ const updateCourse = async () => {
       alertMsg = "There was an error, please try again.";
       TogglePopup('buttonTrigger');
     } else {
-      alertMsg = courseName.value + " has been added!!";
+      alertMsg = courseName.value + " has been updated!!";
       TogglePopup('buttonTrigger');
       //clear input boxes
       courseName.value = '';
@@ -253,27 +252,34 @@ const addStudentToDB = async () => {
     enrolled_courses: enrolledCourses.value.split(",") || ["N/A"],
     past_courses: pastCourses.value.split(",") || ["N/A"]
   });
-  console.log(enrolledCourses.value);
+  // console.log(enrolledCourses.value);
 
   if (data) {
     //choose what happens with the data returned from the api
-    console.log(data.body);
-
-    //clear input boxes
-    studentID.value = '';
-    studentName.value = '';
-    major.value = '';
-    minor.value = '';
-    standing.value = '';
-    gpa.value = '';
-    totalCredits.value = '';
-    enrolledCredits.value = '';
-    enrolledCourses.value = '';
-    pastCourses.value = '';
-    
+    // console.log(data.body);
+    if (JSON.stringify(data.body).includes('error')) {
+      alertMsg = "There was an error, please try again";
+      TogglePopup('buttonTrigger');
+    } else {
+      alertMsg = "Successfully added " + studentID.value;
+      TogglePopup('buttonTrigger');
+      //clear input boxes
+      studentID.value = '';
+      studentName.value = '';
+      major.value = '';
+      minor.value = '';
+      standing.value = '';
+      gpa.value = '';
+      totalCredits.value = '';
+      enrolledCredits.value = '';
+      enrolledCourses.value = '';
+      pastCourses.value = '';
+    }
   } else {
     //choose what happens with the error returned from the api
-    console.log(error);
+    // console.log(error);
+    alertMsg = "There was an error, pleas try again.";
+    TogglePopup('buttonTrigger');
   }
 };
 
@@ -293,25 +299,30 @@ const updateStudent = async () => {
   if (data) {
     //choose what happens with data, should be shown to user
     // console.log(data);
+    if (JSON.stringify(data.body).includes('error')) {
+      alertMsg = "There was an error, please try again."
+      TogglePopup('buttonTrigger');
+    } else {
 
-    alertMsg = "Student has been updated!!";
-    TogglePopup('buttonTrigger');
-    //clear input boxes
-    studentID.value = '';
-    studentName.value = '';
-    major.value = '';
-    minor.value = '';
-    standing.value = '';
-    gpa.value = '';
-    totalCredits.value = '';
-    enrolledCredits.value = '';
-    enrolledCourses.value = '';
-    pastCourses.value = '';
+      alertMsg = studentID.value + " has been updated!!";
+      TogglePopup('buttonTrigger');
+      //clear input boxes
+      studentID.value = '';
+      studentName.value = '';
+      major.value = '';
+      minor.value = '';
+      standing.value = '';
+      gpa.value = '';
+      totalCredits.value = '';
+      enrolledCredits.value = '';
+      enrolledCourses.value = '';
+      pastCourses.value = '';
+    }
   } else {
     //choose what happens with data, should be shown to user
     // console.log(error);
 
-    alertMsg = error;
+    alertMsg = "There was an error, please try again.";
     TogglePopup('buttonTrigger');
   }
 }
@@ -320,14 +331,18 @@ const removeStudentFromDB = async () => {
 
   if (data) {
     //choose what happens with the data returned from the api
-    console.log(data);
-    
+    // console.log(data);
+    alertMsg = data.body;
+    TogglePopup('buttonTrigger');
+
     //clear input box
     studentID.value = '';
     
   } else {
     //choose what happens with the error returned from the api
-    console.log(error);
+    // console.log(error);
+    alertMsg = "There was an error, please try again.";
+    TogglePopup('buttonTrigger');
   }
 };
 
@@ -347,14 +362,22 @@ const addProfessorToDB = async () => {
   });
 
   if (data) {
-    console.log(data);
-
-    professorID.value = '';
-    professorName.value = '';
-    professorDept.value = '';
-    currentCourses.value = '';
+    // console.log(data);
+    if (JSON.stringify(data).includes('error')) {
+      alertMsg = "There was an error, please try again.";
+      TogglePopup('buttonTrigger');
+    } else {
+      alertMsg = professorID.value + " has been added!!";
+      TogglePopup('buttonTrigger');
+      professorID.value = '';
+      professorName.value = '';
+      professorDept.value = '';
+      currentCourses.value = '';
+    }
   } else {
-    console.log(error);
+    // console.log(error);
+    alertMsg = "There was an error, please try again.";
+    TogglePopup('buttonTrigger');
   }
 };
 
@@ -366,14 +389,24 @@ const updateProfessor = async () => {
   });
 
   if (data) {
-    console.log(data);
+    // console.log(data);
 
-    professorID.value = '';
-    professorName.value = '';
-    professorDept.value = '';
-    currentCourses.value = '';
+    if (JSON.stringify(data.body).includes('error')) {
+      alertMsg = "There was an error, please try again.";
+      TogglePopup('buttonTrigger');
+    } else {
+      alertMsg = professorID.value + " has been updated!!";
+      TogglePopup('buttonTrigger');
+      professorID.value = '';
+      professorName.value = '';
+      professorDept.value = '';
+      currentCourses.value = '';
+    }
+
   } else {
-    console.log(error);
+    // console.log(error);
+    alertMsg = "There was an error, please try again.";
+    TogglePopup('buttonTrigger');
   }
 };
 
@@ -381,11 +414,15 @@ const removeProfessorFromDB = async () => {
   const { data, error } = await deleteProfessor(professorID.value);
 
   if (data) {
-    console.log(data);
+    // console.log(data);
+    alertMsg = data.body;
+    TogglePopup('buttonTrigger');
 
     professorID.value = '';
   } else {
-    console.log(error);
+    // console.log(error);
+    alertMsg = "There was an error, please try again.";
+    TogglePopup('buttonTrigger');
   }
 };
 
