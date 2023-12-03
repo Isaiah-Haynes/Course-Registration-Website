@@ -144,7 +144,7 @@ export const editCourse = async(courseParams) => {
         })
     };
     
-    const { data, erro } = await callExternalApi({ url, config });
+    const { data, error } = await callExternalApi({ url, config });
 
     return {
         data: data || null,
@@ -308,10 +308,10 @@ export const editStudent = async(studentParams) => {
             "past_courses": studentParams.past_courses
         })
     };
-    console.log(url);
+    // console.log(url);
     const { data, error } = await callExternalApi({ url, config });
-    console.log(config);
-    console.log(error)
+    // console.log(config);
+    // console.log(error)
     return {
         data: data || null,
         error,
