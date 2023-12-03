@@ -68,11 +68,11 @@
         <div class="card-title">
           <p>Manage Professors</p>
           <div class="course-actions">
-            <button type="button">Add Professor</button>
+            <button type="button" @click="addProfessorToDB">Add Professor</button>
             <p class="action-desc">To add a professor, fill in all required boxes and click 'Add Professor'.</p>
-            <button type="button">Edit Professor</button>
+            <button type="button" @click="updateProfessor">Edit Professor</button>
             <p class="action-desc">To edit a professor, fill in the professor's id and additional changes. Then, click 'Edit Professor'.</p>
-            <button type="button">Remove Professor</button>
+            <button type="button" @click="removeProfessorFromDB">Remove Professor</button>
             <p class="action-desc">To remove a professor, fill in the professor's id and click 'Remove Professor'.</p>
           </div>
         </div>
@@ -163,6 +163,24 @@ const updateCourse = async () => {
     currentEnrollment: currentEnrollment.value || "",
     prerequisistes: prerequisistes.value || ""
   })
+
+  if (data) {
+    console.log(data.body);
+    //clear input boxes
+    courseName.value = '';
+    numCredits.value = '';
+    courseTitle.value = '';
+    courseStart.value = '';
+    courseEnd.value = '';
+    courseDays.value = '';
+    subject.value = '';
+    professor.value = '';
+    maxEnrollment.value = '';
+    currentEnrollment.value = '';
+    prerequisistes.value = '';
+  } else {
+    console.log(error);
+  }
 }
 
 const removeCourse = async () => {
@@ -204,13 +222,26 @@ const addStudentToDB = async () => {
     gpa: gpa.value,
     total_credits: totalCredits.value,
     enrolled_credits: enrolledCredits.value,
-    enrolled_courses: enrolledCourses.value,
-    past_courses: pastCourses.value
+    enrolled_courses: enrolledCourses.value.split(",") || ["N/A"],
+    past_courses: pastCourses.value.split(",") || ["N/A"]
   });
+  console.log(enrolledCourses.value);
 
   if (data) {
     //choose what happens with the data returned from the api
     console.log(data.body);
+
+    //clear input boxes
+    studentID.value = '';
+    studentName.value = '';
+    major.value = '';
+    minor.value = '';
+    standing.value = '';
+    gpa.value = '';
+    totalCredits.value = '';
+    enrolledCredits.value = '';
+    enrolledCourses.value = '';
+    pastCourses.value = '';
     
   } else {
     //choose what happens with the error returned from the api
@@ -227,8 +258,8 @@ const updateStudent = async () => {
     gpa: gpa.value || "",
     total_credits: totalCredits.value || "",
     enrolled_credits: enrolledCredits.value || "",
-    enrolled_courses: enrolledCourses.value || [],
-    past_courses: pastCourses.value || []
+    enrolled_courses: enrolledCourses.value.split(",") || [],
+    past_courses: pastCourses.value.split(",") || []
   });
 
   if (data) {
@@ -248,7 +279,7 @@ const updateStudent = async () => {
     pastCourses.value = '';
   } else {
     //choose what happens with data, should be shown to user
-    console.log(error)
+    console.log(error);
   }
 }
 const removeStudentFromDB = async () => {
@@ -257,6 +288,9 @@ const removeStudentFromDB = async () => {
   if (data) {
     //choose what happens with the data returned from the api
     console.log(data);
+    
+    //clear input box
+    studentID.value = '';
     
   } else {
     //choose what happens with the error returned from the api
@@ -271,6 +305,56 @@ const professorName = ref("");
 const professorDept = ref("");
 const currentCourses = ref("");
 
+const addProfessorToDB = async () => {
+  const { data, error } = await addProfessor({
+    id: professorID.value,
+    name: professorName.value,
+    department: professorDept.value,
+    currentCourses: currentCourses.value.split(",") || []
+  });
+
+  if (data) {
+    console.log(data);
+
+    professorID.value = '';
+    professorName.value = '';
+    professorDept.value = '';
+    currentCourses.value = '';
+  } else {
+    console.log(error);
+  }
+};
+
+const updateProfessor = async () => {
+  const { data, error } = await editProfessor({
+    id: professorID.value,
+    department: professorDept.value || "",
+    currentCourses: currentCourses.value.split(",") || []
+  });
+
+  if (data) {
+    console.log(data);
+
+    professorID.value = '';
+    professorName.value = '';
+    professorDept.value = '';
+    currentCourses.value = '';
+  } else {
+    console.log(error);
+  }
+};
+
+const removeProfessorFromDB = async () => {
+  const { data, error } = await deleteProfessor(professorID.value);
+
+  if (data) {
+    console.log(data);
+
+    professorID.value = '';
+  } else {
+    console.log(error);
+  }
+};
 </script>
 <style>
   .home {
