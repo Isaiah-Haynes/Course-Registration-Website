@@ -37,7 +37,7 @@ import { getStudentInfo, unenrollStudent, searchMultipleCourseCatalog} from "../
 import LogOut from "@/components/buttons/logout-button.vue";
 
 // testing student id -- CHANGE LATER
-const studentID = "abc54321"
+const studentID = "abc12345"
 var student_info = []
 var schedule = []
 
