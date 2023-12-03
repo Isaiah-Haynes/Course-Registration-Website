@@ -289,7 +289,7 @@ export const unenrollStudent = async(params) => {
 export const editStudent = async(studentParams) => {
     console.log("editStudent()");
 
-    const url = `${apiUrl}students/editStudent?id=${studentParams.id}`;
+    const url = `${apiUrl}students/editStudent`;
 
     const config = {
         method: "POST",
@@ -297,6 +297,7 @@ export const editStudent = async(studentParams) => {
             "content-type": "application/json"
         },
         body: JSON.stringify({
+            "id": studentParams.id,
             "major": studentParams.major,
             "minor": studentParams.minor,
             "standing": studentParams.standing,
@@ -307,9 +308,10 @@ export const editStudent = async(studentParams) => {
             "past_courses": studentParams.past_courses
         })
     };
-
+    console.log(url);
     const { data, error } = await callExternalApi({ url, config });
-    // console.log(config);
+    console.log(config);
+    console.log(error)
     return {
         data: data || null,
         error,
@@ -335,7 +337,7 @@ export const addProfessor = async(profParams) => {
             "id": profParams.id,
             "name": profParams.name,
             "department": profParams.department || "N/A",
-            "current_courses": studentParams.current_courses
+            "current_courses": profParams.currentCourses
         })
     };
 
