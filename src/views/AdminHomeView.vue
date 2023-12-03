@@ -157,7 +157,7 @@ const addCourse = async () => {
   } else {
     //choose what happens with the error returned from the api
     // console.log(error);
-    alertMsg = error;
+    alertMsg = JSON.stringify(error);
     TogglePopup('buttonTrigger');
   }
 };
@@ -201,8 +201,8 @@ const updateCourse = async () => {
     }
   } else {
     //choose what happens with the error returned from the api
-    console.log(error);
-    alertMsg = error;
+    // console.log(error);
+    alertMsg = JSON.stringify(error);
     TogglePopup('buttonTrigger');
   }
 }
@@ -212,14 +212,18 @@ const removeCourse = async () => {
 
   if (data) {
     //choose what happens with the data returned from the api
-    console.log(data.body);
+    // console.log(data.body);
+    alertMsg = courseName.value + " has been deleted!!";
+    TogglePopup('buttonTrigger');
 
     //clear input boxes
     courseName.value = '';
     
   } else {
     //choose what happens with the error returned from the api
-    console.log(error);
+    // console.log(error);
+    alertMsg = JSON.stringify(error);
+    TogglePopup('buttonTrigger');
   }
 };
 
