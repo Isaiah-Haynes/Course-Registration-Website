@@ -5,6 +5,10 @@
     <LogOut />
   </div>
   <main class="home">
+    <button @click="() => TogglePopup('buttonTrigger')">Open Popup</button>
+    <coursePopup v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
+      <h2>{{ alertMsg }}</h2>
+    </coursePopup>
     <div class="cards">
 
       <div class="card-row">
@@ -96,7 +100,9 @@ import { deleteCourseFromCourseCatalog, addCourseToCourseCatalog, editCourse } f
 import { addStudent, deleteStudent, editStudent } from "../util/api-setup";
 import { addProfessor, deleteProfessor, editProfessor } from "../util/api-setup";
 import LogOut from "@/components/buttons/logout-button.vue";
+import coursePopup from "../components/course-info-popup.vue";
 
+var alertMsg = ref("");
 // functionality for course buttons
 const courseName = ref("");
 const numCredits = ref("");
@@ -128,24 +134,31 @@ const addCourse = async () => {
 
   if (data) {
     //choose what happens with the data returned from the api
-    console.log(data.body);
-
-    //clear input boxes
-    courseName.value = '';
-    numCredits.value = '';
-    courseTitle.value = '';
-    courseStart.value = '';
-    courseEnd.value = '';
-    courseDays.value = '';
-    subject.value = '';
-    professor.value = '';
-    maxEnrollment.value = '';
-    currentEnrollment.value = '';
-    prerequisistes.value = '';
-    
+    // console.log(data);
+    if (JSON.stringify(data).includes('error')) { 
+      alertMsg = "There was an error, please try again.";
+      TogglePopup('buttonTrigger');
+    } else {
+      alertMsg = courseName.value + " has been added!!";
+      TogglePopup('buttonTrigger');
+      //clear input boxes
+      courseName.value = '';
+      numCredits.value = '';
+      courseTitle.value = '';
+      courseStart.value = '';
+      courseEnd.value = '';
+      courseDays.value = '';
+      subject.value = '';
+      professor.value = '';
+      maxEnrollment.value = '';
+      currentEnrollment.value = '';
+      prerequisistes.value = '';
+    };
   } else {
     //choose what happens with the error returned from the api
-    console.log(error);
+    // console.log(error);
+    alertMsg = error;
+    TogglePopup('buttonTrigger');
   }
 };
 
@@ -165,21 +178,32 @@ const updateCourse = async () => {
   })
 
   if (data) {
-    console.log(data.body);
-    //clear input boxes
-    courseName.value = '';
-    numCredits.value = '';
-    courseTitle.value = '';
-    courseStart.value = '';
-    courseEnd.value = '';
-    courseDays.value = '';
-    subject.value = '';
-    professor.value = '';
-    maxEnrollment.value = '';
-    currentEnrollment.value = '';
-    prerequisistes.value = '';
+    //choose what happens with the data returned from the api
+    // console.log(data);
+    if (JSON.stringify(data).includes('error')) { 
+      alertMsg = "There was an error, please try again.";
+      TogglePopup('buttonTrigger');
+    } else {
+      alertMsg = courseName.value + " has been added!!";
+      TogglePopup('buttonTrigger');
+      //clear input boxes
+      courseName.value = '';
+      numCredits.value = '';
+      courseTitle.value = '';
+      courseStart.value = '';
+      courseEnd.value = '';
+      courseDays.value = '';
+      subject.value = '';
+      professor.value = '';
+      maxEnrollment.value = '';
+      currentEnrollment.value = '';
+      prerequisistes.value = '';
+    }
   } else {
+    //choose what happens with the error returned from the api
     console.log(error);
+    alertMsg = error;
+    TogglePopup('buttonTrigger');
   }
 }
 
@@ -264,8 +288,10 @@ const updateStudent = async () => {
 
   if (data) {
     //choose what happens with data, should be shown to user
-    console.log(data);
+    // console.log(data);
 
+    alertMsg = "Student has been updated!!";
+    TogglePopup('buttonTrigger');
     //clear input boxes
     studentID.value = '';
     studentName.value = '';
@@ -279,7 +305,10 @@ const updateStudent = async () => {
     pastCourses.value = '';
   } else {
     //choose what happens with data, should be shown to user
-    console.log(error);
+    // console.log(error);
+
+    alertMsg = error;
+    TogglePopup('buttonTrigger');
   }
 }
 const removeStudentFromDB = async () => {
@@ -355,6 +384,15 @@ const removeProfessorFromDB = async () => {
     console.log(error);
   }
 };
+
+const popupTriggers = ref({
+  buttonTrigger: false
+});
+
+const TogglePopup = (trigger) => {
+  popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+};
+
 </script>
 <style>
   .home {
