@@ -14,12 +14,17 @@
     </ul>
   </nav>
     <main class="schedule-view">
+      <popup v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
+        <h2>{{ alertMsg }}</h2>
+      </popup>
       <h2>Welcome back!</h2>
       <h3>
         You can use this page to view your schedule or your student information.
       </h3>
 	  <div class="schedule">
       <button class ="sButton" type="button" @click="studentInfo" @keydown.enter="studentInfo">View Schedule</button>
+      <courseEntry v-if="!popupTriggers.courseAvailable">
+      </courseEntry>
       <div class="course-list" v-for="course in schedule" :key="course">
         <h4>{{ course[0]+' - '+course[2]}}</h4>
         <h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
@@ -36,6 +41,10 @@
 import { ref } from "vue";
 import { getStudentInfo, unenrollStudent, searchMultipleCourseCatalog} from "../util/api-setup";
 import LogOut from "@/components/buttons/logout-button.vue";
+import popup from "@/components/course-info-popup.vue";
+import courseEntry from "@/components/course-snippet.vue";
+
+var alertMsg = ref("");
 
 // testing student id -- CHANGE LATER
 const studentID = "abc12345"
@@ -59,8 +68,13 @@ const studentInfo = async () => {
 		}
 	}
 	//console.log("studentInfo() completed p2")
-	console.log("got student schedule")
-	console.log(schedule)
+	// console.log("got student schedule")
+	// console.log(schedule)
+  // console.log(popupTriggers.value);
+  TogglePopup('courseAvailable');
+  // console.log(popupTriggers.value);
+  
+
   }
 
   if (error) {
@@ -81,11 +95,14 @@ const getCourses = async (course_name) => {
     // in theory this should fix duplicate course adds that come from spamming the button
     // however, this does not work at the moment
     if (schedule.includes(data.courses[0]) == false) {
-    schedule.push(data.courses[0])
+      if (data.courses[0] != undefined) {
+        schedule.push(data.courses[0]);
+      }
+    // schedule.push(data.courses[0])
     }
-	//console.log("Got course:")
-	//console.log(data.courses[0])
-	//console.log("getCourses() completed")
+	// console.log("Got course:")
+	// console.log(data.courses[0])
+	// console.log("getCourses() completed")
   }
 
   if (error) {
@@ -103,8 +120,19 @@ const unenrollStudentFromCourse = async (course, studentID) => {
 	// "Unenroll SUCCESSFUL - You have been unenrolled!"
 	// "Unenroll FAILED - You are not enrolled in this course!" (course not in student[enrolled_courses])
 	console.log(data.body);
+  if (JSON.stringify(data.body).includes('SUCCESSFUL')) {
+    alertMsg = "You have successfully unenrolled from " + course;
+  } else if (JSON.stringify(data.body).includes('Unenroll FAILED')) {
+    alertMSG = "You cannot unenroll from a course you are not enrolled in";
+  } else {
+    alertMsg = "There was an error, please try again.";
+  }
+  TogglePopup('buttonTrigger');
+
   } else {
     console.log(error);
+    alertMsg = "There was an error, please try again.";
+    TogglePopup('buttonTrigger');
   }
 
 };
@@ -116,6 +144,17 @@ const mounted = async () => {
       deep: true
     })
   }
+
+//following used to check status for reactive components.
+const popupTriggers = ref({
+  buttonTrigger: false,
+  courseAvailable: false
+});
+
+const TogglePopup = (trigger) => {
+  popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+};
+
 </script>
 
   <style>

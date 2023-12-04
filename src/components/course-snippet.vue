@@ -1,6 +1,6 @@
 <template>
     <div class="course-snippet">
-        <div class="course-snippet__container" v-for="course in schedule" :key="course">
+        <div class="course-snippet__container">
           <slot />
         </div>
     </div>
