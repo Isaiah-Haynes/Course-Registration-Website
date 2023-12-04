@@ -5,18 +5,19 @@
         <RouterLink to="/professor/schedule">View Schedule</RouterLink>
       </li>
       <li>
-        <!-- <RouterLink to="/">Log out</RouterLink> -->
         <LogOut />
       </li>
     </ul>
   </nav>
     <main class="schedule-view">
       <h2>Welcome back!</h2>
-      <h3>
-        You can use this page to view your schedule.
-      </h3>
+      <h3>Enter you professor ID and press "View Schedule" twice to see your schedule.</h3>
+      <h3>If you enter the wrong ID, please reload the page and try again.</h3>
 	  <div class="schedule">
+      <input type="text" v-model="profID_input" placeholder="Enter your professorID" />
       <button class ="sButton" type="button" @click="professorInfo" @keydown.enter="professorInfo">View Schedule</button>
+      <courseEntry v-if="popupTriggers.courseAvailable">
+      </courseEntry>
       <div class="course-list" v-for="course in schedule" :key="course">
         <h4>{{ course[0]+' - '+course[2]}}</h4>
         <h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
@@ -31,15 +32,18 @@
 <script setup>
 import {searchMultipleCourseCatalog, getProfessorInfo} from "../util/api-setup";
 import LogOut from "@/components/buttons/logout-button.vue";
+import courseEntry from "@/components/course-snippet.vue";
+import { ref } from "vue";
 
 // testing professor id -- CHANGE LATER
-const profID = "ljs23001"
+// const profID = "ljs23001"
+const profID_input = ref("");
 var prof_info = []
 var schedule = []
 
 // get professor info from dynamoDB "professors" table
 const professorInfo = async () => {
-  const { data, error } = await getProfessorInfo(profID);
+  const { data, error } = await getProfessorInfo(profID_input.value);
 
   if (data) {
     prof_info = data.professor;
@@ -52,10 +56,12 @@ const professorInfo = async () => {
       // iterate through list of enrolled courses and get info from DB
 			getCourses(prof_info[3][course])
 		}
+    
 	}
 	//console.log("professorInfo() completed p2")
 	console.log("got professor schedule")
 	console.log(schedule)
+  TogglePopup('courseAvailable');
   }
 
   if (error) {
@@ -88,6 +94,15 @@ const getCourses = async (course_name) => {
   }
 };
 
+//following used to check status for reactive components.
+const popupTriggers = ref({
+  buttonTrigger: false,
+  courseAvailable: false
+});
+
+const TogglePopup = (trigger) => {
+  popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+};
 </script>
 
   <style>
