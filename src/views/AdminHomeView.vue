@@ -24,17 +24,17 @@
         </div>
         <div class="actions">
           <form id="manage-form" class="manage-form">
-            <input type="text" id="inputField" name="inputField" v-model="courseName" placeholder="Course Name *" required>
-            <input type="text" id="inputField" name="inputField" v-model="numCredits" placeholder="Credits">
-            <input type="text" id="inputField" name="inputField" v-model="courseTitle" placeholder="Course Title">
-            <input type="text" id="inputField" name="inputField" v-model="courseStart" placeholder="Start Time">
-            <input type="text" id="inputField" name="inputField" v-model="courseEnd" placeholder="End Time">
-            <input type="text" id="inputField" name="inputField" v-model="courseDays" placeholder="Days">
-            <input type="text" id="inputField" name="inputField" v-model="subject" placeholder="Department">
-            <input type="text" id="inputField" name="inputField" v-model="professor" placeholder="Professor">
-            <input type="text" id="inputField" name="inputField" v-model="maxEnrollment" placeholder="Max Enrollment">
-            <input type="text" id="inputField" name="inputField" v-model="currentEnrollment" placeholder="Current Enrollment">
-            <input type="text" id="inputField" name="inputField" v-model="prerequisistes" placeholder="Prerequisites">
+            <input type="text" id="courseName" name="inputField" v-model="courseName" placeholder="Course Name *" required>
+            <input type="text" id="numCredits" name="inputField" v-model="numCredits" placeholder="Credits">
+            <input type="text" id="courseTitle" name="inputField" v-model="courseTitle" placeholder="Course Title">
+            <input type="text" id="courseStart" name="inputField" v-model="courseStart" placeholder="Start Time">
+            <input type="text" id="courseEnd" name="inputField" v-model="courseEnd" placeholder="End Time">
+            <input type="text" id="courseDays" name="inputField" v-model="courseDays" placeholder="Days">
+            <input type="text" id="subject" name="inputField" v-model="subject" placeholder="Department">
+            <input type="text" id="professor" name="inputField" v-model="professor" placeholder="Professor">
+            <input type="text" id="maxEnrollment" name="inputField" v-model="maxEnrollment" placeholder="Max Enrollment">
+            <input type="text" id="currentEnrollment" name="inputField" v-model="currentEnrollment" placeholder="Current Enrollment">
+            <input type="text" id="prerequisistes" name="inputField" v-model="prerequisistes" placeholder="Prerequisites">
           </form>
         </div>
       </div>
@@ -53,16 +53,16 @@
         </div>
         <div class="actions">
           <form id="manage-form" class="manage-form">
-            <input type="text" id="inputField" name="inputField" v-model="studentID" placeholder="ID *" required>
-            <input type="text" id="inputField" name="inputField" v-model="studentName" placeholder="Name">
-            <input type="text" id="inputField" name="inputField" v-model="major" placeholder="Major">
-            <input type="text" id="inputField" name="inputField" v-model="minor" placeholder="Minor">
-            <input type="text" id="inputField" name="inputField" v-model="standing" placeholder="Standing">
-            <input type="text" id="inputField" name="inputField" v-model="gpa" placeholder="GPA">
-            <input type="text" id="inputField" name="inputField" v-model="totalCredits" placeholder="Total Credits">
-            <input type="text" id="inputField" name="inputField" v-model="enrolledCredits" placeholder="Enrolled Credits">
-            <input type="text" id="inputField" name="inputField" v-model="enrolledCourses" placeholder="Enrolled Courses">
-            <input type="text" id="inputField" name="inputField" v-model="pastCourses" placeholder="Past Courses">
+            <input type="text" id="studentID" name="inputField" v-model="studentID" placeholder="ID *" required>
+            <input type="text" id="studentName" name="inputField" v-model="studentName" placeholder="Name">
+            <input type="text" id="major" name="inputField" v-model="major" placeholder="Major">
+            <input type="text" id="minor" name="inputField" v-model="minor" placeholder="Minor">
+            <input type="text" id="standing" name="inputField" v-model="standing" placeholder="Standing">
+            <input type="text" id="gpa" name="inputField" v-model="gpa" placeholder="GPA">
+            <input type="text" id="totalCredits" name="inputField" v-model="totalCredits" placeholder="Total Credits">
+            <input type="text" id="enrolledCredits" name="inputField" v-model="enrolledCredits" placeholder="Enrolled Credits">
+            <input type="text" id="enrolledCourses" name="inputField" v-model="enrolledCourses" placeholder="Enrolled Courses">
+            <input type="text" id="pastCourses" name="inputField" v-model="pastCourses" placeholder="Past Courses">
           </form>
         </div>
       </div>
@@ -81,10 +81,10 @@
         </div>
         <div class="actions">
           <form id="manage-form" class="manage-form">
-            <input type="text" id="inputField" name="inputField" v-model="professorID" placeholder="ID *" required>
-            <input type="text" id="inputField" name="inputField" v-model="professorName" placeholder="Name">
-            <input type="text" id="inputField" name="inputField" v-model="professorDept" placeholder="Department">
-            <input type="text" id="inputField" name="inputField" v-model="currentCourses" placeholder="Current Courses">
+            <input type="text" id="professorID" name="inputField" v-model="professorID" placeholder="ID *" required>
+            <input type="text" id="professorName" name="inputField" v-model="professorName" placeholder="Name">
+            <input type="text" id="professorDept" name="inputField" v-model="professorDept" placeholder="Department">
+            <input type="text" id="currentCourses" name="inputField" v-model="currentCourses" placeholder="Current Courses">
           </form>
         </div>
       </div>
@@ -99,7 +99,8 @@ import { deleteCourseFromCourseCatalog, addCourseToCourseCatalog, editCourse } f
 import { addStudent, deleteStudent, editStudent } from "../util/api-setup";
 import { addProfessor, deleteProfessor, editProfessor } from "../util/api-setup";
 import LogOut from "@/components/buttons/logout-button.vue";
-import coursePopup from "../components/course-info-popup.vue";
+// import coursePopup from "../components/course-info-popup.vue";
+import coursePopup from "@/components/course-info-popup.vue";
 
 var alertMsg = ref("");
 // functionality for course buttons

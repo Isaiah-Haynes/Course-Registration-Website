@@ -21,7 +21,7 @@
       <h3>Enter you student ID and press "View Schedule" twice to see your schedule.</h3>
       <h3>If you enter the wrong ID, please reload the page and try again.</h3>
 	  <div class="schedule">
-      <input type="text" v-model="studentID_input" placeholder="Enter your studentID" />
+      <input type="text" name="searchBar" v-model="studentID_input" placeholder="Enter your studentID" />
       <button class ="sButton" type="button" @click="studentInfo" @keydown.enter="studentInfo">View Schedule</button>
       <courseEntry v-if="!popupTriggers.courseAvailable">
       </courseEntry>

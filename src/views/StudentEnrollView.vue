@@ -22,8 +22,8 @@
 	</h3>
     <div class="search">
 
-      <input type="text" v-model="course_search_bar" placeholder="Search for class name or title (case sensitive)" />
-      <input type="text" v-model="studentID_input" placeholder="Enter your studentID to enroll in a course" />
+      <input type="text" id="searchBar" v-model="course_search_bar" placeholder="Search for class name or title (case sensitive)" />
+      <input type="text" id="searchBar2" v-model="studentID_input" placeholder="Enter your studentID to enroll in a course" />
       <button class ="sButton" type="button" @click="getCourses" @keydown.enter="getCourses">Search</button>
 
       <!-- this somehow updates the courses, not sure how -->

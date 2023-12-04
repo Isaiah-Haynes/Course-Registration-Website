@@ -14,7 +14,7 @@
       <h3>Enter you professor ID and press "View Schedule" twice to see your schedule.</h3>
       <h3>If you enter the wrong ID, please reload the page and try again.</h3>
 	  <div class="schedule">
-      <input type="text" v-model="profID_input" placeholder="Enter your professorID" />
+      <input type="text" name="searchBar" v-model="profID_input" placeholder="Enter your professorID" />
       <button class ="sButton" type="button" @click="professorInfo" @keydown.enter="professorInfo">View Schedule</button>
       <courseEntry v-if="popupTriggers.courseAvailable">
       </courseEntry>
@@ -82,7 +82,9 @@ const getCourses = async (course_name) => {
     // in theory this should fix duplicate course adds that come from spamming the button
     // however, this does not work at the moment
     if (schedule.includes(data.courses[0]) == false) {
-    schedule.push(data.courses[0]);
+      if (data.courses[0] != undefined) {
+        schedule.push(data.courses[0]);
+      }
     }
 	//console.log("Got course:")
 	//console.log(data.courses[0])
