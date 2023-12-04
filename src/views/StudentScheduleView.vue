@@ -18,10 +18,10 @@
         <h2>{{ alertMsg }}</h2>
       </popup>
       <h2>Welcome back!</h2>
-      <h3>
-        You can use this page to view your schedule or your student information.
-      </h3>
+      <h3>Enter you student ID and press "View Schedule" twice to see your schedule.</h3>
+      <h3>If you enter the wrong ID, please reload the page and try again.</h3>
 	  <div class="schedule">
+      <input type="text" v-model="studentID_input" placeholder="Enter your studentID" />
       <button class ="sButton" type="button" @click="studentInfo" @keydown.enter="studentInfo">View Schedule</button>
       <courseEntry v-if="!popupTriggers.courseAvailable">
       </courseEntry>
@@ -31,7 +31,7 @@
         <h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
         <h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
         <h5>{{ }}</h5>
-        <button class ="ueButton" type="button" @click="unenrollStudentFromCourse(course[0], studentID)">Unenroll from {{course[0]}}</button>
+        <button class ="ueButton" type="button" @click="unenrollStudentFromCourse(course[0])">Unenroll from {{course[0]}}</button>
       </div>
     </div>
     </main>
@@ -47,14 +47,18 @@ import courseEntry from "@/components/course-snippet.vue";
 var alertMsg = ref("");
 
 // testing student id -- CHANGE LATER
-const studentID = "abc12345"
+// const studentID = "abc12345"
+const studentID_input = ref("");
+// const studentID = studentID_input.value;
 var student_info = []
 var schedule = []
 
+
+// const inputStudentID = ref("");
 // get student info from dynamoDB "students" table
 const studentInfo = async () => {
-  const { data, error } = await getStudentInfo(studentID);
-
+  const { data, error } = await getStudentInfo(studentID_input.value);
+  console.log(studentID_input.value)
   if (data) {
     student_info = data.student;
 	if (schedule.length == 0){
@@ -111,8 +115,9 @@ const getCourses = async (course_name) => {
 };
 
 // unenroll student from course
-const unenrollStudentFromCourse = async (course, studentID) => {
+const unenrollStudentFromCourse = async (course) => {
   console.log("Attempting to unenroll from " + course)
+  const studentID = studentID_input.value;
   const {data, error} = await unenrollStudent({studentID, course});
 
   if (data) {
@@ -136,14 +141,6 @@ const unenrollStudentFromCourse = async (course, studentID) => {
   }
 
 };
-
-const mounted = async () => {
-    this.$watch('schedule', function() {
-      console.log('schedule updated')
-    }, {
-      deep: true
-    })
-  }
 
 //following used to check status for reactive components.
 const popupTriggers = ref({

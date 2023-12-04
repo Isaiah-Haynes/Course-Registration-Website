@@ -23,6 +23,7 @@
     <div class="search">
 
       <input type="text" v-model="course_search_bar" placeholder="Search for class name or title (case sensitive)" />
+      <input type="text" v-model="studentID_input" placeholder="Enter your studentID to enroll in a course" />
       <button class ="sButton" type="button" @click="getCourses" @keydown.enter="getCourses">Search</button>
 
       <!-- this somehow updates the courses, not sure how -->
@@ -35,7 +36,7 @@
 		    <h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
 		    <h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
         <h5>{{ }}</h5>
-		<button class ="eButton" type="button" @click="enrollStudentInCourse(course[0], studentID)">Enroll in {{course[0]}}</button>
+		<button class ="eButton" type="button" @click="enrollStudentInCourse(course[0])">Enroll in {{course[0]}}</button>
       </div>
     </div>
   </main>
@@ -54,7 +55,9 @@ var courseCatalog = [];
 
 
 // testing student id -- CHANGE LATER
-const studentID = "abc12345"
+// const studentID = "abc12345"
+const studentID_input = ref("");
+// var studentID = studentID_input.value;
 
 /* this should get the number of credits a student has from dynamo
 (if we configure the enrollment button to display conditionally rather than how we have it now) */
@@ -78,8 +81,9 @@ const getCourses = async () => {
 };
 
 //enroll student in a course
-const enrollStudentInCourse = async (course, studentID) => {
+const enrollStudentInCourse = async (course) => {
   console.log("Attempting to enroll in " + course)
+  const studentID = studentID_input.value;
   const {data, error} = await enrollStudent({studentID, course});
 
   if (data) {
