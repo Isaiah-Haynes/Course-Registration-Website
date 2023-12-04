@@ -184,7 +184,7 @@ const updateCourse = async () => {
       alertMsg = "There was an error, please try again.";
       TogglePopup('buttonTrigger');
     } else {
-      alertMsg = courseName.value + " has been added!!";
+      alertMsg = courseName.value + " has been updated!!";
       TogglePopup('buttonTrigger');
       //clear input boxes
       courseName.value = '';
