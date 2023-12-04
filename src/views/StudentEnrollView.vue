@@ -46,7 +46,7 @@ const course_search_bar = ref("");
 var courseCatalog = [];
 
 // testing student id -- CHANGE LATER
-const studentID = "abc54321"
+const studentID = "abc12345"
 
 /* this should get the number of credits a student has from dynamo
 (if we configure the enrollment button to display conditionally rather than how we have it now) */
