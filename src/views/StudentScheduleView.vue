@@ -58,7 +58,7 @@ var schedule = []
 // get student info from dynamoDB "students" table
 const studentInfo = async () => {
   const { data, error } = await getStudentInfo(studentID_input.value);
-  console.log(studentID_input.value)
+  // console.log(studentID_input.value)
   if (data) {
     student_info = data.student;
 	if (schedule.length == 0){
