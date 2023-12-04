@@ -37,7 +37,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { searchMultipleCourseCatalog, enrollStudent, deleteCourseFromCourseCatalog} from "../util/api-setup";
+import { searchMultipleCourseCatalog, enrollStudent } from "../util/api-setup";
 import LogOut from "@/components/buttons/logout-button.vue";
 import popup from "@/components/course-info-popup.vue";
 
