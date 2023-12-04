@@ -18,7 +18,7 @@
         <h2>{{ alertMsg }}</h2>
       </popup>
       <h2>Welcome back!</h2>
-      <h3>Enter you student ID and press "View Schedule" twice to see your schedule.</h3>
+      <h3>Enter you student ID and press "View Schedule" twice (at least 3 seconds apart) to see your schedule.</h3>
       <h3>If you enter the wrong ID, please reload the page and try again.</h3>
 	  <div class="schedule">
       <input type="text" name="searchBar" v-model="studentID_input" placeholder="Enter your studentID" />
