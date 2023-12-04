@@ -8,12 +8,14 @@
         <RouterLink to="/student/enroll">Search and Enroll</RouterLink>
       </li>
       <li>
-        <!-- <RouterLink to="/">Log out</RouterLink> -->
         <LogOut />
       </li>
     </ul>
   </nav>
   <main class="enroll-view">
+    <popup v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
+      <h2>{{ alertMsg }}</h2>
+    </popup>
     <h2>Search and Enroll in Courses</h2>
 	<h3>
 		(If you do not see any courses populate after pressing 'Search', please wait a few seconds then type another character in the search bar.)
@@ -35,11 +37,13 @@
 
 <script setup>
 import { ref } from "vue";
-import { searchMultipleCourseCatalog, enrollStudent} from "../util/api-setup";
+import { searchMultipleCourseCatalog, enrollStudent } from "../util/api-setup";
 import LogOut from "@/components/buttons/logout-button.vue";
+import popup from "@/components/course-info-popup.vue";
 
+var alertMsg = ref("");
 const course_search_bar = ref("");
-var courseCatalog = []
+var courseCatalog = [];
 
 // testing student id -- CHANGE LATER
 const studentID = "abc12345"
@@ -75,26 +79,44 @@ const enrollStudentInCourse = async (course, studentID) => {
 	// "You are already enrolled in this course." (course in student[enrolled_courses])
 	// "Enrollment FAILED - You are enrolled in too many credits to take this course." (enrolled_credits + course_credits >= max_credits)
 	// "Enrollment FAILED - This course is at maximum capacity, you cannot enroll at this time." (current_enrollment == max_enrollment)
-	console.log(data.body);
+	// console.log(data.body);
 	
 	// alternate way of logging
-  /* if (data.body.includes("have been enrolled")) {
-      console.log("You have been enrolled!!");
-    } else if (data.body.includes("max capacity")){
-      console.log("Course is at max capacity");
+    // console.log(data.body);
+    if (data.body.includes("have been enrolled")) {
+      // console.log("You have been enrolled!!");
+      alertMsg = "You have been enrolled in " + course;
+    } else if (data.body.includes("maximum capacity")){
+      // console.log("Course is at max capacity");
+      alertMsg = course.value + " is at max capacity.";
     } else if (data.body.includes("too many credits")) {
-      console.log("You are enrolled in too many credits");
+      // console.log("You are enrolled in too many credits");
+      alertMsg = "You are enrolled in too many credits.";
     } else if (data.body.includes("already enrolled")) {
-      console.log(data.body);
+      // console.log(data.body);
+      alertMsg = "You are already enrolled in " + course;
+    } else if (data.body.includes("Student not found")) {
+      alertMsg = "Student not found, check your student ID input!"
     } else {
-      console.log("There was an error, please try again.");
-    } */
+      // console.log("There was an error, please try again.");
+      alertMsg = "There was an error, please try again.";
+    }
+    TogglePopup('buttonTrigger');
   } else {
-    console.log(error);
+    // console.log(error);
+    alertMsg = "There was an error, please try again.";
+    TogglePopup('buttonTrigger');
   }
 
 };
 
+const popupTriggers = ref({
+  buttonTrigger: false
+});
+
+const TogglePopup = (trigger) => {
+  popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+};
 
 </script>
 <style>
