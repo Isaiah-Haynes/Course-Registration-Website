@@ -14,37 +14,51 @@
     </ul>
   </nav>
     <main class="schedule-view">
+      <popup v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
+        <h2>{{ alertMsg }}</h2>
+      </popup>
       <h2>Welcome back!</h2>
-      <h3>
-        You can use this page to view your schedule or your student information.
-      </h3>
+      <h3>Enter you student ID and press "View Schedule" twice to see your schedule.</h3>
+      <h3>If you enter the wrong ID, please reload the page and try again.</h3>
 	  <div class="schedule">
+      <input type="text" v-model="studentID_input" placeholder="Enter your studentID" />
       <button class ="sButton" type="button" @click="studentInfo" @keydown.enter="studentInfo">View Schedule</button>
+      <courseEntry v-if="!popupTriggers.courseAvailable">
+      </courseEntry>
       <div class="course-list" v-for="course in schedule" :key="course">
         <h4>{{ course[0]+' - '+course[2]}}</h4>
         <h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
         <h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
         <h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
         <h5>{{ }}</h5>
-        <button class ="ueButton" type="button" @click="unenrollStudentFromCourse(course[0], studentID)">Unenroll from {{course[0]}}</button>
+        <button class ="ueButton" type="button" @click="unenrollStudentFromCourse(course[0])">Unenroll from {{course[0]}}</button>
       </div>
     </div>
     </main>
   </template>
 
 <script setup>
+import { ref } from "vue";
 import { getStudentInfo, unenrollStudent, searchMultipleCourseCatalog} from "../util/api-setup";
 import LogOut from "@/components/buttons/logout-button.vue";
+import popup from "@/components/course-info-popup.vue";
+import courseEntry from "@/components/course-snippet.vue";
+
+var alertMsg = ref("");
 
 // testing student id -- CHANGE LATER
-const studentID = "abc12345"
+// const studentID = "abc12345"
+const studentID_input = ref("");
+// const studentID = studentID_input.value;
 var student_info = []
 var schedule = []
 
+
+// const inputStudentID = ref("");
 // get student info from dynamoDB "students" table
 const studentInfo = async () => {
-  const { data, error } = await getStudentInfo(studentID);
-
+  const { data, error } = await getStudentInfo(studentID_input.value);
+  console.log(studentID_input.value)
   if (data) {
     student_info = data.student;
 	if (schedule.length == 0){
@@ -58,8 +72,13 @@ const studentInfo = async () => {
 		}
 	}
 	//console.log("studentInfo() completed p2")
-	console.log("got student schedule")
-	console.log(schedule)
+	// console.log("got student schedule")
+	// console.log(schedule)
+  // console.log(popupTriggers.value);
+  TogglePopup('courseAvailable');
+  // console.log(popupTriggers.value);
+  
+
   }
 
   if (error) {
@@ -80,11 +99,14 @@ const getCourses = async (course_name) => {
     // in theory this should fix duplicate course adds that come from spamming the button
     // however, this does not work at the moment
     if (schedule.includes(data.courses[0]) == false) {
-    schedule.push(data.courses[0])
+      if (data.courses[0] != undefined) {
+        schedule.push(data.courses[0]);
+      }
+    // schedule.push(data.courses[0])
     }
-	//console.log("Got course:")
-	//console.log(data.courses[0])
-	//console.log("getCourses() completed")
+	// console.log("Got course:")
+	// console.log(data.courses[0])
+	// console.log("getCourses() completed")
   }
 
   if (error) {
@@ -93,8 +115,9 @@ const getCourses = async (course_name) => {
 };
 
 // unenroll student from course
-const unenrollStudentFromCourse = async (course, studentID) => {
+const unenrollStudentFromCourse = async (course) => {
   console.log("Attempting to unenroll from " + course)
+  const studentID = studentID_input.value;
   const {data, error} = await unenrollStudent({studentID, course});
 
   if (data) {
@@ -102,19 +125,33 @@ const unenrollStudentFromCourse = async (course, studentID) => {
 	// "Unenroll SUCCESSFUL - You have been unenrolled!"
 	// "Unenroll FAILED - You are not enrolled in this course!" (course not in student[enrolled_courses])
 	console.log(data.body);
+  if (JSON.stringify(data.body).includes('SUCCESSFUL')) {
+    alertMsg = "You have successfully unenrolled from " + course;
+  } else if (JSON.stringify(data.body).includes('Unenroll FAILED')) {
+    alertMSG = "You cannot unenroll from a course you are not enrolled in";
+  } else {
+    alertMsg = "There was an error, please try again.";
+  }
+  TogglePopup('buttonTrigger');
+
   } else {
     console.log(error);
+    alertMsg = "There was an error, please try again.";
+    TogglePopup('buttonTrigger');
   }
 
 };
 
-const mounted = async () => {
-    this.$watch('schedule', function() {
-      console.log('schedule updated')
-    }, {
-      deep: true
-    })
-  }
+//following used to check status for reactive components.
+const popupTriggers = ref({
+  buttonTrigger: false,
+  courseAvailable: false
+});
+
+const TogglePopup = (trigger) => {
+  popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+};
+
 </script>
 
   <style>

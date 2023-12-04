@@ -21,15 +21,22 @@
 		(If you do not see any courses populate after pressing 'Search', please wait a few seconds then type another character in the search bar.)
 	</h3>
     <div class="search">
+
       <input type="text" v-model="course_search_bar" placeholder="Search for class name or title (case sensitive)" />
+      <input type="text" v-model="studentID_input" placeholder="Enter your studentID to enroll in a course" />
       <button class ="sButton" type="button" @click="getCourses" @keydown.enter="getCourses">Search</button>
+
+      <!-- this somehow updates the courses, not sure how -->
+      <courseEntry v-if="popupTriggers.courseAvailable" v-for="course in courseCatalog" :key="course">
+      </courseEntry>
+
       <div class="course-list" v-for="course in courseCatalog" :key="course">
         <h4>{{ course[0]+' - '+course[2]}}</h4>
 		    <h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
 		    <h5>{{ course[3]+'-'+course[4]+' - '+course[5] }}</h5>
 		    <h5>{{ 'Current enrollment: '+course[9]+'/'+course[8]+' ('+(course[8]-course[9])+' open seats)'}}</h5>
         <h5>{{ }}</h5>
-		<button class ="eButton" type="button" @click="enrollStudentInCourse(course[0], studentID)">Enroll in {{course[0]}}</button>
+		<button class ="eButton" type="button" @click="enrollStudentInCourse(course[0])">Enroll in {{course[0]}}</button>
       </div>
     </div>
   </main>
@@ -40,13 +47,17 @@ import { ref } from "vue";
 import { searchMultipleCourseCatalog, enrollStudent } from "../util/api-setup";
 import LogOut from "@/components/buttons/logout-button.vue";
 import popup from "@/components/course-info-popup.vue";
+import courseEntry from "@/components/course-snippet.vue";
 
 var alertMsg = ref("");
 const course_search_bar = ref("");
 var courseCatalog = [];
 
+
 // testing student id -- CHANGE LATER
-const studentID = "abc12345"
+// const studentID = "abc12345"
+const studentID_input = ref("");
+// var studentID = studentID_input.value;
 
 /* this should get the number of credits a student has from dynamo
 (if we configure the enrollment button to display conditionally rather than how we have it now) */
@@ -61,6 +72,7 @@ const getCourses = async () => {
   if (data) {
     courseCatalog = data.courses;
     console.log(data.courses);
+    TogglePopup('courseAvailable');
   }
 
   if (error) {
@@ -69,8 +81,9 @@ const getCourses = async () => {
 };
 
 //enroll student in a course
-const enrollStudentInCourse = async (course, studentID) => {
+const enrollStudentInCourse = async (course) => {
   console.log("Attempting to enroll in " + course)
+  const studentID = studentID_input.value;
   const {data, error} = await enrollStudent({studentID, course});
 
   if (data) {
@@ -88,7 +101,7 @@ const enrollStudentInCourse = async (course, studentID) => {
       alertMsg = "You have been enrolled in " + course;
     } else if (data.body.includes("maximum capacity")){
       // console.log("Course is at max capacity");
-      alertMsg = course.value + " is at max capacity.";
+      alertMsg = course + " is at max capacity.";
     } else if (data.body.includes("too many credits")) {
       // console.log("You are enrolled in too many credits");
       alertMsg = "You are enrolled in too many credits.";
@@ -111,7 +124,8 @@ const enrollStudentInCourse = async (course, studentID) => {
 };
 
 const popupTriggers = ref({
-  buttonTrigger: false
+  buttonTrigger: false,
+  courseAvailable: false
 });
 
 const TogglePopup = (trigger) => {
