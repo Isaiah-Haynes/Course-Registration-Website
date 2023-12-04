@@ -21,8 +21,14 @@
 		(If you do not see any courses populate after pressing 'Search', please wait a few seconds then type another character in the search bar.)
 	</h3>
     <div class="search">
+
       <input type="text" v-model="course_search_bar" placeholder="Search for class name or title (case sensitive)" />
       <button class ="sButton" type="button" @click="getCourses" @keydown.enter="getCourses">Search</button>
+
+      <!-- this somehow updates the courses, not sure how -->
+      <courseEntry v-if="popupTriggers.courseAvailable" v-for="course in courseCatalog" :key="course">
+      </courseEntry>
+
       <div class="course-list" v-for="course in courseCatalog" :key="course">
         <h4>{{ course[0]+' - '+course[2]}}</h4>
 		    <h5>{{ 'Professor: '+course[7]+', '+course[1]+' credit(s)' }}</h5>
@@ -40,10 +46,12 @@ import { ref } from "vue";
 import { searchMultipleCourseCatalog, enrollStudent } from "../util/api-setup";
 import LogOut from "@/components/buttons/logout-button.vue";
 import popup from "@/components/course-info-popup.vue";
+import courseEntry from "@/components/course-snippet.vue";
 
 var alertMsg = ref("");
 const course_search_bar = ref("");
 var courseCatalog = [];
+
 
 // testing student id -- CHANGE LATER
 const studentID = "abc12345"
@@ -61,6 +69,7 @@ const getCourses = async () => {
   if (data) {
     courseCatalog = data.courses;
     console.log(data.courses);
+    TogglePopup('courseAvailable');
   }
 
   if (error) {
@@ -88,7 +97,7 @@ const enrollStudentInCourse = async (course, studentID) => {
       alertMsg = "You have been enrolled in " + course;
     } else if (data.body.includes("maximum capacity")){
       // console.log("Course is at max capacity");
-      alertMsg = course.value + " is at max capacity.";
+      alertMsg = course + " is at max capacity.";
     } else if (data.body.includes("too many credits")) {
       // console.log("You are enrolled in too many credits");
       alertMsg = "You are enrolled in too many credits.";
@@ -111,7 +120,8 @@ const enrollStudentInCourse = async (course, studentID) => {
 };
 
 const popupTriggers = ref({
-  buttonTrigger: false
+  buttonTrigger: false,
+  courseAvailable: false
 });
 
 const TogglePopup = (trigger) => {

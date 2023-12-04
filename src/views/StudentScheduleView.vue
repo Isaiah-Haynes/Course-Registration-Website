@@ -33,6 +33,7 @@
   </template>
 
 <script setup>
+import { ref } from "vue";
 import { getStudentInfo, unenrollStudent, searchMultipleCourseCatalog} from "../util/api-setup";
 import LogOut from "@/components/buttons/logout-button.vue";
 
