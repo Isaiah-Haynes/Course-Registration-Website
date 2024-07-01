@@ -1,5 +1,9 @@
 # Course Registration Website
 
+website accessible from http://crs-lab002group6.s3-website-us-east-1.amazonaws.com/
+Since this is a development website, you will need to add the above website to the "treat insecure origins as secure" option in chrome://flags
+
+Please utilize google chrome to access the website, or do some research on how to do the above in your preferred browser.
 
 ## Recommended IDE Setup
 
