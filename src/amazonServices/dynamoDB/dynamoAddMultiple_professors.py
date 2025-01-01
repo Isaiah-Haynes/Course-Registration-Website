@@ -10,7 +10,7 @@ def check_args():
         return 0
 
 def batch_put(professors):
-    DDB = boto3.resource('dynamodb', region_name='us-east-1')
+    DDB = boto3.resource('dynamodb', region_name='AWS_REGION')
     table = DDB.Table('professors')
     with table.batch_writer() as batch:
         for professor in professors:
