@@ -63,4 +63,5 @@ npm run build
 In order to establish some sense of security, some files have dummy values. The files with missing values are listed below:
 
 `.env`
+
 All python files in `src/amazonServices/dynamoDB/`
