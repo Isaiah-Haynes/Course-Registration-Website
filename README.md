@@ -43,4 +43,4 @@ npm run build
 Some files will not run properly until the proper values are added. This is why it is not recommended that you run this website locally. In an attempt to achieve some sence of security, values such as API keys, URLs, and other sensitive information are not publicly acessible in this repo and will need to be replaced with your own values or contact the owner of this repo to gain access to the values used for the pictures above (coming soon). The files with missing values are listed below:
 
 `.env`
-`src/amazonServices/dynamoDB/` (replace `AWS_REGION` with your AWS region)
+All python files in `src/amazonServices/dynamoDB/` (replace `AWS_REGION` with your AWS region)
