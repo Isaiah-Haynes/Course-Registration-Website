@@ -21,7 +21,9 @@ Please utilize google chrome to access the website, or do some research on how t
 
 ## Admin Views
 ![Screenshot 2024-12-31 at 8 01 11 PM](https://github.com/user-attachments/assets/06d1cb44-b446-4e6d-b080-2aad7f781c89)
+
 ![Screenshot 2024-12-31 at 8 00 14 PM](https://github.com/user-attachments/assets/5a7dd5a9-cf6a-4c25-a3f8-8843909cc22b)
+
 ![Screenshot 2024-12-31 at 8 00 22 PM](https://github.com/user-attachments/assets/dec042cb-b79f-48f5-98d5-c4939ba09bd6)
 
 ## Runing Locally
@@ -58,7 +60,7 @@ npm run build
 
 ### Replace example values with your own
 
-Some files will not run properly until the proper values are added. This is why it is not recommended that you run this website locally. In an attempt to achieve some sence of security, values such as API keys, URLs, and other sensitive information are not publicly acessible in this repo and will need to be replaced with your own values or contact the owner of this repo to gain access to the values used for the pictures above (coming soon). The files with missing values are listed below:
+In order to establish some sense of security, some files have dummy values. The files with missing values are listed below:
 
 `.env`
-All python files in `src/amazonServices/dynamoDB/` (replace `AWS_REGION` with your AWS region)
+All python files in `src/amazonServices/dynamoDB/`
