@@ -12,7 +12,7 @@ def check_args():
 
 def addSingleConditional(course_parameters):
     
-    DDB = boto3.client('dynamodb', region_name='us-east-1')
+    DDB = boto3.client('dynamodb', region_name='AWS_REGION')
     
     try:
         response = DDB.put_item(

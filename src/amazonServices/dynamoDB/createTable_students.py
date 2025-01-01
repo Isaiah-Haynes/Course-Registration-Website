@@ -8,7 +8,7 @@ def check_args():
         return 0
 
 def create_table(tableName):
-    DDB = boto3.resource('dynamodb', region_name='us-east-1')
+    DDB = boto3.resource('dynamodb', region_name='AWS_REGION')
     params = {
         'TableName': str(tableName),
         'KeySchema': [

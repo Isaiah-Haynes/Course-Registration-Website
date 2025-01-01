@@ -1,23 +1,40 @@
 # Course Registration Website
 
 website accessible from http://crs-lab002group6.s3-website-us-east-1.amazonaws.com/
-Since this is a development website, you will need to add the above website to the "treat insecure origins as secure" option in chrome://flags
+Since this is a development website, you will need to add the above URL to the "treat insecure origins as secure" option in chrome://flags
 
 Please utilize google chrome to access the website, or do some research on how to do the above in your preferred browser.
 
-## Recommended IDE Setup
+## Login Page
+![Screenshot 2024-12-31 at 7 56 33 PM](https://github.com/user-attachments/assets/0634ce57-b139-4294-85be-c951c531ba61)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+![Screenshot 2024-12-31 at 8 04 29 PM](https://github.com/user-attachments/assets/c6b5d755-5c65-4d65-8146-a314c2e34f8d)
 
-## Customize configuration
+## Student Search and Enrollment
+![Screenshot 2024-12-31 at 7 57 36 PM](https://github.com/user-attachments/assets/36f51784-07d4-4d88-a124-d41ac3a0dfae)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Student Schedule View
+![Screenshot 2024-12-31 at 7 58 13 PM](https://github.com/user-attachments/assets/1599a9b2-f6d4-4af4-b508-b4ba5acac467)
 
-## Nodejs
+## Professor Schedule View
+![Screenshot 2024-12-31 at 7 58 44 PM](https://github.com/user-attachments/assets/f92ad62d-2e74-4054-8983-bf16f7228088)
+
+## Admin Views
+![Screenshot 2024-12-31 at 8 01 11 PM](https://github.com/user-attachments/assets/06d1cb44-b446-4e6d-b080-2aad7f781c89)
+
+![Screenshot 2024-12-31 at 8 00 14 PM](https://github.com/user-attachments/assets/5a7dd5a9-cf6a-4c25-a3f8-8843909cc22b)
+
+![Screenshot 2024-12-31 at 8 00 22 PM](https://github.com/user-attachments/assets/dec042cb-b79f-48f5-98d5-c4939ba09bd6)
+
+## Runing Locally
+
+Running this website locally is not recommended, but instructions to setup your environment can be found below.
+
+### Nodejs
 
 Install Nodejs from [their website](https://nodejs.org/en)
 
-## Project Setup
+### Project Setup
 
 Whenever you clone this project, or change the contents of `package.json`, be sure to run the following command in your terminal:
 
@@ -41,6 +58,10 @@ Whenever you want to create the files that you would serve in a production envir
 npm run build
 ```
 
-  This is a component that renders the app's header and navigation. It is used in `src/App.vue`, and is kept outside of the views because it does not change from view to view.
+### Replace example values with your own
 
-Most files should have useful comments in them describing what is being done by a line or set of lines.
+In order to establish some sense of security, some files have dummy values. The files with missing values are listed below:
+
+`.env`
+
+All python files in `src/amazonServices/dynamoDB/`
