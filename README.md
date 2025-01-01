@@ -5,7 +5,16 @@ Since this is a development website, you will need to add the above URL to the "
 
 Please utilize google chrome to access the website, or do some research on how to do the above in your preferred browser.
 
+## Login Page
+![Screenshot 2024-12-31 at 7 56 33 PM](https://github.com/user-attachments/assets/0634ce57-b139-4294-85be-c951c531ba61)
 
+## Student Search and Enrollment
+
+## Student Schedule View
+
+## Professor Schedule View
+
+## Admin Views
 ## Runing Locally
 
 Running this website locally is not recommended, but instructions to setup your environment can be found below.
