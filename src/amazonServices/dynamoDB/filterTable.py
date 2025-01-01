@@ -13,7 +13,7 @@ def check_args():
 
 def scanTable(tableName, tableColumn, filter):
     
-    DDB = boto3.resource('dynamodb', region_name='us-east-1')
+    DDB = boto3.resource('dynamodb', region_name='AWS_REGION')
     table = DDB.Table(tableName)
 
     response = table.scan(
