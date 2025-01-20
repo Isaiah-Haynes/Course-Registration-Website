@@ -1,9 +1,12 @@
 # Course Registration Website
 
-website accessible from http://crs-lab002group6.s3-website-us-east-1.amazonaws.com/
-Since this is a development website, you will need to add the above URL to the "treat insecure origins as secure" option in chrome://flags
+## DISCLAIMER!!
+This website is no longer publicly available as the AWS backend services have been deleted.
 
-Please utilize google chrome to access the website, or do some research on how to do the above in your preferred browser.
+## Description
+This repository is for a simple course registration website with a backend hosted on AWS (Amazon Web Services) and a frontend built with vue.js framework. The website is designed to have three groups of users: students, professors, and administrators. Each group has an option to log in to thier respective site to perform a variety of options. Students have the ability to search for and enroll in classes, as well as view their schedule of enrolled courses. From the schedule view, students can also unenroll from the course of their choosing.
+The professor page simply has the option for a professor to view the schedule of classes that they are teaching.
+Finally, the administrator's page has the ability to add, edit, and remove students, professors, and classes. Images showing the main functions of each use case are shown below.
 
 ## Login Page
 ![Screenshot 2024-12-31 at 7 56 33 PM](https://github.com/user-attachments/assets/0634ce57-b139-4294-85be-c951c531ba61)
